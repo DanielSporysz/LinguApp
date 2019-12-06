@@ -4,15 +4,111 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/col_main_app_theme"
     tools:context=".MainActivity">
 
-    <TextView
+    <ImageView
+        android:id="@+id/mail_icon_view2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Hello World!"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:layout_marginEnd="10dp"
+        app:layout_constraintBottom_toBottomOf="@+id/editText3"
+        app:layout_constraintEnd_toStartOf="@+id/editText3"
+        app:layout_constraintTop_toTopOf="@+id/editText3"
+        app:srcCompat="@drawable/lock" />
+
+    <ImageView
+        android:id="@+id/flags"
+        android:layout_width="413dp"
+        android:layout_height="325dp"
+        android:contentDescription="@string/description_flags"
+        android:scaleType="fitStart"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/flags" />
+
+    <TextView
+        android:id="@+id/register_sign"
+        android:layout_width="wrap_content"
+        android:layout_height="57dp"
+        android:fontFamily="@font/open_sans_light"
+        android:text="@string/register_prompt"
+        android:textColor="@color/colorText"
+        android:textSize="36sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/flags" />
+
+    <ImageView
+        android:id="@+id/user_icon_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="10dp"
+        android:contentDescription="@string/icon_user"
+        app:layout_constraintBottom_toBottomOf="@+id/username_field"
+        app:layout_constraintEnd_toStartOf="@+id/username_field"
+        app:layout_constraintTop_toTopOf="@+id/username_field"
+        app:srcCompat="@drawable/person" />
+
+    <EditText
+        android:id="@+id/username_field"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:autofillHints="@string/username_prompt"
+        android:background="@drawable/colorInputFieldBackground"
+        android:ems="10"
+        android:hint="@string/username_prompt"
+        android:inputType="textPersonName"
+        android:textColor="@color/colorText"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.621"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/register_sign" />
+
+    <ImageView
+        android:id="@+id/mail_icon_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="10dp"
+        app:layout_constraintBottom_toBottomOf="@+id/mail_field"
+        app:layout_constraintEnd_toStartOf="@+id/mail_field"
+        app:layout_constraintTop_toTopOf="@+id/mail_field"
+        app:srcCompat="@drawable/mail" />
+
+    <EditText
+        android:id="@+id/mail_field"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:background="@drawable/colorInputFieldBackground"
+        android:ems="10"
+        android:hint="@string/mail_hint"
+        android:inputType="textPersonName"
+        android:textColor="@color/colorText"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.621"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/username_field" />
+
+    <EditText
+        android:id="@+id/editText3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:background="@drawable/colorInputFieldBackground"
+        android:ems="10"
+        android:hint="@string/password_hint"
+        android:inputType="textPassword"
+        android:textColor="@color/colorText"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.621"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/mail_field" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

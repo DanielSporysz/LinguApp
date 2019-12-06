@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <drawable name="col_main_app_theme">#35806E</drawable>
+    <drawable name="colorInputFieldBackground">#C4C4C4</drawable>
+</resources>

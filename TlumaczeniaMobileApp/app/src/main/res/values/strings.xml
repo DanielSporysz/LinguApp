@@ -1,3 +1,9 @@
 <resources>
     <string name="app_name">Tlumaczenia</string>
+    <string name="description_flags">welcome screen graphics</string>
+    <string name="register_prompt">Zarejestruj się</string>
+    <string name="username_prompt">Nazwa użytkownika</string>
+    <string name="icon_user">username icon</string>
+    <string name="mail_hint">e-mail</string>
+    <string name="password_hint">hasło</string>
 </resources>
