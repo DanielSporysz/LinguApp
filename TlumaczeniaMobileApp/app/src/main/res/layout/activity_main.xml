@@ -46,7 +46,7 @@
                     android:id="@+id/register_sign"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:fontFamily="@font/open_sans_light"
+                    android:fontFamily="@font/play_bold"
                     android:text="@string/register_prompt"
                     android:textColor="@color/colorText"
                     android:textSize="36sp"
@@ -73,13 +73,14 @@
                     app:srcCompat="@drawable/ic_person" />
 
                 <EditText
-                    android:importantForAutofill="no"
                     android:id="@+id/username_field"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:background="@drawable/colorInputFieldBackground"
                     android:ems="10"
+                    android:fontFamily="@font/play"
                     android:hint="@string/username_prompt"
+                    android:importantForAutofill="no"
                     android:inputType="textPersonName"
                     android:padding="15dp"
                     android:textColor="@color/colorText"
@@ -107,13 +108,14 @@
                     app:srcCompat="@drawable/ic_mail" />
 
                 <EditText
-                    android:importantForAutofill="no"
                     android:id="@+id/mail_field"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:background="@drawable/colorInputFieldBackground"
                     android:ems="10"
+                    android:fontFamily="@font/play"
                     android:hint="@string/mail_hint"
+                    android:importantForAutofill="no"
                     android:inputType="textPersonName"
                     android:padding="15dp"
                     android:textColor="@color/colorText"
@@ -141,13 +143,14 @@
                     app:srcCompat="@drawable/ic_lock" />
 
                 <EditText
-                    android:importantForAutofill="no"
                     android:id="@+id/password_field"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:background="@drawable/colorInputFieldBackground"
                     android:ems="10"
+                    android:fontFamily="@font/play"
                     android:hint="@string/password_hint"
+                    android:importantForAutofill="no"
                     android:inputType="textPassword"
                     android:padding="15dp"
                     android:textColor="@color/colorText"
