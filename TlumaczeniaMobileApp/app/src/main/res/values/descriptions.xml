@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="userIcon">user icon</string>
+    <string name="mailIcon">mail icon</string>
+    <string name="passwordIcon">password icon</string>
+    <string name="flagsImage">image with flags</string>
+</resources>
