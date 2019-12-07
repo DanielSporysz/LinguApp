@@ -6,4 +6,10 @@
     <string name="icon_user">username icon</string>
     <string name="mail_hint">e-mail</string>
     <string name="password_hint">hasło</string>
+
+    <string name="register_incetive_question">Nie masz konta?</string>
+    <string name="register_incetive_order">Zarejestruj się!</string>
+    <string name="register">Rejestracja</string>
+    <string name="login_incentive">Jeśli masz już konto, zaloguj się!</string>
+    <string name="login">Logowanie</string>
 </resources>

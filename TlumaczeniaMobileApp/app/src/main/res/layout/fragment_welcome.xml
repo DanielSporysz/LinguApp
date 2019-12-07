@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/col_main_app_theme"
+    app:layout_constraintBottom_toBottomOf="parent"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toTopOf="parent">
+
+    <ImageView
+        android:id="@+id/flagsTop"
+        android:layout_width="0dp"
+        android:layout_height="150dp"
+        android:contentDescription="@string/flagsTop"
+        android:scaleType="fitXY"
+        android:src="@drawable/flags_top"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <TextView
+        android:id="@+id/registerIncetiveQue"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/play_bold"
+        android:text="@string/register_incetive_question"
+        android:textColor="@color/colorText"
+        android:textSize="24sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/flagsTop" />
+
+    <TextView
+        android:id="@+id/registerIncetiveOrd"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/play_bold"
+        android:text="@string/register_incetive_order"
+        android:textColor="@color/colorText"
+        android:textSize="24sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/registerIncetiveQue" />
+
+    <Button
+        android:id="@+id/buttonRegister"
+        style="@style/ThemedButton"
+        android:layout_width="260dp"
+        android:layout_height="60dp"
+        android:layout_marginTop="10dp"
+        android:fontFamily="@font/play_bold"
+        android:shadowColor="@color/colorAccent"
+        android:shadowDx="100"
+        android:shadowDy="100"
+        android:shadowRadius="500"
+        android:text="@string/register"
+        android:textSize="24sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/registerIncetiveOrd" />
+
+    <TextView
+        android:id="@+id/loginIncentive"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="50dp"
+        android:fontFamily="@font/play_bold"
+        android:text="@string/login_incentive"
+        android:textColor="@color/colorText"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/buttonRegister" />
+
+    <Button
+        android:id="@+id/buttonLogin"
+        style="@style/ThemedButton"
+        android:layout_width="240dp"
+        android:layout_height="45dp"
+        android:layout_marginTop="10dp"
+        android:fontFamily="@font/play_bold"
+        android:text="@string/login"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/loginIncentive" />
+
+    <ImageView
+        android:id="@+id/flagsBottom"
+        android:layout_width="wrap_content"
+        android:layout_height="150dp"
+        android:contentDescription="@string/flagsBottom"
+        android:scaleType="fitXY"
+        android:src="@drawable/flags_bottom"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="1.0" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

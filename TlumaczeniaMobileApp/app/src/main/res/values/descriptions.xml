@@ -4,4 +4,6 @@
     <string name="mailIcon">mail icon</string>
     <string name="passwordIcon">password icon</string>
     <string name="flagsImage">image with flags</string>
+    <string name="flagsTop">flagsTop</string>
+    <string name="flagsBottom">flagsBottom</string>
 </resources>
