@@ -3,6 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <data>
+
         <variable
             name="registerInfo"
             type="pl.ourdomain.tlumaczenia.RegisterInfo" />
@@ -24,19 +25,19 @@
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
-                android:layout_height="200dp">
+                android:layout_height="match_parent">
 
                 <ImageView
                     android:id="@+id/flags"
                     android:layout_width="0dp"
-                    android:layout_height="wrap_content"
+                    android:layout_height="150dp"
                     android:contentDescription="@string/flagsImage"
                     android:scaleType="fitXY"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
-                    app:srcCompat="@drawable/flags" />
+                    app:srcCompat="@drawable/flags_top" />
             </androidx.constraintlayout.widget.ConstraintLayout>
 
             <androidx.constraintlayout.widget.ConstraintLayout
@@ -53,6 +54,7 @@
                     android:textColor="@color/colorText"
                     android:textSize="36sp"
                     android:textStyle="bold"
+                    app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
@@ -66,31 +68,35 @@
                 <ImageView
                     android:id="@+id/username_icon_view"
                     android:layout_width="wrap_content"
-                    android:layout_height="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
                     android:layout_marginEnd="10dp"
                     android:contentDescription="@string/userIcon"
                     app:layout_constraintBottom_toBottomOf="@+id/username_field"
                     app:layout_constraintEnd_toStartOf="@+id/username_field"
+                    app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="@+id/username_field"
                     app:srcCompat="@drawable/ic_person" />
 
                 <EditText
                     android:id="@+id/username_field"
-                    android:layout_width="wrap_content"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
+                    android:layout_marginStart="55dp"
+                    android:layout_marginEnd="20dp"
                     android:background="@drawable/col_input_field"
                     android:ems="10"
                     android:fontFamily="@font/play"
                     android:hint="@string/username_prompt"
-                    android:text="@={registerInfo.username}"
                     android:importantForAutofill="no"
                     android:inputType="textPersonName"
                     android:padding="15dp"
+                    android:text="@={registerInfo.username}"
                     android:textColor="@color/colorText"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintHorizontal_bias="0.55"
-                    app:layout_constraintStart_toStartOf="parent" />
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -103,30 +109,74 @@
                     android:id="@+id/mail_icon_view"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
                     android:layout_marginEnd="10dp"
                     android:contentDescription="@string/mailIcon"
                     app:layout_constraintBottom_toBottomOf="@+id/mail_field"
                     app:layout_constraintEnd_toStartOf="@+id/mail_field"
+                    app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="@+id/mail_field"
                     app:srcCompat="@drawable/ic_mail" />
 
                 <EditText
                     android:id="@+id/mail_field"
-                    android:layout_width="wrap_content"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
+                    android:layout_marginStart="55dp"
+                    android:layout_marginEnd="20dp"
                     android:background="@drawable/col_input_field"
                     android:ems="10"
                     android:fontFamily="@font/play"
                     android:hint="@string/mail_hint"
-                    android:text="@={registerInfo.email}"
                     android:importantForAutofill="no"
                     android:inputType="textPersonName"
                     android:padding="15dp"
+                    android:text="@={registerInfo.email}"
                     android:textColor="@color/colorText"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintHorizontal_bias="0.55"
-                    app:layout_constraintStart_toStartOf="parent" />
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_margin="10dp">
+
+                <ImageView
+                    android:id="@+id/re_mail_icon_view"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginEnd="10dp"
+                    android:contentDescription="@string/mailIcon"
+                    app:layout_constraintBottom_toBottomOf="@+id/re_mail_field"
+                    app:layout_constraintEnd_toStartOf="@+id/re_mail_field"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="@+id/re_mail_field"
+                    app:srcCompat="@drawable/ic_mail" />
+
+                <EditText
+                    android:id="@+id/re_mail_field"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="55dp"
+                    android:layout_marginEnd="20dp"
+                    android:background="@drawable/col_input_field"
+                    android:ems="10"
+                    android:fontFamily="@font/play"
+                    android:hint="@string/re_mail_hint"
+                    android:importantForAutofill="no"
+                    android:inputType="textPersonName"
+                    android:padding="15dp"
+                    android:text="@={registerInfo.reEmail}"
+                    android:textColor="@color/colorText"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -138,31 +188,75 @@
                 <ImageView
                     android:id="@+id/password_icon_view"
                     android:layout_width="wrap_content"
-                    android:layout_height="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
                     android:layout_marginEnd="10dp"
                     android:contentDescription="@string/passwordIcon"
                     app:layout_constraintBottom_toBottomOf="@+id/password_field"
                     app:layout_constraintEnd_toStartOf="@+id/password_field"
+                    app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="@+id/password_field"
                     app:srcCompat="@drawable/ic_lock" />
 
                 <EditText
                     android:id="@+id/password_field"
-                    android:layout_width="wrap_content"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
+                    android:layout_marginStart="55dp"
+                    android:layout_marginEnd="20dp"
                     android:background="@drawable/col_input_field"
                     android:ems="10"
                     android:fontFamily="@font/play"
                     android:hint="@string/password_hint"
                     android:importantForAutofill="no"
                     android:inputType="textPassword"
-                    android:text="@={registerInfo.password}"
                     android:padding="15dp"
+                    android:text="@={registerInfo.password}"
                     android:textColor="@color/colorText"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintHorizontal_bias="0.55"
-                    app:layout_constraintStart_toStartOf="parent" />
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_margin="10dp">
+
+                <ImageView
+                    android:id="@+id/re_password_icon_view"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginEnd="10dp"
+                    android:contentDescription="@string/passwordIcon"
+                    app:layout_constraintBottom_toBottomOf="@+id/re_password_field"
+                    app:layout_constraintEnd_toStartOf="@+id/re_password_field"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="@+id/re_password_field"
+                    app:srcCompat="@drawable/ic_lock" />
+
+                <EditText
+                    android:id="@+id/re_password_field"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="55dp"
+                    android:layout_marginEnd="20dp"
+                    android:background="@drawable/col_input_field"
+                    android:ems="10"
+                    android:fontFamily="@font/play"
+                    android:hint="@string/re_password_hint"
+                    android:importantForAutofill="no"
+                    android:inputType="textPassword"
+                    android:padding="15dp"
+                    android:text="@={registerInfo.rePassword}"
+                    android:textColor="@color/colorText"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 
