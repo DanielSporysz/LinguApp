@@ -1,20 +1,26 @@
 <resources>
     <string name="app_name">Tlumaczenia</string>
+
     <string name="description_flags">welcome screen graphics</string>
+
     <string name="register_prompt">Zarejestruj się</string>
-    <string name="login_prompt">Zaloguj się</string>
-    <string name="username_prompt">Nazwa użytkownika</string>
-    <string name="icon_user">username icon</string>
+    <string name="login_prompt">Logowanie</string>
+
+    <string name="username_hint">nazwa użytkownika</string>
     <string name="mail_hint">e-mail</string>
+    <string name="re_mail_hint">powtórz e-mail</string>
     <string name="password_hint">hasło</string>
+    <string name="re_password_hint">powtórz hasło</string>
 
     <string name="register_incetive_question">Nie masz konta?</string>
     <string name="register_incetive_order">Zarejestruj się!</string>
-    <string name="register">Rejestracja</string>
     <string name="login_incentive">Jeśli masz już konto, zaloguj się!</string>
-    <string name="login">Logowanie</string>
+
+    <string name="register_nav_button">Rejestracja</string>
+    <string name="login_nav_button">Logowanie</string>
+
+    <string name="login_button">zaloguj</string>
+    <string name="register_button">zatwierdź</string>
 
     <string name="hello_blank_fragment">Hello blank fragment</string>
-    <string name="re_password_hint">powtórz hasło</string>
-    <string name="re_mail_hint">powtórz e-mail</string>
 </resources>

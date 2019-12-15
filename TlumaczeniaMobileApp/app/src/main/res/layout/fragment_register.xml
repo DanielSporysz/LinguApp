@@ -84,10 +84,10 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="55dp"
                     android:layout_marginEnd="20dp"
-                    android:background="@drawable/col_input_field"
+                    android:background="@drawable/rounded_input_field"
                     android:ems="10"
                     android:fontFamily="@font/play"
-                    android:hint="@string/username_prompt"
+                    android:hint="@string/username_hint"
                     android:importantForAutofill="no"
                     android:inputType="textPersonName"
                     android:padding="15dp"
@@ -124,7 +124,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="55dp"
                     android:layout_marginEnd="20dp"
-                    android:background="@drawable/col_input_field"
+                    android:background="@drawable/rounded_input_field"
                     android:ems="10"
                     android:fontFamily="@font/play"
                     android:hint="@string/mail_hint"
@@ -145,26 +145,13 @@
                 android:layout_height="match_parent"
                 android:layout_margin="10dp">
 
-                <ImageView
-                    android:id="@+id/re_mail_icon_view"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="10dp"
-                    android:layout_marginEnd="10dp"
-                    android:contentDescription="@string/mailIcon"
-                    app:layout_constraintBottom_toBottomOf="@+id/re_mail_field"
-                    app:layout_constraintEnd_toStartOf="@+id/re_mail_field"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="@+id/re_mail_field"
-                    app:srcCompat="@drawable/ic_mail" />
-
                 <EditText
                     android:id="@+id/re_mail_field"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="55dp"
                     android:layout_marginEnd="20dp"
-                    android:background="@drawable/col_input_field"
+                    android:background="@drawable/rounded_input_field"
                     android:ems="10"
                     android:fontFamily="@font/play"
                     android:hint="@string/re_mail_hint"
@@ -204,7 +191,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="55dp"
                     android:layout_marginEnd="20dp"
-                    android:background="@drawable/col_input_field"
+                    android:background="@drawable/rounded_input_field"
                     android:ems="10"
                     android:fontFamily="@font/play"
                     android:hint="@string/password_hint"
@@ -225,26 +212,13 @@
                 android:layout_height="match_parent"
                 android:layout_margin="10dp">
 
-                <ImageView
-                    android:id="@+id/re_password_icon_view"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="10dp"
-                    android:layout_marginEnd="10dp"
-                    android:contentDescription="@string/passwordIcon"
-                    app:layout_constraintBottom_toBottomOf="@+id/re_password_field"
-                    app:layout_constraintEnd_toStartOf="@+id/re_password_field"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="@+id/re_password_field"
-                    app:srcCompat="@drawable/ic_lock" />
-
                 <EditText
                     android:id="@+id/re_password_field"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="55dp"
                     android:layout_marginEnd="20dp"
-                    android:background="@drawable/col_input_field"
+                    android:background="@drawable/rounded_input_field"
                     android:ems="10"
                     android:fontFamily="@font/play"
                     android:hint="@string/re_password_hint"
@@ -258,6 +232,26 @@
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
 
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_margin="10dp">
+
+                <Button
+                    android:id="@+id/registerButton"
+                    android:layout_width="185dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="20dp"
+                    android:background="@drawable/rounded_button"
+                    android:text="@string/register_button"
+                    android:textColor="@color/colorText"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="1.0"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
             </androidx.constraintlayout.widget.ConstraintLayout>
 
         </LinearLayout>
