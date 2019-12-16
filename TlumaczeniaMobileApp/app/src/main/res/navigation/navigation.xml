@@ -21,10 +21,32 @@
         android:id="@+id/registerFragment"
         android:name="pl.ourdomain.tlumaczenia.RegisterFragment"
         android:label="RegisterFragment"
-        tools:layout="@layout/fragment_register" />
+        tools:layout="@layout/fragment_register" >
+        <action
+            android:id="@+id/action_registerFragment_to_menuMain"
+            app:destination="@id/menuMain" />
+    </fragment>
     <fragment
         android:id="@+id/login"
-        android:name="pl.ourdomain.tlumaczenia.Login"
+        android:name="pl.ourdomain.tlumaczenia.LoginFragment"
         android:label="Login"
-        tools:layout="@layout/fragment_login" />
+        tools:layout="@layout/fragment_login" >
+        <action
+            android:id="@+id/action_login_to_menuMain"
+            app:destination="@id/menuMain" />
+    </fragment>
+    <fragment
+        android:id="@+id/menuMain"
+        android:name="pl.ourdomain.tlumaczenia.MenuMainFragment"
+        android:label="MenuMain"
+        tools:layout="@layout/fragment_menu_main" >
+        <action
+            android:id="@+id/action_menuMain_to_quickTranslation"
+            app:destination="@id/quickTranslation" />
+    </fragment>
+    <fragment
+        android:id="@+id/quickTranslation"
+        android:name="pl.ourdomain.tlumaczenia.QuickTranslationFragment"
+        android:label="QuickTranslation"
+        tools:layout="@layout/fragment_quick_translation" />
 </navigation>

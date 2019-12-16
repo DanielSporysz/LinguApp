@@ -33,14 +33,13 @@
             android:id="@+id/translateButton"
             android:layout_width="130dp"
             android:layout_height="35dp"
+            android:layout_marginTop="10dp"
             android:background="@drawable/rounded_button"
             android:text="@string/translate_button"
             android:textColor="@color/colorText"
-            app:layout_constraintBottom_toTopOf="@+id/translatedText"
             app:layout_constraintEnd_toEndOf="@+id/translateThisText"
             app:layout_constraintStart_toStartOf="@+id/translateThisText"
-            app:layout_constraintTop_toBottomOf="@+id/translateThisText"
-            app:layout_constraintVertical_bias="0.39" />
+            app:layout_constraintTop_toBottomOf="@+id/translateThisText" />
 
         <Button
             android:id="@+id/saveTranslationButton"
@@ -102,7 +101,7 @@
             android:id="@+id/translatedText"
             android:layout_width="300dp"
             android:layout_height="130dp"
-            android:layout_marginTop="160dp"
+            android:layout_marginBottom="40dp"
             android:background="@drawable/rounded_input_field"
             android:ems="10"
             android:fontFamily="@font/play"
@@ -112,9 +111,9 @@
             android:inputType="textMultiLine"
             android:padding="5dp"
             android:textColor="@color/colorText"
+            app:layout_constraintBottom_toTopOf="@+id/saveTranslationButton"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/translateThisText" />
+            app:layout_constraintStart_toStartOf="parent" />
 
         <ImageView
             android:id="@+id/imageView"

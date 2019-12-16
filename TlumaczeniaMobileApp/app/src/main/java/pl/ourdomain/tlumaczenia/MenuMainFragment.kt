@@ -7,24 +7,29 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
-import pl.ourdomain.tlumaczenia.databinding.FragmentLoginBinding
+import androidx.navigation.findNavController
+import pl.ourdomain.tlumaczenia.databinding.FragmentMenuMainBinding
 import pl.ourdomain.tlumaczenia.databinding.FragmentRegisterBinding
 
 /**
  * A simple [Fragment] subclass.
  */
-class Login : Fragment() {
+class MenuMainFragment : Fragment() {
 
-    private lateinit var binding: FragmentLoginBinding
+    private lateinit var binding: FragmentMenuMainBinding
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        val binding = DataBindingUtil.inflate<FragmentLoginBinding>(
+        binding = DataBindingUtil.inflate<FragmentMenuMainBinding>(
             inflater,
-            R.layout.fragment_login, container, false
+            R.layout.fragment_menu_main, container, false
         )
+
+        binding.translateWordsButton.setOnClickListener { view: View ->
+            view.findNavController().navigate(R.id.action_menuMain_to_quickTranslation)
+        }
 
         return binding.root
     }

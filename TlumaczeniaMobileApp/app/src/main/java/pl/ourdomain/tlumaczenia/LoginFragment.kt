@@ -7,24 +7,29 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
-import pl.ourdomain.tlumaczenia.databinding.FragmentMenuMainBinding
+import androidx.navigation.findNavController
+import pl.ourdomain.tlumaczenia.databinding.FragmentLoginBinding
 import pl.ourdomain.tlumaczenia.databinding.FragmentRegisterBinding
 
 /**
  * A simple [Fragment] subclass.
  */
-class MenuMain : Fragment() {
+class LoginFragment : Fragment() {
 
-    private lateinit var binding: FragmentMenuMainBinding
+    private lateinit var binding: FragmentLoginBinding
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        val binding = DataBindingUtil.inflate<FragmentMenuMainBinding>(
+        binding = DataBindingUtil.inflate<FragmentLoginBinding>(
             inflater,
-            R.layout.fragment_menu_main, container, false
+            R.layout.fragment_login, container, false
         )
+
+        binding.loginButton.setOnClickListener { view: View ->
+            view.findNavController().navigate(R.id.action_login_to_menuMain)
+        }
 
         return binding.root
     }

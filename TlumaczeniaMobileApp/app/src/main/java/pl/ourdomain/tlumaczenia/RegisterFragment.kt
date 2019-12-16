@@ -24,12 +24,16 @@ class RegisterFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        val binding = DataBindingUtil.inflate<FragmentRegisterBinding>(
+        binding = DataBindingUtil.inflate<FragmentRegisterBinding>(
             inflater,
             R.layout.fragment_register, container, false
         )
 
         binding.registerInfo = registerInfo
+
+        binding.registerButton.setOnClickListener { view: View ->
+            view.findNavController().navigate(R.id.action_registerFragment_to_menuMain)
+        }
 
         return binding.root
     }

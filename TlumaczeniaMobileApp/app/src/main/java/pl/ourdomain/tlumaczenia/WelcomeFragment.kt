@@ -21,7 +21,7 @@ class WelcomeFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        val binding = DataBindingUtil.inflate<FragmentWelcomeBinding>(
+        binding = DataBindingUtil.inflate<FragmentWelcomeBinding>(
             inflater,
             R.layout.fragment_welcome, container, false
         )
