@@ -23,4 +23,8 @@
     <string name="register_button">zatwierdź</string>
 
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="translate_words_nav_button">tłumacz słowka</string>
+    <string name="learn_words_nav_button">nauka języka</string>
+    <string name="tests_nav_button">testy sprawdzające wiedzę</string>
+    <string name="open_site_to_translate_nav_button">wgraj stronę do tłumaczeń</string>
 </resources>
