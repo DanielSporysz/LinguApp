@@ -6,7 +6,7 @@
 
         <variable
             name="registerInfo"
-            type="pl.ourdomain.tlumaczenia.RegisterInfo" />
+            type="pl.ourdomain.tlumaczenia.dataclasses.RegisterInfo" />
     </data>
 
     <ScrollView

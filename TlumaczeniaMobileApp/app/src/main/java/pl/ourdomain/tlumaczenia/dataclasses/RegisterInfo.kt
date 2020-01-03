@@ -1,4 +1,4 @@
-package pl.ourdomain.tlumaczenia
+package pl.ourdomain.tlumaczenia.dataclasses
 
 data class RegisterInfo(
     var username: String = "",

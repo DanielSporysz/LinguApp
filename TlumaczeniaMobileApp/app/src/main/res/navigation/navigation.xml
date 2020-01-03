@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/welcomeFragment"
-        android:name="pl.ourdomain.tlumaczenia.WelcomeFragment"
+        android:name="pl.ourdomain.tlumaczenia.controllers.WelcomeFragment"
         android:label="WelcomeFragment"
         tools:layout="@layout/fragment_welcome">
         <action
@@ -19,7 +19,7 @@
     </fragment>
     <fragment
         android:id="@+id/registerFragment"
-        android:name="pl.ourdomain.tlumaczenia.RegisterFragment"
+        android:name="pl.ourdomain.tlumaczenia.controllers.RegisterFragment"
         android:label="RegisterFragment"
         tools:layout="@layout/fragment_register" >
         <action
@@ -28,7 +28,7 @@
     </fragment>
     <fragment
         android:id="@+id/login"
-        android:name="pl.ourdomain.tlumaczenia.LoginFragment"
+        android:name="pl.ourdomain.tlumaczenia.controllers.LoginFragment"
         android:label="Login"
         tools:layout="@layout/fragment_login" >
         <action
@@ -37,7 +37,7 @@
     </fragment>
     <fragment
         android:id="@+id/menuMain"
-        android:name="pl.ourdomain.tlumaczenia.MenuMainFragment"
+        android:name="pl.ourdomain.tlumaczenia.controllers.MainMenuFragment"
         android:label="MenuMain"
         tools:layout="@layout/fragment_menu_main" >
         <action
@@ -46,7 +46,7 @@
     </fragment>
     <fragment
         android:id="@+id/quickTranslation"
-        android:name="pl.ourdomain.tlumaczenia.QuickTranslationFragment"
+        android:name="pl.ourdomain.tlumaczenia.controllers.QuickTranslationFragment"
         android:label="QuickTranslation"
         tools:layout="@layout/fragment_quick_translation" />
 </navigation>

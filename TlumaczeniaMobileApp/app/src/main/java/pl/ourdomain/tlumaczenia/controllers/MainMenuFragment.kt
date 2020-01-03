@@ -1,4 +1,4 @@
-package pl.ourdomain.tlumaczenia
+package pl.ourdomain.tlumaczenia.controllers
 
 
 import android.os.Bundle
@@ -8,13 +8,13 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.navigation.findNavController
+import pl.ourdomain.tlumaczenia.R
 import pl.ourdomain.tlumaczenia.databinding.FragmentMenuMainBinding
-import pl.ourdomain.tlumaczenia.databinding.FragmentRegisterBinding
 
 /**
  * A simple [Fragment] subclass.
  */
-class MenuMainFragment : Fragment() {
+class MainMenuFragment : Fragment() {
 
     private lateinit var binding: FragmentMenuMainBinding
 
