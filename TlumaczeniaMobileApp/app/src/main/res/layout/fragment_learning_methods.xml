@@ -35,11 +35,11 @@
                     android:layout_height="match_parent">
 
                     <TextView
-                        android:id="@+id/choseLanguage"
+                        android:id="@+id/choseLearningMethod"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:fontFamily="@font/play_bold"
-                        android:text="@string/chose_learning_language"
+                        android:text="@string/pick_learning_method"
                         android:textColor="@color/colorText"
                         android:textSize="24sp"
                         app:layout_constraintBottom_toBottomOf="parent"
@@ -54,13 +54,13 @@
                     android:layout_margin="5dp">
 
                     <Button
-                        android:id="@+id/englishButton"
+                        android:id="@+id/wordsButton"
                         android:layout_width="250dp"
                         android:layout_height="50dp"
                         android:layout_marginTop="20dp"
                         android:background="@drawable/rounded_button"
                         android:fontFamily="@font/play"
-                        android:text="@string/english"
+                        android:text="@string/words"
                         android:textColor="@color/colorText"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
@@ -74,13 +74,13 @@
                     android:layout_height="match_parent">
 
                     <Button
-                        android:id="@+id/spainButton"
+                        android:id="@+id/grammarButton"
                         android:layout_width="250dp"
                         android:layout_height="50dp"
                         android:layout_marginTop="20dp"
                         android:background="@drawable/rounded_button"
                         android:fontFamily="@font/play"
-                        android:text="@string/spanish"
+                        android:text="@string/grammar"
                         android:textColor="@color/colorText"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
@@ -94,13 +94,13 @@
                     android:layout_height="match_parent">
 
                     <Button
-                        android:id="@+id/russianButton"
+                        android:id="@+id/articlesButton"
                         android:layout_width="250dp"
                         android:layout_height="50dp"
                         android:layout_marginTop="20dp"
                         android:background="@drawable/rounded_button"
                         android:fontFamily="@font/play"
-                        android:text="@string/russian"
+                        android:text="@string/articles"
                         android:textColor="@color/colorText"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"

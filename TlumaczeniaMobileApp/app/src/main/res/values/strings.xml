@@ -27,6 +27,7 @@
     <string name="learn_words_nav_button">nauka języka</string>
     <string name="tests_nav_button">testy sprawdzające wiedzę</string>
     <string name="open_site_to_translate_nav_button">wgraj stronę do tłumaczeń</string>
+
     <string name="original_lang">język oryginalny</string>
     <string name="target_lang">język docelowy</string>
     <string name="translate_button">tłumacz</string>
@@ -34,10 +35,16 @@
     <string name="input_text_to_translation_prompt">tekst do tłumaczenia…</string>
     <string name="translated_text_promp">tłumaczenie</string>
     <string name="description_translation_arrows">strzałki wskazujące kierunek tłumaczenia</string>
+
     <string name="chose_learning_language">Wybierz język do nauki</string>
     <string name="english">angielski</string>
     <string name="russian">rosyjski</string>
     <string name="spanish">hiszpański</string>
+    
+    <string name="pick_learning_method">Wybierz czego chcesz się uczyć</string>
+    <string name="words">słówka</string>
+    <string name="grammar">gramatyka</string>
+    <string name="articles">artykuły</string>
 
     <string-array name="supported_languages">
         <item>polski</item>
