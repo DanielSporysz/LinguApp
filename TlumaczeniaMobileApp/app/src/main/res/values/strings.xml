@@ -30,10 +30,14 @@
     <string name="original_lang">język oryginalny</string>
     <string name="target_lang">język docelowy</string>
     <string name="translate_button">tłumacz</string>
-    <string name="save_translation_button" >dodaj tłumaczenie do sekcji nauki</string>
+    <string name="save_translation_button">dodaj tłumaczenie do sekcji nauki</string>
     <string name="input_text_to_translation_prompt">tekst do tłumaczenia…</string>
     <string name="translated_text_promp">tłumaczenie</string>
     <string name="description_translation_arrows">strzałki wskazujące kierunek tłumaczenia</string>
+    <string name="chose_learning_language">Wybierz język do nauki</string>
+    <string name="english">angielski</string>
+    <string name="russian">rosyjski</string>
+    <string name="spanish">hiszpański</string>
 
     <string-array name="supported_languages">
         <item>polski</item>

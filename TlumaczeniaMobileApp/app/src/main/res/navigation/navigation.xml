@@ -21,7 +21,7 @@
         android:id="@+id/registerFragment"
         android:name="pl.ourdomain.tlumaczenia.controllers.RegisterFragment"
         android:label="RegisterFragment"
-        tools:layout="@layout/fragment_register" >
+        tools:layout="@layout/fragment_register">
         <action
             android:id="@+id/action_registerFragment_to_menuMain"
             app:destination="@id/menuMain" />
@@ -30,7 +30,7 @@
         android:id="@+id/login"
         android:name="pl.ourdomain.tlumaczenia.controllers.LoginFragment"
         android:label="Login"
-        tools:layout="@layout/fragment_login" >
+        tools:layout="@layout/fragment_login">
         <action
             android:id="@+id/action_login_to_menuMain"
             app:destination="@id/menuMain" />
@@ -39,14 +39,22 @@
         android:id="@+id/menuMain"
         android:name="pl.ourdomain.tlumaczenia.controllers.MainMenuFragment"
         android:label="MenuMain"
-        tools:layout="@layout/fragment_menu_main" >
+        tools:layout="@layout/fragment_menu_main">
         <action
             android:id="@+id/action_menuMain_to_quickTranslation"
             app:destination="@id/quickTranslation" />
+        <action
+            android:id="@+id/action_menuMain_to_choseLanguage"
+            app:destination="@id/choseLanguage" />
     </fragment>
     <fragment
         android:id="@+id/quickTranslation"
         android:name="pl.ourdomain.tlumaczenia.controllers.QuickTranslationFragment"
         android:label="QuickTranslation"
         tools:layout="@layout/fragment_quick_translation" />
+    <fragment
+        android:id="@+id/choseLanguage"
+        android:name="pl.ourdomain.tlumaczenia.ChoseLanguage"
+        android:label="ChoseLanguage"
+        tools:layout="@layout/fragment_menu_main" />
 </navigation>
