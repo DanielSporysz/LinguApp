@@ -5,4 +5,5 @@ data class RegisterInfo(
     var password: String = "",
     var rePassword: String = "",
     var email: String = "",
-    var reEmail: String ="")
+    var reEmail: String = ""
+)

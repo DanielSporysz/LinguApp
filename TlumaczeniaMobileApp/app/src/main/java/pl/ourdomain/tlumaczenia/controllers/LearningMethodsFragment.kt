@@ -1,4 +1,4 @@
-package pl.ourdomain.tlumaczenia
+package pl.ourdomain.tlumaczenia.controllers
 
 
 import android.os.Bundle
@@ -7,9 +7,10 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
+import pl.ourdomain.tlumaczenia.R
 import pl.ourdomain.tlumaczenia.databinding.FragmentLearningMethodsBinding
 
-class LearningMethods : Fragment() {
+class LearningMethodsFragment : Fragment() {
 
     private lateinit var binding: FragmentLearningMethodsBinding
 

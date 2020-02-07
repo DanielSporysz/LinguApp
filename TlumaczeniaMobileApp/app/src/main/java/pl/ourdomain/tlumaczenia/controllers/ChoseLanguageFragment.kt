@@ -1,4 +1,4 @@
-package pl.ourdomain.tlumaczenia
+package pl.ourdomain.tlumaczenia.controllers
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -7,9 +7,10 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.navigation.findNavController
+import pl.ourdomain.tlumaczenia.R
 import pl.ourdomain.tlumaczenia.databinding.FragmentChoseLanguageBinding
 
-class ChoseLanguage : Fragment() {
+class ChoseLanguageFragment : Fragment() {
     private lateinit var binding: FragmentChoseLanguageBinding
 
     override fun onCreateView(

@@ -54,7 +54,7 @@
         tools:layout="@layout/fragment_quick_translation" />
     <fragment
         android:id="@+id/choseLanguage"
-        android:name="pl.ourdomain.tlumaczenia.ChoseLanguage"
+        android:name="pl.ourdomain.tlumaczenia.controllers.ChoseLanguageFragment"
         android:label="ChoseLanguage"
         tools:layout="@layout/fragment_menu_main">
         <action
@@ -63,7 +63,7 @@
     </fragment>
     <fragment
         android:id="@+id/learningMethods"
-        android:name="pl.ourdomain.tlumaczenia.LearningMethods"
+        android:name="pl.ourdomain.tlumaczenia.controllers.LearningMethodsFragment"
         android:label="LearningMethods"
         tools:layout="@layout/fragment_menu_main" />
 </navigation>
