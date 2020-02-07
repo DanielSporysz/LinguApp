@@ -9,6 +9,7 @@ fun fetchAuthToken(username: String, password: String):String {
     }
 }
 
+//TODO remove this mockup
 fun __mockup__fetchAuthToken(username: String, password: String): String {
     if (username == "aaa" && password == "bbb") {
         return "niceToken"
