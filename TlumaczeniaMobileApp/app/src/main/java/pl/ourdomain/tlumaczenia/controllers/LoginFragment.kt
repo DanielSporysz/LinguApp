@@ -14,12 +14,11 @@ import pl.ourdomain.tlumaczenia.SessionManager
 import pl.ourdomain.tlumaczenia.databinding.FragmentLoginBinding
 import java.lang.Exception
 
-/**
- * A simple [Fragment] subclass.
- */
+
 class LoginFragment : Fragment() {
 
     private lateinit var binding: FragmentLoginBinding
+
     private lateinit var myContext: Context
     private var isAttached: Boolean = false
 
@@ -50,7 +49,7 @@ class LoginFragment : Fragment() {
         isAttached = false
     }
 
-    fun validateCredentials(view: View){
+    private fun validateCredentials(view: View) {
         val sessionManager = SessionManager(context)
         try {
             sessionManager.useCredentials(
@@ -58,13 +57,19 @@ class LoginFragment : Fragment() {
                 binding.passwordField.text.toString()
             )
 
+            //TODO remove print
+            println("The token is: ")
+            println(SessionManager.authToken)
+
             // if no exception was thrown, move to next window
             view.findNavController().navigate(R.id.action_login_to_menuMain)
-        } catch (e: Exception){
+        } catch (e: Exception) {
             //TODO remove this print
-            println("Invalid credentials"
-                    + " " + binding.usernameField.text.toString()
-                    + " " + binding.passwordField.text.toString())
+            println(
+                "Invalid credentials"
+                        + " " + binding.usernameField.text.toString()
+                        + " " + binding.passwordField.text.toString()
+            )
             //TODO feedback to user about the error
         }
 

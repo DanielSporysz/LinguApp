@@ -5,8 +5,9 @@ import java.lang.Exception
 
 class SessionManager(context: Context?) {
 
-    private var authToken: String? = null
-        get() = field
+    companion object {
+        var authToken: String? = null
+    }
 
     init {
         /* Read the file that should store authentication token from local memory */

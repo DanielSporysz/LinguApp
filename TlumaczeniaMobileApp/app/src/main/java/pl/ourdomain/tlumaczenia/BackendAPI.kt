@@ -1,10 +1,10 @@
 package pl.ourdomain.tlumaczenia
 
-fun fetchAuthToken(username: String, password: String):String {
+fun fetchAuthToken(username: String, password: String): String {
     try {
         //TODO actual token fetching from a server API
         return __mockup__fetchAuthToken(username, password)
-    } catch (e: Exception){
+    } catch (e: Exception) {
         throw e
     }
 }
