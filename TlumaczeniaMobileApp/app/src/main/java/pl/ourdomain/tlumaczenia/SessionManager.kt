@@ -25,7 +25,7 @@ class SessionManager(receivedContext: Context?) {
         }
     }
 
-    fun useCredentials(username: String, password: String) {
+    fun useCredentialsAndFetchAuthToken(username: String, password: String) {
         try {
             authToken = fetchAuthToken(username, password)
 

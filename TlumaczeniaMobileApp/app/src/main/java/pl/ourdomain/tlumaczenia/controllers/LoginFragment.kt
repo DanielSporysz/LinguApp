@@ -3,17 +3,20 @@ package pl.ourdomain.tlumaczenia.controllers
 
 import android.content.Context
 import android.os.Bundle
-import androidx.fragment.app.Fragment
+import android.os.Handler
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.databinding.DataBindingUtil
+import androidx.fragment.app.Fragment
 import androidx.navigation.findNavController
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.launch
 import pl.ourdomain.tlumaczenia.R
 import pl.ourdomain.tlumaczenia.SessionManager
 import pl.ourdomain.tlumaczenia.databinding.FragmentLoginBinding
-import java.lang.Exception
 
 
 class LoginFragment : Fragment() {
@@ -51,28 +54,42 @@ class LoginFragment : Fragment() {
     }
 
     private fun validateCredentials(view: View) {
-        val sessionManager = SessionManager(context)
-        try {
-            sessionManager.useCredentials(
-                binding.usernameField.text.toString(),
-                binding.passwordField.text.toString()
-            )
+        binding.loginButton.isEnabled = false
+        binding.loginButton.setBackgroundResource(R.drawable.rounded_disabled_button)
 
-            //TODO remove this toast
-            displayToast("Token: " + SessionManager.authToken)
+        GlobalScope.launch {
+            //TODO remove delay
+            delay(1000)
 
-            // if no exception was thrown, move to next window
-            view.findNavController().navigate(R.id.action_login_to_menuMain)
-        } catch (e: Exception) {
-            displayToast(
-                "Invalid credentials"
-                        + " " + binding.usernameField.text.toString()
-                        + " " + binding.passwordField.text.toString()
-            )
+            // Try getting an auth token
+            val sessionManager = SessionManager(context)
+            var isCorrect = true
+            try {
+                sessionManager.useCredentialsAndFetchAuthToken(
+                    binding.usernameField.text.toString(),
+                    binding.passwordField.text.toString()
+                )
+            } catch (e: Exception) {
+                isCorrect = false
+            }
+
+            // Feedback to user & navigation
+            Handler(myContext.mainLooper).post {
+                //Enable the login button
+                binding.loginButton.isEnabled = true
+                binding.loginButton.setBackgroundResource(R.drawable.rounded_button)
+
+                if (isCorrect) {
+                    displayToast("Token: " + SessionManager.authToken)
+                    view.findNavController().navigate(R.id.action_login_to_menuMain)
+                } else {
+                    displayToast("Incorrect credentials")
+                }
+            }
         }
     }
 
-    private fun displayToast(msg: String) {
+    private fun displayToast(msg: String?) {
         val duration = Toast.LENGTH_SHORT
         val toast = Toast.makeText(myContext, msg, duration)
         toast.show()
