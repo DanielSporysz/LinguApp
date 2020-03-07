@@ -7,6 +7,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import androidx.navigation.findNavController
 import pl.ourdomain.tlumaczenia.R
@@ -57,21 +58,23 @@ class LoginFragment : Fragment() {
                 binding.passwordField.text.toString()
             )
 
-            //TODO remove print
-            println("The token is: ")
-            println(SessionManager.authToken)
+            //TODO remove this toast
+            displayToast("Token: " + SessionManager.authToken)
 
             // if no exception was thrown, move to next window
             view.findNavController().navigate(R.id.action_login_to_menuMain)
         } catch (e: Exception) {
-            //TODO remove this print
-            println(
+            displayToast(
                 "Invalid credentials"
                         + " " + binding.usernameField.text.toString()
                         + " " + binding.passwordField.text.toString()
             )
-            //TODO feedback to user about the error
         }
+    }
 
+    private fun displayToast(msg: String) {
+        val duration = Toast.LENGTH_SHORT
+        val toast = Toast.makeText(myContext, msg, duration)
+        toast.show()
     }
 }
