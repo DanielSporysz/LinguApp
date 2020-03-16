@@ -19,72 +19,84 @@
             android:orientation="vertical">
 
 
-            <ImageView
-                android:id="@+id/flags"
-                android:layout_width="match_parent"
-                android:layout_height="150dp"
-                android:contentDescription="@string/flagsImage"
-                android:scaleType="fitXY"
-                app:srcCompat="@drawable/flags_top" />
-
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">
 
-                <TextView
-                    android:id="@+id/choseLanguage"
+                <ImageView
+                    android:id="@+id/flags"
+                    android:layout_width="match_parent"
+                    android:layout_height="150dp"
+                    android:contentDescription="@string/flagsImage"
+                    android:scaleType="fitXY"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:srcCompat="@drawable/flags_top" />
+
+                <androidx.constraintlayout.widget.ConstraintLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="30dp"
-                    android:fontFamily="@font/lora_bold"
-                    android:text="@string/chose_learning_language"
-                    android:textAlignment="center"
-                    android:textColor="@color/colorText"
-                    android:textSize="24sp"
+                    app:layout_constraintBottom_toTopOf="@+id/flagsBottom"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
+                    app:layout_constraintTop_toBottomOf="@+id/flags">
 
-                <Button
-                    android:id="@+id/englishButton"
-                    android:layout_width="250dp"
-                    android:layout_height="50dp"
-                    android:layout_marginStart="30dp"
-                    android:layout_marginTop="25dp"
-                    android:layout_marginEnd="30dp"
-                    android:background="@drawable/rounded_text_field"
-                    android:fontFamily="@font/lora"
-                    android:text="@string/english"
-                    android:textColor="@color/colorText"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/choseLanguage" />
+                    <TextView
+                        android:id="@+id/choseLanguage"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/lora_bold"
+                        android:text="@string/chose_learning_language"
+                        android:textAlignment="center"
+                        android:textColor="@color/colorText"
+                        android:textSize="24sp"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
 
-                <Button
-                    android:id="@+id/spainButton"
-                    android:layout_width="250dp"
-                    android:layout_height="50dp"
-                    android:layout_marginTop="15dp"
-                    android:background="@drawable/rounded_text_field"
-                    android:fontFamily="@font/lora"
-                    android:text="@string/spanish"
-                    android:textColor="@color/colorText"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/englishButton" />
+                    <Button
+                        android:id="@+id/englishButton"
+                        android:layout_width="250dp"
+                        android:layout_height="50dp"
+                        android:layout_marginStart="30dp"
+                        android:layout_marginTop="25dp"
+                        android:layout_marginEnd="30dp"
+                        android:background="@drawable/rounded_text_field"
+                        android:fontFamily="@font/lora"
+                        android:text="@string/english"
+                        android:textColor="@color/colorText"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/choseLanguage" />
 
-                <Button
-                    android:id="@+id/russianButton"
-                    android:layout_width="250dp"
-                    android:layout_height="50dp"
-                    android:layout_marginTop="15dp"
-                    android:background="@drawable/rounded_text_field"
-                    android:fontFamily="@font/lora"
-                    android:text="@string/russian"
-                    android:textColor="@color/colorText"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/spainButton" />
+                    <Button
+                        android:id="@+id/spainButton"
+                        android:layout_width="250dp"
+                        android:layout_height="50dp"
+                        android:layout_marginTop="15dp"
+                        android:background="@drawable/rounded_text_field"
+                        android:fontFamily="@font/lora"
+                        android:text="@string/spanish"
+                        android:textColor="@color/colorText"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/englishButton" />
+
+                    <Button
+                        android:id="@+id/russianButton"
+                        android:layout_width="250dp"
+                        android:layout_height="50dp"
+                        android:layout_marginTop="15dp"
+                        android:background="@drawable/rounded_text_field"
+                        android:fontFamily="@font/lora"
+                        android:text="@string/russian"
+                        android:textColor="@color/colorText"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/spainButton" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
 
                 <ImageView
                     android:id="@+id/flagsBottom"
@@ -96,10 +108,7 @@
                     android:src="@drawable/flags_bottom"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/russianButton"
-                    app:layout_constraintVertical_bias="1.0" />
-
+                    app:layout_constraintStart_toStartOf="parent" />
             </androidx.constraintlayout.widget.ConstraintLayout>
 
         </LinearLayout>

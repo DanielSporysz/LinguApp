@@ -33,57 +33,66 @@
                     app:layout_constraintTop_toTopOf="parent"
                     app:srcCompat="@drawable/flags_top" />
 
-                <Button
-                    android:id="@+id/translateWordsButton"
-                    android:layout_width="250dp"
-                    android:layout_height="50dp"
-                    android:layout_marginTop="20dp"
-                    android:background="@drawable/rounded_text_field"
-                    android:fontFamily="@font/lora"
-                    android:text="@string/translate_words_nav_button"
-                    android:textColor="@color/colorText"
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintBottom_toTopOf="@+id/flagsBottom"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/flags" />
+                    app:layout_constraintTop_toBottomOf="@+id/flags">
 
-                <Button
-                    android:id="@+id/learnButton"
-                    android:layout_width="250dp"
-                    android:layout_height="50dp"
-                    android:layout_marginTop="15dp"
-                    android:background="@drawable/rounded_text_field"
-                    android:fontFamily="@font/lora"
-                    android:text="@string/learn_words_nav_button"
-                    android:textColor="@color/colorText"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/translateWordsButton" />
+                    <Button
+                        android:id="@+id/translateWordsButton"
+                        android:layout_width="250dp"
+                        android:layout_height="50dp"
+                        android:background="@drawable/rounded_text_field"
+                        android:fontFamily="@font/lora"
+                        android:text="@string/translate_words_nav_button"
+                        android:textColor="@color/colorText"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
 
-                <Button
-                    android:id="@+id/testsButton"
-                    android:layout_width="250dp"
-                    android:layout_height="50dp"
-                    android:layout_marginTop="15dp"
-                    android:background="@drawable/rounded_text_field"
-                    android:fontFamily="@font/lora"
-                    android:text="@string/tests_nav_button"
-                    android:textColor="@color/colorText"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/learnButton" />
+                    <Button
+                        android:id="@+id/learnButton"
+                        android:layout_width="250dp"
+                        android:layout_height="50dp"
+                        android:layout_marginTop="15dp"
+                        android:background="@drawable/rounded_text_field"
+                        android:fontFamily="@font/lora"
+                        android:text="@string/learn_words_nav_button"
+                        android:textColor="@color/colorText"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/translateWordsButton" />
 
-                <Button
-                    android:id="@+id/siteButton"
-                    android:layout_width="270dp"
-                    android:layout_height="80dp"
-                    android:layout_marginTop="50dp"
-                    android:background="@drawable/rounded_button"
-                    android:fontFamily="@font/lora"
-                    android:text="@string/open_site_to_translate_nav_button"
-                    android:textColor="@color/colorText"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/testsButton" />
+                    <Button
+                        android:id="@+id/testsButton"
+                        android:layout_width="250dp"
+                        android:layout_height="50dp"
+                        android:layout_marginTop="15dp"
+                        android:background="@drawable/rounded_text_field"
+                        android:fontFamily="@font/lora"
+                        android:text="@string/tests_nav_button"
+                        android:textColor="@color/colorText"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/learnButton" />
+
+                    <Button
+                        android:id="@+id/siteButton"
+                        android:layout_width="270dp"
+                        android:layout_height="80dp"
+                        android:layout_marginTop="50dp"
+                        android:background="@drawable/rounded_button"
+                        android:fontFamily="@font/lora"
+                        android:text="@string/open_site_to_translate_nav_button"
+                        android:textColor="@color/colorText"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/testsButton" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
 
                 <ImageView
                     android:id="@+id/flagsBottom"
@@ -95,9 +104,7 @@
                     android:src="@drawable/flags_bottom"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/siteButton"
-                    app:layout_constraintVertical_bias="1.0" />
+                    app:layout_constraintStart_toStartOf="parent" />
             </androidx.constraintlayout.widget.ConstraintLayout>
 
         </LinearLayout>

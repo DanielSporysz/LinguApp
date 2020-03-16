@@ -19,73 +19,85 @@
             android:orientation="vertical">
 
 
-            <ImageView
-                android:id="@+id/flags"
-                android:layout_width="match_parent"
-                android:layout_height="150dp"
-                android:contentDescription="@string/flagsImage"
-                android:scaleType="fitXY"
-                app:srcCompat="@drawable/flags_top" />
-
             <androidx.constraintlayout.widget.ConstraintLayout
-                android:id="@+id/constraintLayout"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">
 
-                <TextView
-                    android:id="@+id/choseLearningMethod"
-                    android:layout_width="wrap_content"
+                <ImageView
+                    android:id="@+id/flags"
+                    android:layout_width="match_parent"
+                    android:layout_height="150dp"
+                    android:contentDescription="@string/flagsImage"
+                    android:scaleType="fitXY"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:srcCompat="@drawable/flags_top" />
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/constraintLayout"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="30dp"
-                    android:fontFamily="@font/lora_bold"
-                    android:text="@string/pick_learning_method"
-                    android:textAlignment="center"
-                    android:textColor="@color/colorText"
-                    android:textSize="24sp"
+                    app:layout_constraintBottom_toTopOf="@+id/flagsBottom"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
+                    app:layout_constraintTop_toBottomOf="@+id/flags">
 
-                <Button
-                    android:id="@+id/wordsButton"
-                    android:layout_width="250dp"
-                    android:layout_height="50dp"
-                    android:layout_marginTop="25dp"
-                    android:background="@drawable/rounded_text_field"
-                    android:fontFamily="@font/lora"
-                    android:text="@string/words"
-                    android:textColor="@color/colorText"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/choseLearningMethod" />
+                    <TextView
+                        android:id="@+id/choseLearningMethod"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/lora_bold"
+                        android:text="@string/pick_learning_method"
+                        android:textAlignment="center"
+                        android:textColor="@color/colorText"
+                        android:textSize="24sp"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
 
-                <Button
-                    android:id="@+id/grammarButton"
-                    android:layout_width="250dp"
-                    android:layout_height="50dp"
-                    android:layout_marginTop="15dp"
-                    android:background="@drawable/rounded_text_field"
-                    android:fontFamily="@font/lora"
-                    android:text="@string/grammar"
-                    android:textColor="@color/colorText"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/wordsButton" />
+                    <Button
+                        android:id="@+id/wordsButton"
+                        android:layout_width="250dp"
+                        android:layout_height="50dp"
+                        android:layout_marginTop="25dp"
+                        android:background="@drawable/rounded_text_field"
+                        android:fontFamily="@font/lora"
+                        android:text="@string/words"
+                        android:textColor="@color/colorText"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/choseLearningMethod" />
 
-                <Button
-                    android:id="@+id/articlesButton"
-                    android:layout_width="250dp"
-                    android:layout_height="50dp"
-                    android:layout_marginStart="30dp"
-                    android:layout_marginTop="15dp"
-                    android:layout_marginEnd="30dp"
-                    android:background="@drawable/rounded_text_field"
-                    android:fontFamily="@font/lora"
-                    android:text="@string/articles"
-                    android:textColor="@color/colorText"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/grammarButton" />
+                    <Button
+                        android:id="@+id/grammarButton"
+                        android:layout_width="250dp"
+                        android:layout_height="50dp"
+                        android:layout_marginTop="15dp"
+                        android:background="@drawable/rounded_text_field"
+                        android:fontFamily="@font/lora"
+                        android:text="@string/grammar"
+                        android:textColor="@color/colorText"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/wordsButton" />
+
+                    <Button
+                        android:id="@+id/articlesButton"
+                        android:layout_width="250dp"
+                        android:layout_height="50dp"
+                        android:layout_marginStart="30dp"
+                        android:layout_marginTop="15dp"
+                        android:layout_marginEnd="30dp"
+                        android:background="@drawable/rounded_text_field"
+                        android:fontFamily="@font/lora"
+                        android:text="@string/articles"
+                        android:textColor="@color/colorText"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/grammarButton" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
 
                 <ImageView
                     android:id="@+id/flagsBottom"
@@ -97,10 +109,7 @@
                     android:src="@drawable/flags_bottom"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/articlesButton"
-                    app:layout_constraintVertical_bias="1.0" />
-
+                    app:layout_constraintStart_toStartOf="parent" />
             </androidx.constraintlayout.widget.ConstraintLayout>
 
         </LinearLayout>

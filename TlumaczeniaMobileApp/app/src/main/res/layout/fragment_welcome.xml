@@ -26,96 +26,108 @@
                 android:layout_height="wrap_content"
                 android:orientation="vertical">
 
-                <ImageView
-                    android:id="@+id/flagsTop"
-                    android:layout_width="match_parent"
-                    android:layout_height="150dp"
-                    android:contentDescription="@string/flagsTop"
-                    android:scaleType="fitXY"
-                    android:src="@drawable/flags_top" />
-
                 <androidx.constraintlayout.widget.ConstraintLayout
-                    android:id="@+id/constraintLayout2"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent">
 
-                    <TextView
-                        android:id="@+id/registerIncetiveQue"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="101dp"
-                        android:layout_marginTop="50dp"
-                        android:layout_marginEnd="103dp"
-                        android:fontFamily="@font/lora_bold"
-                        android:text="@string/register_incetive_question"
-                        android:textColor="@color/colorText"
-                        android:textSize="24sp"
+                    <ImageView
+                        android:id="@+id/flagsTop"
+                        android:layout_width="match_parent"
+                        android:layout_height="150dp"
+                        android:contentDescription="@string/flagsTop"
+                        android:scaleType="fitXY"
+                        android:src="@drawable/flags_top"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent" />
 
-                    <TextView
-                        android:id="@+id/registerIncetiveOrd"
-                        android:layout_width="wrap_content"
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:id="@+id/constraintLayout2"
+                        android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:layout_marginStart="111dp"
-                        android:layout_marginEnd="110dp"
-                        android:fontFamily="@font/lora_bold"
-                        android:text="@string/register_incetive_order"
-                        android:textColor="@color/colorText"
-                        android:textSize="24sp"
+                        app:layout_constraintBottom_toTopOf="@+id/flagsBottom"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/registerIncetiveQue" />
+                        app:layout_constraintTop_toBottomOf="@+id/flagsTop">
 
-                    <Button
-                        android:id="@+id/buttonRegister"
-                        style="@style/ThemedButton"
-                        android:layout_width="260dp"
-                        android:layout_height="60dp"
-                        android:layout_marginStart="67dp"
-                        android:layout_marginTop="10dp"
-                        android:layout_marginEnd="66dp"
-                        android:background="@drawable/rounded_button"
-                        android:fontFamily="@font/lora_bold"
-                        android:shadowColor="@color/colorAccent"
-                        android:shadowDx="100"
-                        android:shadowDy="100"
-                        android:shadowRadius="500"
-                        android:text="@string/register_nav_button"
-                        android:textSize="24sp"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/registerIncetiveOrd" />
+                        <TextView
+                            android:id="@+id/registerIncetiveQue"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="101dp"
+                            android:layout_marginEnd="103dp"
+                            android:fontFamily="@font/lora_bold"
+                            android:text="@string/register_incetive_question"
+                            android:textColor="@color/colorText"
+                            android:textSize="24sp"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
 
-                    <TextView
-                        android:id="@+id/loginIncentive"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="88dp"
-                        android:layout_marginTop="50dp"
-                        android:layout_marginEnd="89dp"
-                        android:fontFamily="@font/lora_bold"
-                        android:text="@string/login_incentive"
-                        android:textColor="@color/colorText"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/buttonRegister" />
+                        <TextView
+                            android:id="@+id/registerIncetiveOrd"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="111dp"
+                            android:layout_marginEnd="110dp"
+                            android:fontFamily="@font/lora_bold"
+                            android:text="@string/register_incetive_order"
+                            android:textColor="@color/colorText"
+                            android:textSize="24sp"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@+id/registerIncetiveQue" />
 
-                    <Button
-                        android:id="@+id/buttonLogin"
-                        style="@style/ThemedButton"
-                        android:layout_width="240dp"
-                        android:layout_height="45dp"
-                        android:layout_marginStart="76dp"
-                        android:layout_marginTop="10dp"
-                        android:layout_marginEnd="77dp"
-                        android:background="@drawable/rounded_button"
-                        android:fontFamily="@font/lora"
-                        android:text="@string/login_nav_button"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/loginIncentive" />
+                        <Button
+                            android:id="@+id/buttonRegister"
+                            style="@style/ThemedButton"
+                            android:layout_width="260dp"
+                            android:layout_height="60dp"
+                            android:layout_marginStart="67dp"
+                            android:layout_marginTop="10dp"
+                            android:layout_marginEnd="66dp"
+                            android:background="@drawable/rounded_button"
+                            android:fontFamily="@font/lora_bold"
+                            android:shadowColor="@color/colorAccent"
+                            android:shadowDx="100"
+                            android:shadowDy="100"
+                            android:shadowRadius="500"
+                            android:text="@string/register_nav_button"
+                            android:textSize="24sp"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@+id/registerIncetiveOrd" />
+
+                        <TextView
+                            android:id="@+id/loginIncentive"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="88dp"
+                            android:layout_marginTop="50dp"
+                            android:layout_marginEnd="89dp"
+                            android:fontFamily="@font/lora_bold"
+                            android:text="@string/login_incentive"
+                            android:textColor="@color/colorText"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@+id/buttonRegister" />
+
+                        <Button
+                            android:id="@+id/buttonLogin"
+                            style="@style/ThemedButton"
+                            android:layout_width="240dp"
+                            android:layout_height="45dp"
+                            android:layout_marginStart="76dp"
+                            android:layout_marginTop="10dp"
+                            android:layout_marginEnd="77dp"
+                            android:background="@drawable/rounded_button"
+                            android:fontFamily="@font/lora"
+                            android:text="@string/login_nav_button"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@+id/loginIncentive" />
+
+                    </androidx.constraintlayout.widget.ConstraintLayout>
 
                     <ImageView
                         android:id="@+id/flagsBottom"
@@ -126,11 +138,9 @@
                         android:src="@drawable/flags_bottom"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/buttonLogin"
-                        app:layout_constraintVertical_bias="1.0" />
-
+                        app:layout_constraintStart_toStartOf="parent" />
                 </androidx.constraintlayout.widget.ConstraintLayout>
+
             </LinearLayout>
         </ScrollView>
 
