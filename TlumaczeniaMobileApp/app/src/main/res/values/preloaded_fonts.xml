@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <array name="preloaded_fonts" translatable="false">
+        <item>@font/lora_bold</item>
         <item>@font/open_sans_light</item>
         <item>@font/play</item>
         <item>@font/play_bold</item>

@@ -1,132 +1,162 @@
 <?xml version="1.0" encoding="utf-8"?>
 
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@drawable/col_main_app_theme">
+        android:background="@drawable/col_main_app_theme"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
-
-        <Spinner
-            android:id="@+id/originalLangSpinner"
-            android:layout_width="130dp"
-            android:layout_height="35dp"
-            android:layout_marginTop="40dp"
-            android:background="@drawable/rounded_button"
-            android:popupBackground="@drawable/rounded_button"
-            app:layout_constraintStart_toStartOf="@+id/translateThisText"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <Spinner
-            android:id="@+id/targetLangSpinner"
-            android:layout_width="130dp"
-            android:layout_height="35dp"
-            android:layout_marginTop="40dp"
-            android:background="@drawable/rounded_button"
-            android:popupBackground="@drawable/rounded_button"
-            app:layout_constraintEnd_toEndOf="@+id/translateThisText"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <Button
-            android:id="@+id/translateButton"
-            android:layout_width="130dp"
-            android:layout_height="35dp"
-            android:layout_marginTop="10dp"
-            android:layout_marginBottom="10dp"
-            android:background="@drawable/rounded_button"
-            android:text="@string/translate_button"
-            android:textColor="@color/colorText"
-            app:layout_constraintBottom_toTopOf="@+id/translatedLangText"
-            app:layout_constraintEnd_toEndOf="@+id/translateThisText"
-            app:layout_constraintStart_toStartOf="@+id/translateThisText"
-            app:layout_constraintTop_toBottomOf="@+id/translateThisText" />
-
-        <Button
-            android:id="@+id/saveTranslationButton"
-            android:layout_width="300dp"
-            android:layout_height="50dp"
-            android:layout_marginBottom="40dp"
-            android:background="@drawable/rounded_button"
-            android:text="@string/save_translation_button"
-            android:textColor="@color/colorText"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent" />
-
-        <TextView
-            android:id="@+id/originalLangText"
-            android:layout_width="wrap_content"
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="2dp"
-            android:background="@drawable/rounded_text_field"
-            android:fontFamily="@font/play"
-            android:padding="5dp"
-            android:text="@string/original_lang"
-            android:textColor="@color/colorText"
-            app:layout_constraintBottom_toTopOf="@+id/translateThisText"
-            app:layout_constraintStart_toStartOf="@+id/translateThisText" />
+            android:orientation="vertical">
 
-        <EditText
-            android:id="@+id/translateThisText"
-            android:layout_width="300dp"
-            android:layout_height="130dp"
-            android:layout_marginTop="65dp"
-            android:background="@drawable/rounded_input_field"
-            android:ems="10"
-            android:fontFamily="@font/play"
-            android:gravity="start|top"
-            android:hint="@string/input_text_to_translation_prompt"
-            android:importantForAutofill="no"
-            android:inputType="textMultiLine"
-            android:padding="5dp"
-            android:textColor="@color/colorText"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/originalLangSpinner" />
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@drawable/col_main_app_theme">
 
-        <TextView
-            android:id="@+id/translatedLangText"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="2dp"
-            android:background="@drawable/rounded_text_field"
-            android:fontFamily="@font/play"
-            android:padding="5dp"
-            android:text="@string/target_lang"
-            android:textColor="@color/colorText"
-            app:layout_constraintBottom_toTopOf="@+id/translatedText"
-            app:layout_constraintStart_toStartOf="@+id/translatedText" />
 
-        <EditText
-            android:id="@+id/translatedText"
-            android:layout_width="300dp"
-            android:layout_height="130dp"
-            android:layout_marginBottom="40dp"
-            android:background="@drawable/rounded_input_field"
-            android:ems="10"
-            android:fontFamily="@font/play"
-            android:gravity="start|top"
-            android:hint="@string/translated_text_promp"
-            android:importantForAutofill="no"
-            android:inputType="textMultiLine"
-            android:padding="5dp"
-            android:textColor="@color/colorText"
-            app:layout_constraintBottom_toTopOf="@+id/saveTranslationButton"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent" />
+                <Spinner
+                    android:id="@+id/originalLangSpinner"
+                    android:layout_width="0dp"
+                    android:layout_height="45dp"
+                    android:layout_marginStart="30dp"
+                    android:layout_marginTop="70dp"
+                    android:layout_marginEnd="30dp"
+                    android:background="@drawable/rounded_button"
+                    android:popupBackground="@drawable/rounded_button"
+                    app:layout_constraintEnd_toStartOf="@+id/imageView"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
 
-        <ImageView
-            android:id="@+id/imageView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:contentDescription="@string/description_translation_arrows"
-            app:layout_constraintBottom_toBottomOf="@+id/originalLangSpinner"
-            app:layout_constraintEnd_toStartOf="@+id/targetLangSpinner"
-            app:layout_constraintStart_toEndOf="@+id/originalLangSpinner"
-            app:layout_constraintTop_toTopOf="@+id/originalLangSpinner"
-            app:srcCompat="@drawable/ic_translation_arrows" />
+                <Spinner
+                    android:id="@+id/targetLangSpinner"
+                    android:layout_width="0dp"
+                    android:layout_height="45dp"
+                    android:layout_marginStart="30dp"
+                    android:layout_marginTop="70dp"
+                    android:layout_marginEnd="30dp"
+                    android:background="@drawable/rounded_button"
+                    android:popupBackground="@drawable/rounded_button"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/imageView"
+                    app:layout_constraintTop_toTopOf="parent" />
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
+                <TextView
+                    android:id="@+id/originalLangText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="30dp"
+                    android:layout_marginBottom="2dp"
+                    android:background="@drawable/rounded_text_field"
+                    android:fontFamily="@font/lora"
+                    android:padding="5dp"
+                    android:text="@string/original_lang"
+                    android:textColor="@color/colorText"
+                    app:layout_constraintBottom_toTopOf="@+id/translateThisText"
+                    app:layout_constraintStart_toStartOf="@+id/translateThisText" />
+
+                <EditText
+                    android:id="@+id/translateThisText"
+                    android:layout_width="0dp"
+                    android:layout_height="130dp"
+                    android:layout_marginStart="30dp"
+                    android:layout_marginTop="65dp"
+                    android:layout_marginEnd="30dp"
+                    android:background="@drawable/rounded_input_field"
+                    android:ems="10"
+                    android:fontFamily="@font/lora"
+                    android:gravity="start|top"
+                    android:hint="@string/input_text_to_translation_prompt"
+                    android:importantForAutofill="no"
+                    android:inputType="textMultiLine"
+                    android:padding="5dp"
+                    android:textColor="@color/colorText"
+                    android:textColorHint="@color/colorText"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/originalLangSpinner" />
+
+                <TextView
+                    android:id="@+id/translatedText"
+                    android:layout_width="0dp"
+                    android:layout_height="130dp"
+                    android:layout_marginStart="30dp"
+                    android:layout_marginTop="50dp"
+                    android:layout_marginEnd="30dp"
+                    android:background="@drawable/rounded_input_field"
+                    android:fontFamily="@font/lora"
+                    android:padding="5dp"
+                    android:text="@string/placeholder_translation_text"
+                    android:textColor="@color/colorText"
+                    android:textSize="18sp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/translateThisText" />
+
+                <TextView
+                    android:id="@+id/translatedLangText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="30dp"
+                    android:layout_marginBottom="2dp"
+                    android:background="@drawable/rounded_text_field"
+                    android:fontFamily="@font/lora"
+                    android:padding="5dp"
+                    android:text="@string/target_lang"
+                    android:textColor="@color/colorText"
+                    app:layout_constraintBottom_toTopOf="@+id/translatedText"
+                    app:layout_constraintStart_toStartOf="@+id/translatedText" />
+
+                <ImageView
+                    android:id="@+id/imageView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:contentDescription="@string/description_translation_arrows"
+                    app:layout_constraintBottom_toBottomOf="@+id/originalLangSpinner"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="@+id/originalLangSpinner"
+                    app:srcCompat="@drawable/ic_translation_arrows" />
+
+                <Button
+                    android:id="@+id/translateButton"
+                    android:layout_width="130dp"
+                    android:layout_height="45dp"
+                    android:layout_marginTop="30dp"
+                    android:layout_marginBottom="25dp"
+                    android:background="@drawable/rounded_button"
+                    android:fontFamily="@font/lora"
+                    android:text="@string/translate_button"
+                    android:textColor="@color/colorText"
+                    app:layout_constraintBottom_toTopOf="@+id/saveTranslationButton"
+                    app:layout_constraintEnd_toEndOf="@+id/saveTranslationButton"
+                    app:layout_constraintTop_toBottomOf="@+id/translatedText" />
+
+                <Button
+                    android:id="@+id/saveTranslationButton"
+                    android:layout_width="0dp"
+                    android:layout_height="50dp"
+                    android:layout_marginStart="30dp"
+                    android:layout_marginEnd="30dp"
+                    android:layout_marginBottom="40dp"
+                    android:background="@drawable/rounded_button"
+                    android:fontFamily="@font/lora"
+                    android:text="@string/save_translation_button"
+                    android:textColor="@color/colorText"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </LinearLayout>
+    </ScrollView>
 </layout>

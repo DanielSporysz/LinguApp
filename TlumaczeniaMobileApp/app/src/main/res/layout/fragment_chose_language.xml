@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:android="http://schemas.android.com/apk/res/android"
+<layout xmlns:tools="http://schemas.android.com/tools"
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <RelativeLayout
@@ -11,6 +12,7 @@
         <ScrollView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:layout_marginBottom="150dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -32,80 +34,62 @@
 
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent">
+                    android:layout_height="wrap_content">
 
                     <TextView
                         android:id="@+id/choseLanguage"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:fontFamily="@font/play_bold"
+                        android:layout_marginTop="30dp"
+                        android:fontFamily="@font/lora_bold"
                         android:text="@string/chose_learning_language"
+                        android:textAlignment="center"
                         android:textColor="@color/colorText"
                         android:textSize="24sp"
-                        app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent" />
-                </androidx.constraintlayout.widget.ConstraintLayout>
-
-                <androidx.constraintlayout.widget.ConstraintLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_margin="5dp">
 
                     <Button
                         android:id="@+id/englishButton"
                         android:layout_width="250dp"
                         android:layout_height="50dp"
-                        android:layout_marginTop="20dp"
-                        android:background="@drawable/rounded_button"
-                        android:fontFamily="@font/play"
+                        android:layout_marginStart="30dp"
+                        android:layout_marginTop="25dp"
+                        android:layout_marginEnd="30dp"
+                        android:background="@drawable/rounded_text_field"
+                        android:fontFamily="@font/lora"
                         android:text="@string/english"
                         android:textColor="@color/colorText"
-                        app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent" />
-
-                </androidx.constraintlayout.widget.ConstraintLayout>
-
-                <androidx.constraintlayout.widget.ConstraintLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent">
+                        app:layout_constraintTop_toBottomOf="@+id/choseLanguage" />
 
                     <Button
                         android:id="@+id/spainButton"
                         android:layout_width="250dp"
                         android:layout_height="50dp"
-                        android:layout_marginTop="20dp"
-                        android:background="@drawable/rounded_button"
-                        android:fontFamily="@font/play"
+                        android:layout_marginTop="15dp"
+                        android:background="@drawable/rounded_text_field"
+                        android:fontFamily="@font/lora"
                         android:text="@string/spanish"
                         android:textColor="@color/colorText"
-                        app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent" />
-
-                </androidx.constraintlayout.widget.ConstraintLayout>
-
-                <androidx.constraintlayout.widget.ConstraintLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent">
+                        app:layout_constraintTop_toBottomOf="@+id/englishButton" />
 
                     <Button
                         android:id="@+id/russianButton"
                         android:layout_width="250dp"
                         android:layout_height="50dp"
-                        android:layout_marginTop="20dp"
-                        android:background="@drawable/rounded_button"
-                        android:fontFamily="@font/play"
+                        android:layout_marginTop="15dp"
+                        android:background="@drawable/rounded_text_field"
+                        android:fontFamily="@font/lora"
                         android:text="@string/russian"
                         android:textColor="@color/colorText"
-                        app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent" />
+                        app:layout_constraintTop_toBottomOf="@+id/spainButton" />
 
                 </androidx.constraintlayout.widget.ConstraintLayout>
 
