@@ -1,43 +1,76 @@
 package pl.ourdomain.tlumaczenia
 
 import android.content.Context
+import org.json.JSONException
+import org.json.JSONObject
+import pl.ourdomain.tlumaczenia.API.fetchAuthToken
 import java.io.File
 import java.io.FileNotFoundException
 import java.lang.Exception
 
-class SessionManager(receivedContext: Context?) {
+class SessionManager(receivedContext: Context) {
 
     companion object {
+        var username: String? = null
+        var password: String? = null
         var authToken: String? = null
-        var context: Context? = null
-        const val authTokenFileName = "authToken.txt"
+
+        const val credentialsFileName = "authToken.txt"
     }
 
-    init {
-        context = receivedContext
+    private var context: Context = receivedContext
 
-        /* Read the file that should store authentication token from local memory */
+    init {
+        loadFromMemory()
+    }
+
+    private fun loadFromMemory() {
         try {
-            val file = File(context?.filesDir, authTokenFileName)
-            authToken = file.readText()
+            // Read data from file
+            val file = File(context.filesDir, credentialsFileName)
+            val sessionData = JSONObject(file.readText())
+
+            // Move data to class fields
+            username = sessionData.get("username") as String?
+            password = sessionData.get("password") as String?
+            authToken = sessionData.get("token") as String?
         } catch (e: FileNotFoundException) {
-            println("AuthToken file not found in the local memory.")
+            println("File with credentials not found in the local memory.")
+        } catch (e: JSONException) {
+            println("File with credentials has data in unsupported format!.")
         }
     }
 
-    fun useCredentialsAndFetchAuthToken(username: String, password: String) {
-        try {
-            authToken = fetchAuthToken(username, password)
+    fun useCredentials(username: String, password: String) {
+        SessionManager.username = username
+        SessionManager.password = password
+    }
 
-            // save the token to local memory
-            if (authToken !== null) {
-                context?.openFileOutput(authTokenFileName, Context.MODE_PRIVATE)
+    fun fetchToken() {
+        val username = username
+        val password = password
+
+        if (username == null || password == null) {
+            throw Exception("Set credentials first before fetching a token!")
+        } else {
+            try {
+                // Fetch token and prepare data to be saved to a JSON file
+                val sessionData = JSONObject()
+                sessionData.put("token", fetchAuthToken(username, password))
+                sessionData.put("username", username)
+                sessionData.put("password", password)
+
+                // save the data to a JSON file
+                context.openFileOutput(credentialsFileName, Context.MODE_PRIVATE)
                     .use {
-                        it?.write(authToken!!.toByteArray())
+                        it?.write(sessionData.toString().toByteArray())
                     }
+
+                // update class fields
+                loadFromMemory()
+            } catch (e: Exception) {
+                throw e
             }
-        } catch (e: Exception) {
-            throw e
         }
     }
 }

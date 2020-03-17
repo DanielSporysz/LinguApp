@@ -62,13 +62,14 @@ class LoginFragment : Fragment() {
             delay(1000)
 
             // Try getting an auth token
-            val sessionManager = SessionManager(context)
+            val sessionManager = SessionManager(myContext)
             var isCorrect = true
             try {
-                sessionManager.useCredentialsAndFetchAuthToken(
+                sessionManager.useCredentials(
                     binding.usernameField.text.toString(),
                     binding.passwordField.text.toString()
                 )
+                sessionManager.fetchToken()
             } catch (e: Exception) {
                 isCorrect = false
             }
@@ -80,7 +81,11 @@ class LoginFragment : Fragment() {
                 binding.loginButton.setBackgroundResource(R.drawable.rounded_button)
 
                 if (isCorrect) {
-                    displayToast("Token: " + SessionManager.authToken)
+                    displayToast(
+                        "Token: " + SessionManager.authToken
+                                + " " + SessionManager.username
+                                + " " + SessionManager.password
+                    )
                     view.findNavController().navigate(R.id.action_login_to_menuMain)
                 } else {
                     displayToast("Incorrect credentials")
@@ -90,7 +95,7 @@ class LoginFragment : Fragment() {
     }
 
     private fun displayToast(msg: String?) {
-        val duration = Toast.LENGTH_SHORT
+        val duration = Toast.LENGTH_LONG
         val toast = Toast.makeText(myContext, msg, duration)
         toast.show()
     }
