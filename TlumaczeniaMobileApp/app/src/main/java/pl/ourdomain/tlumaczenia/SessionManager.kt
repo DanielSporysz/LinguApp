@@ -1,6 +1,7 @@
 package pl.ourdomain.tlumaczenia
 
 import android.content.Context
+import android.util.Log
 import org.json.JSONException
 import org.json.JSONObject
 import pl.ourdomain.tlumaczenia.API.fetchAuthToken
@@ -35,9 +36,9 @@ class SessionManager(receivedContext: Context) {
             password = sessionData.get("password") as String?
             authToken = sessionData.get("token") as String?
         } catch (e: FileNotFoundException) {
-            println("File with credentials not found in the local memory.")
+            Log.w("SessionManager", "File with credentials not found in the local memory.")
         } catch (e: JSONException) {
-            println("File with credentials has data in unsupported format!.")
+            Log.w("SessionManager", "File with credentials has data in unsupported format!.")
         }
     }
 
@@ -54,7 +55,7 @@ class SessionManager(receivedContext: Context) {
             throw Exception("Set credentials first before fetching a token!")
         } else {
             try {
-                // Fetch token and prepare data to be saved to a JSON file
+                // Fetch a token and prepare data to be saved to a JSON file
                 val sessionData = JSONObject()
                 sessionData.put("token", fetchAuthToken(username, password))
                 sessionData.put("username", username)

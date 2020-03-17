@@ -47,6 +47,9 @@
     <string name="articles">artykuły</string>
     <string name="placeholder_translation_text">tłumaczenie…</string>
 
+    <string name="incorrect_credentials_message">Podane dane są nieprawidłowe</string>
+    <string name="server_internal_problem_message">Wystąpił problem z połączeniem</string>
+
     <string-array name="supported_languages">
         <item>polski</item>
         <item>angielski</item>

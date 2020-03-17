@@ -17,6 +17,7 @@ import kotlinx.coroutines.launch
 import pl.ourdomain.tlumaczenia.R
 import pl.ourdomain.tlumaczenia.SessionManager
 import pl.ourdomain.tlumaczenia.databinding.FragmentLoginBinding
+import pl.ourdomain.tlumaczenia.exceptions.InvalidCredentials
 
 
 class LoginFragment : Fragment() {
@@ -58,20 +59,22 @@ class LoginFragment : Fragment() {
         binding.loginButton.setBackgroundResource(R.drawable.rounded_disabled_button)
 
         GlobalScope.launch {
-            //TODO remove delay
-            delay(1000)
-
             // Try getting an auth token
             val sessionManager = SessionManager(myContext)
-            var isCorrect = true
+            var areCredentialsValid = true
+            var serverIssueOccurred = false
             try {
                 sessionManager.useCredentials(
                     binding.usernameField.text.toString(),
                     binding.passwordField.text.toString()
                 )
                 sessionManager.fetchToken()
+            } catch (e: InvalidCredentials){
+                areCredentialsValid = false
             } catch (e: Exception) {
-                isCorrect = false
+                e.printStackTrace()
+                areCredentialsValid = false
+                serverIssueOccurred = true
             }
 
             // Feedback to user & navigation
@@ -80,15 +83,17 @@ class LoginFragment : Fragment() {
                 binding.loginButton.isEnabled = true
                 binding.loginButton.setBackgroundResource(R.drawable.rounded_button)
 
-                if (isCorrect) {
+                if (areCredentialsValid) {
                     displayToast(
                         "Token: " + SessionManager.authToken
                                 + " " + SessionManager.username
                                 + " " + SessionManager.password
                     )
                     view.findNavController().navigate(R.id.action_login_to_menuMain)
+                } else if (!serverIssueOccurred) {
+                    displayToast(getString(R.string.incorrect_credentials_message))
                 } else {
-                    displayToast("Incorrect credentials")
+                    displayToast(getString(R.string.server_internal_problem_message))
                 }
             }
         }

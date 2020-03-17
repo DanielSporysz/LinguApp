@@ -11,7 +11,7 @@ android {
     buildToolsVersion "29.0.2"
     defaultConfig {
         applicationId "pl.ourdomain.tlumaczenia"
-        minSdkVersion 19
+        minSdkVersion 23
         targetSdkVersion 29
         versionCode 1
         versionName "1.0"
@@ -33,7 +33,7 @@ android {
 }
 
 dependencies {
-    implementation 'khttp:khttp:1.0.0'
+    implementation 'com.github.kittinunf.fuel:fuel:2.2.1'
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
     implementation 'androidx.appcompat:appcompat:1.1.0'
