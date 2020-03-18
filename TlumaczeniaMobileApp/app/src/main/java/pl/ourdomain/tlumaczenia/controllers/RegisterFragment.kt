@@ -73,7 +73,7 @@ class RegisterFragment : Fragment() {
 
             // delay enabling the button
             GlobalScope.launch {
-                delay(1200)
+                delay(2000)
                 Handler(myContext.mainLooper).post {
                     enableRegisterButton()
                 }
@@ -96,8 +96,6 @@ class RegisterFragment : Fragment() {
             }
 
             Handler(myContext.mainLooper).post {
-                enableRegisterButton()
-
                 if (isRegistered) {
                     SessionManager.authToken = token
                     SessionManager.username = registerInfo.username
@@ -110,9 +108,19 @@ class RegisterFragment : Fragment() {
                                 + " " + SessionManager.password,
                         Toast.LENGTH_LONG
                     )
+
+                    enableRegisterButton()
                     view.findNavController().navigate(R.id.action_registerFragment_to_menuMain)
                 } else {
                     displayToast(errorMessage, Toast.LENGTH_LONG)
+
+                    // delay enabling the button
+                    GlobalScope.launch {
+                        delay(2000)
+                        Handler(myContext.mainLooper).post {
+                            enableRegisterButton()
+                        }
+                    }
                 }
             }
         }

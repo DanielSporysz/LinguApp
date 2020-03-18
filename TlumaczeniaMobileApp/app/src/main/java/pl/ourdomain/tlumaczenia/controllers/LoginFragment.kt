@@ -73,7 +73,7 @@ class LoginFragment : Fragment() {
 
             // delay enabling the button
             GlobalScope.launch {
-                delay(1200)
+                delay(2000)
                 Handler(myContext.mainLooper).post {
                     enableLoginButton()
                 }
