@@ -49,6 +49,7 @@
 
     <string name="toast_message_incorrect_credentials">Podane dane są nieprawidłowe</string>
     <string name="toast_message_server_internal_problem">Wystąpił problem z połączeniem</string>
+    <string name="toast_fill_all_fields">Wypełnij wszystkie pola!</string>
 
     <string-array name="supported_languages">
         <item>polski</item>

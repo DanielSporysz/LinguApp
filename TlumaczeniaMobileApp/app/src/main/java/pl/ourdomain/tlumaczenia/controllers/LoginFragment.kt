@@ -12,6 +12,7 @@ import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.navigation.findNavController
 import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import pl.ourdomain.tlumaczenia.R
 import pl.ourdomain.tlumaczenia.SessionManager
@@ -56,23 +57,40 @@ class LoginFragment : Fragment() {
     private fun validateCredentials(view: View) {
         disableLoginButton()
 
+        // Check if the fields are filled
+        if (binding.usernameField.text.toString().isBlank() ||
+            binding.passwordField.text.toString().isBlank()
+        ) {
+            displayToast(getString(R.string.toast_fill_all_fields), Toast.LENGTH_SHORT)
+
+            // delay enabling the button
+            GlobalScope.launch {
+                delay(1200)
+                Handler(myContext.mainLooper).post {
+                    enableLoginButton()
+                }
+            }
+            return
+        }
+
         GlobalScope.launch {
             // Try getting an auth token
-            val sessionManager = SessionManager(myContext)
-            var areCredentialsValid = true
-            var serverIssueOccurred = false
+            var validCredentials = true
+            var errorOccurred = false
             try {
+                val sessionManager = SessionManager(myContext)
                 sessionManager.useCredentials(
                     binding.usernameField.text.toString(),
                     binding.passwordField.text.toString()
                 )
                 sessionManager.fetchToken()
-            } catch (e: InvalidCredentials){
-                areCredentialsValid = false
+
+            } catch (e: InvalidCredentials) {
+                validCredentials = false
             } catch (e: Exception) {
                 e.printStackTrace()
-                areCredentialsValid = false
-                serverIssueOccurred = true
+                validCredentials = false
+                errorOccurred = true
             }
 
             // Feedback to user & navigation
@@ -80,34 +98,41 @@ class LoginFragment : Fragment() {
                 //Enable the login button
                 enableLoginButton()
 
-                if (areCredentialsValid) {
+                if (validCredentials) {
+                    //TODO remove this toast
                     displayToast(
                         "Token: " + SessionManager.authToken
                                 + " " + SessionManager.username
-                                + " " + SessionManager.password
+                                + " " + SessionManager.password,
+                        Toast.LENGTH_LONG
                     )
                     view.findNavController().navigate(R.id.action_login_to_menuMain)
-                } else if (!serverIssueOccurred) {
-                    displayToast(getString(R.string.toast_message_incorrect_credentials))
+                } else if (!errorOccurred) {
+                    displayToast(
+                        getString(R.string.toast_message_incorrect_credentials),
+                        Toast.LENGTH_LONG
+                    )
                 } else {
-                    displayToast(getString(R.string.toast_message_server_internal_problem))
+                    displayToast(
+                        getString(R.string.toast_message_server_internal_problem),
+                        Toast.LENGTH_LONG
+                    )
                 }
             }
         }
     }
 
-    private fun disableLoginButton(){
+    private fun disableLoginButton() {
         binding.loginButton.isEnabled = false
         binding.loginButton.setBackgroundResource(R.drawable.rounded_disabled_button)
     }
 
-    private fun enableLoginButton(){
+    private fun enableLoginButton() {
         binding.loginButton.isEnabled = true
         binding.loginButton.setBackgroundResource(R.drawable.rounded_button)
     }
 
-    private fun displayToast(msg: String?) {
-        val duration = Toast.LENGTH_LONG
+    private fun displayToast(msg: String?, duration: Int) {
         val toast = Toast.makeText(myContext, msg, duration)
         toast.show()
     }
