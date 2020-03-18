@@ -47,9 +47,11 @@ class SessionManager(receivedContext: Context) {
     fun useCredentials(username: String, password: String) {
         SessionManager.username = username
         SessionManager.password = password
+
+        fetchToken()
     }
 
-    fun fetchToken() {
+    private fun fetchToken() {
         val username = username
         val password = password
         if (username == null || password == null) {

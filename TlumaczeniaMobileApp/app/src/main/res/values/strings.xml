@@ -48,8 +48,9 @@
     <string name="hint_translation">tłumaczenie…</string>
 
     <string name="toast_message_incorrect_credentials">Podane dane są nieprawidłowe</string>
-    <string name="toast_message_server_internal_problem">Wystąpił problem z połączeniem</string>
+    <string name="toast_internal_error">Wystąpił problem… ):</string>
     <string name="toast_fill_all_fields">Wypełnij wszystkie pola!</string>
+    <string name="toast_taken_username">Użytkownik o takiej nazwie już istnieje!</string>
 
     <string-array name="supported_languages">
         <item>polski</item>

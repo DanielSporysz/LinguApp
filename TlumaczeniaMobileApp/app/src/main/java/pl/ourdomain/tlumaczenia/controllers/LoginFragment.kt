@@ -54,14 +54,22 @@ class LoginFragment : Fragment() {
         isAttached = false
     }
 
+    private fun validateFields(): Pair<Boolean, String?>{
+        return if (binding.usernameField.text.toString().isBlank() ||
+            binding.passwordField.text.toString().isBlank()
+        ){
+            Pair(false, getString(R.string.toast_fill_all_fields))
+        } else {
+            Pair(true, null)
+        }
+    }
+
     private fun validateCredentials(view: View) {
         disableLoginButton()
 
-        // Check if the fields are filled
-        if (binding.usernameField.text.toString().isBlank() ||
-            binding.passwordField.text.toString().isBlank()
-        ) {
-            displayToast(getString(R.string.toast_fill_all_fields), Toast.LENGTH_SHORT)
+        val (areFieldsValid, errorMessage) = validateFields()
+        if (!areFieldsValid){
+            displayToast(errorMessage, Toast.LENGTH_SHORT)
 
             // delay enabling the button
             GlobalScope.launch {
@@ -83,8 +91,6 @@ class LoginFragment : Fragment() {
                     binding.usernameField.text.toString(),
                     binding.passwordField.text.toString()
                 )
-                sessionManager.fetchToken()
-
             } catch (e: InvalidCredentials) {
                 validCredentials = false
             } catch (e: Exception) {
@@ -114,7 +120,7 @@ class LoginFragment : Fragment() {
                     )
                 } else {
                     displayToast(
-                        getString(R.string.toast_message_server_internal_problem),
+                        getString(R.string.toast_internal_error),
                         Toast.LENGTH_LONG
                     )
                 }
