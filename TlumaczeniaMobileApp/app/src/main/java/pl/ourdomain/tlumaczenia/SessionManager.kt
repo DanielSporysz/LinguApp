@@ -22,7 +22,9 @@ class SessionManager(receivedContext: Context) {
     private var context: Context = receivedContext
 
     init {
-        loadFromMemory()
+        if (username == null || password == null || authToken == null) {
+            loadFromMemory()
+        }
     }
 
     private fun loadFromMemory() {
@@ -50,7 +52,6 @@ class SessionManager(receivedContext: Context) {
     fun fetchToken() {
         val username = username
         val password = password
-
         if (username == null || password == null) {
             throw Exception("Set credentials first before fetching a token!")
         } else {

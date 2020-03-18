@@ -12,7 +12,6 @@ import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.navigation.findNavController
 import kotlinx.coroutines.GlobalScope
-import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import pl.ourdomain.tlumaczenia.R
 import pl.ourdomain.tlumaczenia.SessionManager
@@ -55,8 +54,7 @@ class LoginFragment : Fragment() {
     }
 
     private fun validateCredentials(view: View) {
-        binding.loginButton.isEnabled = false
-        binding.loginButton.setBackgroundResource(R.drawable.rounded_disabled_button)
+        disableLoginButton()
 
         GlobalScope.launch {
             // Try getting an auth token
@@ -80,8 +78,7 @@ class LoginFragment : Fragment() {
             // Feedback to user & navigation
             Handler(myContext.mainLooper).post {
                 //Enable the login button
-                binding.loginButton.isEnabled = true
-                binding.loginButton.setBackgroundResource(R.drawable.rounded_button)
+                enableLoginButton()
 
                 if (areCredentialsValid) {
                     displayToast(
@@ -91,12 +88,22 @@ class LoginFragment : Fragment() {
                     )
                     view.findNavController().navigate(R.id.action_login_to_menuMain)
                 } else if (!serverIssueOccurred) {
-                    displayToast(getString(R.string.incorrect_credentials_message))
+                    displayToast(getString(R.string.toast_message_incorrect_credentials))
                 } else {
-                    displayToast(getString(R.string.server_internal_problem_message))
+                    displayToast(getString(R.string.toast_message_server_internal_problem))
                 }
             }
         }
+    }
+
+    private fun disableLoginButton(){
+        binding.loginButton.isEnabled = false
+        binding.loginButton.setBackgroundResource(R.drawable.rounded_disabled_button)
+    }
+
+    private fun enableLoginButton(){
+        binding.loginButton.isEnabled = true
+        binding.loginButton.setBackgroundResource(R.drawable.rounded_button)
     }
 
     private fun displayToast(msg: String?) {

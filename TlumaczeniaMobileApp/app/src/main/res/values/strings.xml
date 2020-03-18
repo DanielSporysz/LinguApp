@@ -4,51 +4,51 @@
 
     <string name="description_flags">welcome screen graphics</string>
 
-    <string name="register_prompt">Zarejestruj się</string>
-    <string name="login_prompt">Logowanie</string>
+    <string name="text_register">Zarejestruj się</string>
+    <string name="text_login">Logowanie</string>
 
-    <string name="username_hint">nazwa użytkownika</string>
-    <string name="mail_hint">e-mail</string>
-    <string name="re_mail_hint">powtórz e-mail</string>
-    <string name="password_hint">hasło</string>
-    <string name="re_password_hint">powtórz hasło</string>
+    <string name="hint_username">nazwa użytkownika</string>
+    <string name="hint_mail">e-mail</string>
+    <string name="hint_re_mail">powtórz e-mail</string>
+    <string name="hint_password">hasło</string>
+    <string name="hint_re_password">powtórz hasło</string>
 
-    <string name="register_incetive_question">Nie masz konta?</string>
-    <string name="register_incetive_order">Zarejestruj się!</string>
-    <string name="login_incentive">Jeśli masz już konto, zaloguj się!</string>
+    <string name="text_register_incentive_question">Nie masz konta?</string>
+    <string name="text_register_incentive_order">Zarejestruj się!</string>
+    <string name="text_login_incentive">Jeśli masz już konto, zaloguj się!</string>
 
-    <string name="register_nav_button">Rejestracja</string>
-    <string name="login_nav_button">Logowanie</string>
+    <string name="button_register_nav">Rejestracja</string>
+    <string name="button_login_nav">Logowanie</string>
 
-    <string name="login_button">zaloguj</string>
-    <string name="register_button">zatwierdź</string>
+    <string name="button_login">zaloguj</string>
+    <string name="button_confirm">zatwierdź</string>
 
-    <string name="translate_words_nav_button">tłumacz słowka</string>
-    <string name="learn_words_nav_button">nauka języka</string>
-    <string name="tests_nav_button">testy sprawdzające wiedzę</string>
-    <string name="open_site_to_translate_nav_button">wgraj stronę do tłumaczeń</string>
+    <string name="button_translate_words">tłumacz słowka</string>
+    <string name="button_learn_words">nauka języka</string>
+    <string name="button_tests">testy sprawdzające wiedzę</string>
+    <string name="button_open_site_to_translate">wgraj stronę do tłumaczeń</string>
 
-    <string name="original_lang">język oryginalny</string>
-    <string name="target_lang">język docelowy</string>
-    <string name="translate_button">tłumacz</string>
-    <string name="save_translation_button">dodaj tłumaczenie do sekcji nauka</string>
-    <string name="input_text_to_translation_prompt">tekst do tłumaczenia…</string>
-    <string name="translated_text_promp">tłumaczenie</string>
+    <string name="text_original_lang">język oryginalny</string>
+    <string name="text_target_lang">język docelowy</string>
+    <string name="button_translate">tłumacz</string>
+    <string name="button_save_translation">dodaj tłumaczenie do sekcji nauka</string>
+    <string name="prompt_input_text_to_translation">tekst do tłumaczenia…</string>
+    <string name="prompt_translated_text">tłumaczenie</string>
     <string name="description_translation_arrows">strzałki wskazujące kierunek tłumaczenia</string>
 
-    <string name="chose_learning_language">Wybierz język do nauki</string>
-    <string name="english">angielski</string>
-    <string name="russian">rosyjski</string>
-    <string name="spanish">hiszpański</string>
+    <string name="text_chose_learning_language">Wybierz język do nauki</string>
+    <string name="text_english">angielski</string>
+    <string name="text_russian">rosyjski</string>
+    <string name="text_spanish">hiszpański</string>
 
-    <string name="pick_learning_method">Wybierz czego chcesz się uczyć</string>
-    <string name="words">słówka</string>
-    <string name="grammar">gramatyka</string>
-    <string name="articles">artykuły</string>
-    <string name="placeholder_translation_text">tłumaczenie…</string>
+    <string name="text_pick_learning_method">Wybierz czego chcesz się uczyć</string>
+    <string name="text_words">słówka</string>
+    <string name="text_grammar">gramatyka</string>
+    <string name="text_articles">artykuły</string>
+    <string name="hint_translation">tłumaczenie…</string>
 
-    <string name="incorrect_credentials_message">Podane dane są nieprawidłowe</string>
-    <string name="server_internal_problem_message">Wystąpił problem z połączeniem</string>
+    <string name="toast_message_incorrect_credentials">Podane dane są nieprawidłowe</string>
+    <string name="toast_message_server_internal_problem">Wystąpił problem z połączeniem</string>
 
     <string-array name="supported_languages">
         <item>polski</item>
