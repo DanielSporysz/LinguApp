@@ -64,6 +64,7 @@ class RegisterFragment : Fragment() {
     }
 
     private fun register(view: View) {
+        // Disable button for the duration of handling the action
         disableRegisterButton()
 
         // Validate fields
@@ -83,7 +84,7 @@ class RegisterFragment : Fragment() {
 
         GlobalScope.launch {
             // Try registering
-            var token: String? = null
+            lateinit var token: String
             var isRegistered = false
             var errorMessage: String? = null
             try {
@@ -97,9 +98,8 @@ class RegisterFragment : Fragment() {
 
             Handler(myContext.mainLooper).post {
                 if (isRegistered) {
-                    SessionManager.authToken = token
-                    SessionManager.username = registerInfo.username
-                    SessionManager.password = registerInfo.password
+                    val sessionManager = SessionManager(myContext)
+                    sessionManager.useCredentials(registerInfo.username, registerInfo.password, token)
 
                     //TODO remove this toast
                     displayToast(

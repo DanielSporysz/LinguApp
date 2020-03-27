@@ -13,8 +13,11 @@ class SessionManager(receivedContext: Context) {
 
     companion object {
         var username: String? = null
+            private set
         var password: String? = null
+            private set
         var authToken: String? = null
+            private set
 
         const val credentialsFileName = "authToken.txt"
     }
@@ -23,11 +26,29 @@ class SessionManager(receivedContext: Context) {
 
     init {
         if (username == null || password == null || authToken == null) {
-            loadFromMemory()
+            loadCredentials()
         }
     }
 
-    private fun loadFromMemory() {
+    fun useCredentials(new_username: String, new_password: String) {
+        username = new_username
+        password = new_password
+        authToken = fetchToken()
+
+        saveCredentials()
+        loadCredentials()
+    }
+
+    fun useCredentials(new_username: String, new_password: String, new_token: String) {
+        username = new_username
+        password = new_password
+        authToken = new_token
+
+        saveCredentials()
+        loadCredentials()
+    }
+
+    private fun loadCredentials() {
         try {
             // Read data from file
             val file = File(context.filesDir, credentialsFileName)
@@ -44,37 +65,27 @@ class SessionManager(receivedContext: Context) {
         }
     }
 
-    fun useCredentials(username: String, password: String) {
-        SessionManager.username = username
-        SessionManager.password = password
+    private fun saveCredentials() {
+        // Put class files into a JSON
+        val sessionData = JSONObject()
+        sessionData.put("token", authToken)
+        sessionData.put("username", username)
+        sessionData.put("password", password)
 
-        fetchToken()
+        // Save to a file
+        context.openFileOutput(credentialsFileName, Context.MODE_PRIVATE)
+            .use {
+                it?.write(sessionData.toString().toByteArray())
+            }
     }
 
-    private fun fetchToken() {
+    private fun fetchToken(): String {
         val username = username
         val password = password
         if (username == null || password == null) {
             throw Exception("Set credentials first before fetching a token!")
         } else {
-            try {
-                // Fetch a token and prepare data to be saved to a JSON file
-                val sessionData = JSONObject()
-                sessionData.put("token", fetchAuthToken(username, password))
-                sessionData.put("username", username)
-                sessionData.put("password", password)
-
-                // save the data to a JSON file
-                context.openFileOutput(credentialsFileName, Context.MODE_PRIVATE)
-                    .use {
-                        it?.write(sessionData.toString().toByteArray())
-                    }
-
-                // update class fields
-                loadFromMemory()
-            } catch (e: Exception) {
-                throw e
-            }
+            return fetchAuthToken(username, password)
         }
     }
 }

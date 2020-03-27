@@ -9,7 +9,7 @@ import pl.ourdomain.tlumaczenia.exceptions.TakenUsername
 
 object API {
 
-    private const val SERVER_IP = "http://192.168.1.21:5000/"
+    private const val SERVER_IP = "http://192.168.1.14:5000/"
 
     fun fetchAuthToken(username: String, password: String): String {
         val data = JSONObject()
