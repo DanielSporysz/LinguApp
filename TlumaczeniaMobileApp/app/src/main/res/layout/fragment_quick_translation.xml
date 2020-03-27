@@ -33,7 +33,7 @@
                     android:layout_marginEnd="30dp"
                     android:background="@drawable/rounded_button"
                     android:popupBackground="@drawable/rounded_button"
-                    app:layout_constraintEnd_toStartOf="@+id/imageView"
+                    app:layout_constraintEnd_toStartOf="@+id/swapArrows"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
 
@@ -47,11 +47,11 @@
                     android:background="@drawable/rounded_button"
                     android:popupBackground="@drawable/rounded_button"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toEndOf="@+id/imageView"
+                    app:layout_constraintStart_toEndOf="@+id/swapArrows"
                     app:layout_constraintTop_toTopOf="parent" />
 
                 <TextView
-                    android:id="@+id/originalLangText"
+                    android:id="@+id/originalLabel"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="30dp"
@@ -61,11 +61,11 @@
                     android:padding="5dp"
                     android:text="@string/text_original_lang"
                     android:textColor="@color/colorText"
-                    app:layout_constraintBottom_toTopOf="@+id/translateThisText"
-                    app:layout_constraintStart_toStartOf="@+id/translateThisText" />
+                    app:layout_constraintBottom_toTopOf="@+id/originalText"
+                    app:layout_constraintStart_toStartOf="@+id/originalText" />
 
                 <EditText
-                    android:id="@+id/translateThisText"
+                    android:id="@+id/originalText"
                     android:layout_width="0dp"
                     android:layout_height="130dp"
                     android:layout_marginStart="30dp"
@@ -100,10 +100,10 @@
                     android:textSize="18sp"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/translateThisText" />
+                    app:layout_constraintTop_toBottomOf="@+id/originalText" />
 
                 <TextView
-                    android:id="@+id/translatedLangText"
+                    android:id="@+id/translatedLabel"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="30dp"
@@ -117,7 +117,7 @@
                     app:layout_constraintStart_toStartOf="@+id/translatedText" />
 
                 <ImageView
-                    android:id="@+id/imageView"
+                    android:id="@+id/swapArrows"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:contentDescription="@string/description_translation_arrows"

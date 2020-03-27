@@ -46,7 +46,6 @@ class RegisterFragment : Fragment() {
 
         binding.registerButton.setOnClickListener { view: View ->
             register(view)
-            //
         }
 
         return binding.root
@@ -99,7 +98,11 @@ class RegisterFragment : Fragment() {
             Handler(myContext.mainLooper).post {
                 if (isRegistered) {
                     val sessionManager = SessionManager(myContext)
-                    sessionManager.useCredentials(registerInfo.username, registerInfo.password, token)
+                    sessionManager.useCredentials(
+                        registerInfo.username,
+                        registerInfo.password,
+                        token
+                    )
 
                     //TODO remove this toast
                     displayToast(

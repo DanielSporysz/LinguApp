@@ -54,10 +54,10 @@ class LoginFragment : Fragment() {
         isAttached = false
     }
 
-    private fun validateFields(): Pair<Boolean, String?>{
+    private fun validateFields(): Pair<Boolean, String?> {
         return if (binding.usernameField.text.toString().isBlank() ||
             binding.passwordField.text.toString().isBlank()
-        ){
+        ) {
             Pair(false, getString(R.string.toast_fill_all_fields))
         } else {
             Pair(true, null)
@@ -68,7 +68,7 @@ class LoginFragment : Fragment() {
         disableLoginButton()
 
         val (areFieldsValid, errorMessage) = validateFields()
-        if (!areFieldsValid){
+        if (!areFieldsValid) {
             displayToast(errorMessage, Toast.LENGTH_SHORT)
 
             // delay enabling the button
