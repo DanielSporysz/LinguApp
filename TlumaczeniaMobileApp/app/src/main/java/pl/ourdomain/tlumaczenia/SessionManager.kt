@@ -19,7 +19,7 @@ class SessionManager(receivedContext: Context) {
         var authToken: String? = null
             private set
 
-        const val credentialsFileName = "authToken.txt"
+        private const val credentialsFileName = "authToken.txt"
     }
 
     private var context: Context = receivedContext
@@ -48,6 +48,14 @@ class SessionManager(receivedContext: Context) {
         loadCredentials()
     }
 
+    fun logout(){
+        username = null
+        password = null
+        authToken = null
+
+        destroyCredentialsFile()
+    }
+
     private fun loadCredentials() {
         try {
             // Read data from file
@@ -62,6 +70,7 @@ class SessionManager(receivedContext: Context) {
             Log.w("SessionManager", "File with credentials not found in the local memory.")
         } catch (e: JSONException) {
             Log.w("SessionManager", "File with credentials has data in unsupported format!.")
+            destroyCredentialsFile()
         }
     }
 
@@ -77,6 +86,10 @@ class SessionManager(receivedContext: Context) {
             .use {
                 it?.write(sessionData.toString().toByteArray())
             }
+    }
+
+    private fun destroyCredentialsFile() {
+        context.deleteFile(credentialsFileName)
     }
 
     private fun fetchToken(): String {

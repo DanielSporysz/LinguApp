@@ -37,7 +37,7 @@ class LoginFragment : Fragment() {
         )
 
         binding.loginButton.setOnClickListener { view: View ->
-            validateCredentials(view)
+            login(view)
         }
 
         return binding.root
@@ -64,9 +64,11 @@ class LoginFragment : Fragment() {
         }
     }
 
-    private fun validateCredentials(view: View) {
+    private fun login(view: View) {
+        // Disable button for the duration of handling the action
         disableLoginButton()
 
+        // Validate fields
         val (areFieldsValid, errorMessage) = validateFields()
         if (!areFieldsValid) {
             displayToast(errorMessage, Toast.LENGTH_SHORT)

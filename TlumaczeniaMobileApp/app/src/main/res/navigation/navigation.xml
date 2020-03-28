@@ -46,6 +46,9 @@
         <action
             android:id="@+id/action_menuMain_to_choseLanguage"
             app:destination="@id/choseLanguage" />
+        <action
+            android:id="@+id/action_menuMain_to_welcomeFragment"
+            app:destination="@id/welcomeFragment" />
     </fragment>
     <fragment
         android:id="@+id/quickTranslation"

@@ -1,6 +1,7 @@
 package pl.ourdomain.tlumaczenia.controllers
 
 
+import android.content.Context
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -9,11 +10,15 @@ import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.navigation.findNavController
 import pl.ourdomain.tlumaczenia.R
+import pl.ourdomain.tlumaczenia.SessionManager
 import pl.ourdomain.tlumaczenia.databinding.FragmentMenuMainBinding
 
 class MainMenuFragment : Fragment() {
 
     private lateinit var binding: FragmentMenuMainBinding
+
+    private lateinit var myContext: Context
+    private var isAttached: Boolean = false
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -30,9 +35,27 @@ class MainMenuFragment : Fragment() {
         binding.learnButton.setOnClickListener { view: View ->
             view.findNavController().navigate(R.id.action_menuMain_to_choseLanguage)
         }
+        binding.logoutButton.setOnClickListener { view: View ->
+            logout()
+            view.findNavController().navigate(R.id.action_menuMain_to_welcomeFragment)
+        }
 
         return binding.root
     }
 
+    override fun onAttach(context: Context) {
+        super.onAttach(context)
+        myContext = context
+        isAttached = true
+    }
 
+    override fun onDetach() {
+        super.onDetach()
+        isAttached = false
+    }
+
+    private fun logout() {
+        val sessionManager = SessionManager(myContext)
+        sessionManager.logout()
+    }
 }

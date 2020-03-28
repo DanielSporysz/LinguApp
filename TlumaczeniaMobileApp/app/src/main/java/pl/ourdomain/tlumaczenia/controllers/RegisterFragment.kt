@@ -130,15 +130,15 @@ class RegisterFragment : Fragment() {
     }
 
     private fun validateFields(): Pair<Boolean, String?> {
-        if (registerInfo.username.isBlank() ||
+        return if (registerInfo.username.isBlank() ||
             registerInfo.email.isBlank() ||
             registerInfo.reEmail.isBlank() ||
             registerInfo.password.isBlank() ||
             registerInfo.rePassword.isBlank()
         ) {
-            return Pair(false, getString(R.string.toast_fill_all_fields))
+            Pair(false, getString(R.string.toast_fill_all_fields))
         } else {
-            return Pair(true, null)
+            Pair(true, null)
         }
     }
 
