@@ -16,6 +16,9 @@
         <action
             android:id="@+id/action_welcomeFragment_to_login"
             app:destination="@id/login" />
+        <action
+            android:id="@+id/action_welcomeFragment_to_menuMain"
+            app:destination="@id/menuMain" />
     </fragment>
     <fragment
         android:id="@+id/registerFragment"

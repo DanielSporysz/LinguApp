@@ -48,12 +48,16 @@ class SessionManager(receivedContext: Context) {
         loadCredentials()
     }
 
-    fun logout(){
+    fun logout() {
         username = null
         password = null
         authToken = null
 
         destroyCredentialsFile()
+    }
+
+    fun isLoggedIn(): Boolean {
+        return !(username == null || password == null || authToken == null)
     }
 
     private fun loadCredentials() {
@@ -67,9 +71,10 @@ class SessionManager(receivedContext: Context) {
             password = sessionData.get("password") as String?
             authToken = sessionData.get("token") as String?
         } catch (e: FileNotFoundException) {
+            // User was logged out or it's their first visit
             Log.w("SessionManager", "File with credentials not found in the local memory.")
         } catch (e: JSONException) {
-            Log.w("SessionManager", "File with credentials has data in unsupported format!.")
+            // Destroy faulty file
             destroyCredentialsFile()
         }
     }

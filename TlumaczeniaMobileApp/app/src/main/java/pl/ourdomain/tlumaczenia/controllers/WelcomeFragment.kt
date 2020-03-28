@@ -1,6 +1,7 @@
 package pl.ourdomain.tlumaczenia.controllers
 
 
+import android.content.Context
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -9,14 +10,16 @@ import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.navigation.findNavController
 import pl.ourdomain.tlumaczenia.R
+import pl.ourdomain.tlumaczenia.SessionManager
 import pl.ourdomain.tlumaczenia.databinding.FragmentWelcomeBinding
 
-/**
- * A simple [Fragment] subclass.
- */
+
 class WelcomeFragment : Fragment() {
 
     private lateinit var binding: FragmentWelcomeBinding
+
+    private lateinit var myContext: Context
+    private var isAttached: Boolean = false
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -38,5 +41,26 @@ class WelcomeFragment : Fragment() {
         return binding.root
     }
 
+    override fun onStart() {
+        super.onStart()
+        if (checkIfAlreadyLoggedIn()) {
+            binding.root.findNavController().navigate(R.id.action_welcomeFragment_to_menuMain)
+        }
+    }
 
+    override fun onAttach(context: Context) {
+        super.onAttach(context)
+        myContext = context
+        isAttached = true
+    }
+
+    override fun onDetach() {
+        super.onDetach()
+        isAttached = false
+    }
+
+    private fun checkIfAlreadyLoggedIn(): Boolean {
+        val sessionManager = SessionManager(myContext)
+        return sessionManager.isLoggedIn()
+    }
 }
