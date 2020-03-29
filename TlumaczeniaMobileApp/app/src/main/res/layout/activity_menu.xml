@@ -5,7 +5,7 @@
     android:orientation="horizontal"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity"
+    tools:context=".Menu"
     android:fitsSystemWindows="true">
 
     <androidx.appcompat.widget.Toolbar
@@ -25,6 +25,6 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         app:defaultNavHost="true"
-        app:navGraph="@navigation/navigation_welcome" />
+        app:navGraph="@navigation/navigation_menu" />
 
 </RelativeLayout>

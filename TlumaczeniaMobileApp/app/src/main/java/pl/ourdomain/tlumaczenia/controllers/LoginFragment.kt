@@ -2,6 +2,7 @@ package pl.ourdomain.tlumaczenia.controllers
 
 
 import android.content.Context
+import android.content.Intent
 import android.os.Bundle
 import android.os.Handler
 import android.view.LayoutInflater
@@ -10,10 +11,10 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
-import androidx.navigation.findNavController
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
+import pl.ourdomain.tlumaczenia.Menu
 import pl.ourdomain.tlumaczenia.R
 import pl.ourdomain.tlumaczenia.SessionManager
 import pl.ourdomain.tlumaczenia.databinding.FragmentLoginBinding
@@ -114,7 +115,11 @@ class LoginFragment : Fragment() {
                                 + " " + SessionManager.password,
                         Toast.LENGTH_LONG
                     )
-                    view.findNavController().navigate(R.id.action_login_to_menuMain)
+
+                    // Navigate to Menu Activity
+                    val intent = Intent(myContext, Menu::class.java)
+                    activity?.finish()
+                    myContext.startActivity(intent)
                 } else if (!errorOccurred) {
                     displayToast(
                         getString(R.string.toast_message_incorrect_credentials),

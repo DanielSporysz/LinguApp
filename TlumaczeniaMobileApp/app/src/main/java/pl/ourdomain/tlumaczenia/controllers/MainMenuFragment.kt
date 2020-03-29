@@ -35,10 +35,6 @@ class MainMenuFragment : Fragment() {
         binding.learnButton.setOnClickListener { view: View ->
             view.findNavController().navigate(R.id.action_menuMain_to_choseLanguage)
         }
-        binding.logoutButton.setOnClickListener { view: View ->
-            logout()
-            view.findNavController().navigate(R.id.action_menuMain_to_welcomeFragment)
-        }
 
         return binding.root
     }

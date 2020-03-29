@@ -2,6 +2,7 @@ package pl.ourdomain.tlumaczenia.controllers
 
 
 import android.content.Context
+import android.content.Intent
 import android.os.Bundle
 import android.os.Handler
 import androidx.fragment.app.Fragment
@@ -18,6 +19,7 @@ import pl.ourdomain.tlumaczenia.R
 import pl.ourdomain.tlumaczenia.databinding.FragmentRegisterBinding
 import pl.ourdomain.tlumaczenia.dataclasses.RegisterInfo
 import pl.ourdomain.tlumaczenia.API.registerUser
+import pl.ourdomain.tlumaczenia.Menu
 import pl.ourdomain.tlumaczenia.SessionManager
 import pl.ourdomain.tlumaczenia.exceptions.TakenUsername
 import java.lang.Exception
@@ -96,6 +98,9 @@ class RegisterFragment : Fragment() {
             }
 
             Handler(myContext.mainLooper).post {
+                // Enable button
+                enableRegisterButton()
+
                 if (isRegistered) {
                     val sessionManager = SessionManager(myContext)
                     sessionManager.useCredentials(
@@ -112,18 +117,13 @@ class RegisterFragment : Fragment() {
                         Toast.LENGTH_LONG
                     )
 
-                    enableRegisterButton()
-                    view.findNavController().navigate(R.id.action_registerFragment_to_menuMain)
+                    // Navigate to Menu Activity
+                    val intent = Intent(myContext, Menu::class.java)
+                    intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
+                    activity?.finish()
+                    myContext.startActivity(intent)
                 } else {
                     displayToast(errorMessage, Toast.LENGTH_LONG)
-
-                    // delay enabling the button
-                    GlobalScope.launch {
-                        delay(2000)
-                        Handler(myContext.mainLooper).post {
-                            enableRegisterButton()
-                        }
-                    }
                 }
             }
         }

@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/navigation_welcome"
+    app:startDestination="@id/welcomeFragment">
+
+    <fragment
+        android:id="@+id/welcomeFragment"
+        android:name="pl.ourdomain.tlumaczenia.controllers.WelcomeFragment"
+        android:label="WelcomeFragment"
+        tools:layout="@layout/fragment_welcome">
+        <action
+            android:id="@+id/action_welcomeFragment_to_registerFragment"
+            app:destination="@id/registerFragment" />
+        <action
+            android:id="@+id/action_welcomeFragment_to_login"
+            app:destination="@id/login" />
+        <action
+            android:id="@+id/action_welcomeFragment_to_menuMain"
+            app:destination="@id/menuMain" />
+    </fragment>
+    <fragment
+        android:id="@+id/registerFragment"
+        android:name="pl.ourdomain.tlumaczenia.controllers.RegisterFragment"
+        android:label="RegisterFragment"
+        tools:layout="@layout/fragment_register"/>
+    <fragment
+        android:id="@+id/login"
+        android:name="pl.ourdomain.tlumaczenia.controllers.LoginFragment"
+        android:label="Login"
+        tools:layout="@layout/fragment_login"/>
+</navigation>

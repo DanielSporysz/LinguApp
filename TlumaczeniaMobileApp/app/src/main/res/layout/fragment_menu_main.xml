@@ -37,7 +37,7 @@
                     android:id="@+id/constraintLayout3"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    app:layout_constraintBottom_toTopOf="@+id/logoutButton"
+                    app:layout_constraintBottom_toTopOf="@+id/flagsBottom"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/flags">
@@ -94,18 +94,6 @@
                         app:layout_constraintTop_toBottomOf="@+id/testsButton" />
 
                 </androidx.constraintlayout.widget.ConstraintLayout>
-
-                <Button
-                    android:id="@+id/logoutButton"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="25dp"
-                    android:background="@drawable/rounded_text_field"
-                    android:fontFamily="@font/lora"
-                    android:text="@string/button_logout"
-                    android:textColor="@color/colorText"
-                    app:layout_constraintBottom_toTopOf="@+id/flagsBottom"
-                    app:layout_constraintStart_toStartOf="parent" />
 
                 <ImageView
                     android:id="@+id/flagsBottom"

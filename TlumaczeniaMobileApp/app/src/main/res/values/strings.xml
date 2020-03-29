@@ -53,6 +53,8 @@
     <string name="toast_taken_username">Użytkownik o takiej nazwie już istnieje!</string>
     <string name="toast_translation_error">Wystąpił problem…</string>
     <string name="button_logout">Wyloguj</string>
+    <string name="text_settings">ustawienia</string>
+    <string name="text_logout">wyloguj</string>
 
     <string-array name="supported_languages">
         <item>polski</item>

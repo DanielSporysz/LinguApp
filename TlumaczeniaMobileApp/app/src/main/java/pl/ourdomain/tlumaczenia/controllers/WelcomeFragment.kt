@@ -2,6 +2,7 @@ package pl.ourdomain.tlumaczenia.controllers
 
 
 import android.content.Context
+import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -9,6 +10,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.navigation.findNavController
+import pl.ourdomain.tlumaczenia.Menu
 import pl.ourdomain.tlumaczenia.R
 import pl.ourdomain.tlumaczenia.SessionManager
 import pl.ourdomain.tlumaczenia.databinding.FragmentWelcomeBinding
@@ -44,7 +46,11 @@ class WelcomeFragment : Fragment() {
     override fun onStart() {
         super.onStart()
         if (checkIfAlreadyLoggedIn()) {
-            binding.root.findNavController().navigate(R.id.action_welcomeFragment_to_menuMain)
+            // Navigate to Menu Activity if logged in
+            val intent = Intent(myContext, Menu::class.java)
+            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
+            activity?.finish()
+            myContext.startActivity(intent)
         }
     }
 
