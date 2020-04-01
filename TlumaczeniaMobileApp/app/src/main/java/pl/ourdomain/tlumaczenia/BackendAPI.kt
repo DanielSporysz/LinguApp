@@ -10,7 +10,7 @@ import pl.ourdomain.tlumaczenia.exceptions.TakenUsername
 
 object API {
 
-    private const val SERVER_IP = "http://192.168.1.14:5000/"
+    private const val SERVER_IP = "http://192.168.1.15:5000/"
 
     private fun post(data: JSONObject, path: String): Response {
         val (_, response, _) = Fuel.post(SERVER_IP + path)

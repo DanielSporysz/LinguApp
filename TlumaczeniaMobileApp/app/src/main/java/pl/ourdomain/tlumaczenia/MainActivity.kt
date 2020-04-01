@@ -5,6 +5,8 @@ import android.view.Menu
 import android.view.MenuItem
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
+import androidx.navigation.findNavController
+import androidx.navigation.ui.NavigationUI
 
 
 class MainActivity : AppCompatActivity() {
@@ -13,8 +15,18 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
+        // Setup Toolbar
         val toolbar: Toolbar = findViewById<Toolbar>(R.id.my_toolbar)
         setSupportActionBar(toolbar)
+
+        // connect Navigation to Toolbar
+        val navController = findNavController(R.id.myNavHostFragment)
+        NavigationUI.setupActionBarWithNavController(this, navController)
+    }
+
+    override fun onSupportNavigateUp(): Boolean {
+        val navController = findNavController(R.id.myNavHostFragment)
+        return navController.navigateUp()
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {

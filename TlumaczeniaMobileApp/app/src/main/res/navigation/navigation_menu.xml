@@ -8,7 +8,7 @@
     <fragment
         android:id="@+id/menuMain"
         android:name="pl.ourdomain.tlumaczenia.controllers.MainMenuFragment"
-        android:label="MenuMain"
+        android:label="@string/label_fragment_main_menu"
         tools:layout="@layout/fragment_menu_main">
         <action
             android:id="@+id/action_menuMain_to_quickTranslation"
@@ -20,12 +20,12 @@
     <fragment
         android:id="@+id/quickTranslation"
         android:name="pl.ourdomain.tlumaczenia.controllers.QuickTranslationFragment"
-        android:label="QuickTranslation"
+        android:label="@string/label_fragment_translation"
         tools:layout="@layout/fragment_quick_translation" />
     <fragment
         android:id="@+id/choseLanguage"
         android:name="pl.ourdomain.tlumaczenia.controllers.ChoseLanguageFragment"
-        android:label="ChoseLanguage"
+        android:label="@string/label_fragment_choose_language"
         tools:layout="@layout/fragment_menu_main">
         <action
             android:id="@+id/action_choseLanguage_to_learningMethods"
@@ -34,6 +34,6 @@
     <fragment
         android:id="@+id/learningMethods"
         android:name="pl.ourdomain.tlumaczenia.controllers.LearningMethodsFragment"
-        android:label="LearningMethods"
+        android:label="@string/label_fragment_methods"
         tools:layout="@layout/fragment_menu_main" />
 </navigation>

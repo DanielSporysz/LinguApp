@@ -8,7 +8,7 @@
     <fragment
         android:id="@+id/welcomeFragment"
         android:name="pl.ourdomain.tlumaczenia.controllers.WelcomeFragment"
-        android:label="WelcomeFragment"
+        android:label="@string/app_name"
         tools:layout="@layout/fragment_welcome">
         <action
             android:id="@+id/action_welcomeFragment_to_registerFragment"
@@ -23,11 +23,11 @@
     <fragment
         android:id="@+id/registerFragment"
         android:name="pl.ourdomain.tlumaczenia.controllers.RegisterFragment"
-        android:label="RegisterFragment"
+        android:label="@string/app_name"
         tools:layout="@layout/fragment_register"/>
     <fragment
         android:id="@+id/login"
         android:name="pl.ourdomain.tlumaczenia.controllers.LoginFragment"
-        android:label="Login"
+        android:label="@string/app_name"
         tools:layout="@layout/fragment_login"/>
 </navigation>

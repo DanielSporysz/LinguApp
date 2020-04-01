@@ -55,6 +55,10 @@
     <string name="button_logout">Wyloguj</string>
     <string name="text_settings">ustawienia</string>
     <string name="text_logout">wyloguj</string>
+    <string name="label_fragment_translation">Tłumaczenie</string>
+    <string name="label_fragment_main_menu">Menu główne</string>
+    <string name="label_fragment_choose_language">Wybierz język</string>
+    <string name="label_fragment_methods">Metody nauczania</string>
 
     <string-array name="supported_languages">
         <item>polski</item>

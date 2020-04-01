@@ -17,7 +17,6 @@ import pl.ourdomain.tlumaczenia.API
 import pl.ourdomain.tlumaczenia.R
 import pl.ourdomain.tlumaczenia.databinding.FragmentQuickTranslationBinding
 import java.lang.Exception
-import kotlin.math.log
 
 class QuickTranslationFragment : Fragment() {
 
