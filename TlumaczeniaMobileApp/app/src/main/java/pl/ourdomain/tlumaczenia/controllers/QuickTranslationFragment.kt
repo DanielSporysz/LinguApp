@@ -24,17 +24,19 @@ class QuickTranslationFragment : Fragment() {
     private lateinit var myContext: Context
     private var isAttached: Boolean = false
 
+    private lateinit var supportedLanguages: MutableList<String>
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         binding = FragmentQuickTranslationBinding.inflate(inflater, container, false)
 
-        initLangSpinners()
-
         binding.translateButton.setOnClickListener { view: View ->
             translate(view)
         }
+
+        initLangSpinner()
 
         return binding.root
     }
@@ -63,6 +65,7 @@ class QuickTranslationFragment : Fragment() {
         // Disable translate button for the time of handling the request
         disableTranslateButton()
 
+        // Validate fields
         val (areFieldsValid, errorMessage) = validateFields()
         if (!areFieldsValid) {
             displayToast(errorMessage, Toast.LENGTH_SHORT)
@@ -81,12 +84,16 @@ class QuickTranslationFragment : Fragment() {
             // Get translation and display it
             try {
                 val original = binding.originalText.text.toString()
+                val source_lang = binding.langSpinner.selectedItem.toString()
+
                 val translated = API.translate(original)
+
                 binding.translatedText.text = translated
             } catch (e: Exception) {
+                e.printStackTrace()
+
                 binding.translatedText.text = ""
                 displayToast(getString(R.string.toast_translation_error), Toast.LENGTH_LONG)
-                print(e)
             }
 
             // Enable translation button with delay to prevent flooding of requests
@@ -97,30 +104,28 @@ class QuickTranslationFragment : Fragment() {
         }
     }
 
-    private fun initLangSpinners() {
-        val originalLangSpinner = binding.originalLangSpinner
-        val targetLangSpinner = binding.targetLangSpinner
+    private fun initLangSpinner() {
+        //TODO getting it from the server
+        GlobalScope.launch {
+            try {
+                val data = API.fetchSupportedLanguages()
+                print(data)
+            } catch (e: Exception) {
+                e.printStackTrace()
+            }
+        }
 
-        ArrayAdapter.createFromResource(
+        supportedLanguages = mutableListOf("angielski", "polski", "hiszpański")
+        supportedLanguages.remove("polski")
+
+        val myAdapter = ArrayAdapter(
             myContext,
-            R.array.supported_languages,
-            android.R.layout.simple_spinner_item
-        ).also { adapter ->
-            // Specify the layout to use when the list of choices appears
-            adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
-            // Apply the adapter to the spinner
-            originalLangSpinner.adapter = adapter
-        }
-        ArrayAdapter.createFromResource(
-            myContext,
-            R.array.supported_languages,
-            android.R.layout.simple_spinner_item
-        ).also { adapter ->
-            // Specify the layout to use when the list of choices appears
-            adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
-            // Apply the adapter to the spinner
-            targetLangSpinner.adapter = adapter
-        }
+            android.R.layout.simple_spinner_item,
+            supportedLanguages
+        )
+        myAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+
+        binding.langSpinner.adapter = myAdapter
     }
 
     private fun disableTranslateButton() {

@@ -59,6 +59,7 @@
     <string name="label_fragment_main_menu">Menu główne</string>
     <string name="label_fragment_choose_language">Wybierz język</string>
     <string name="label_fragment_methods">Metody nauczania</string>
+    <string name="text_polish">polski</string>
 
     <string-array name="supported_languages">
         <item>polski</item>

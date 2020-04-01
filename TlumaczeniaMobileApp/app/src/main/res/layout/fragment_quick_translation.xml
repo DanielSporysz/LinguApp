@@ -25,7 +25,7 @@
 
 
                 <Spinner
-                    android:id="@+id/originalLangSpinner"
+                    android:id="@+id/lang_spinner"
                     android:layout_width="0dp"
                     android:layout_height="45dp"
                     android:layout_marginStart="30dp"
@@ -33,21 +33,9 @@
                     android:layout_marginEnd="30dp"
                     android:background="@drawable/rounded_button"
                     android:popupBackground="@drawable/rounded_button"
+                    android:textAlignment="center"
                     app:layout_constraintEnd_toStartOf="@+id/swapArrows"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
-
-                <Spinner
-                    android:id="@+id/targetLangSpinner"
-                    android:layout_width="0dp"
-                    android:layout_height="45dp"
-                    android:layout_marginStart="30dp"
-                    android:layout_marginTop="70dp"
-                    android:layout_marginEnd="30dp"
-                    android:background="@drawable/rounded_button"
-                    android:popupBackground="@drawable/rounded_button"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toEndOf="@+id/swapArrows"
                     app:layout_constraintTop_toTopOf="parent" />
 
                 <TextView
@@ -83,7 +71,7 @@
                     android:textColorHint="@color/colorText"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/originalLangSpinner" />
+                    app:layout_constraintTop_toBottomOf="@+id/lang_spinner" />
 
                 <TextView
                     android:id="@+id/translatedText"
@@ -121,10 +109,10 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:contentDescription="@string/description_translation_arrows"
-                    app:layout_constraintBottom_toBottomOf="@+id/originalLangSpinner"
+                    app:layout_constraintBottom_toBottomOf="@+id/lang_spinner"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="@+id/originalLangSpinner"
+                    app:layout_constraintTop_toTopOf="@+id/lang_spinner"
                     app:srcCompat="@drawable/ic_translation_arrows" />
 
                 <Button
@@ -155,6 +143,22 @@
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent" />
+
+                <TextView
+                    android:id="@+id/lang"
+                    android:layout_width="0dp"
+                    android:layout_height="45dp"
+                    android:layout_marginStart="30dp"
+                    android:layout_marginTop="70dp"
+                    android:layout_marginEnd="30dp"
+                    android:background="@drawable/rounded_text_field"
+                    android:gravity="center"
+                    android:text="@string/text_polish"
+                    android:textAlignment="center"
+                    android:textColor="@android:color/black"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/swapArrows"
+                    app:layout_constraintTop_toTopOf="parent" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
         </LinearLayout>
