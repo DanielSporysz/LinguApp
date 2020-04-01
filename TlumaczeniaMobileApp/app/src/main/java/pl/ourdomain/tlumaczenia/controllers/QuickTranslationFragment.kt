@@ -16,6 +16,7 @@ import kotlinx.coroutines.launch
 import pl.ourdomain.tlumaczenia.API
 import pl.ourdomain.tlumaczenia.R
 import pl.ourdomain.tlumaczenia.databinding.FragmentQuickTranslationBinding
+import pl.ourdomain.tlumaczenia.dataclasses.Language
 import java.lang.Exception
 
 class QuickTranslationFragment : Fragment() {
@@ -24,7 +25,7 @@ class QuickTranslationFragment : Fragment() {
     private lateinit var myContext: Context
     private var isAttached: Boolean = false
 
-    private lateinit var supportedLanguages: MutableList<String>
+    private var supportedLanguages: List<Language>? = null
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -36,7 +37,18 @@ class QuickTranslationFragment : Fragment() {
             translate(view)
         }
 
-        initLangSpinner()
+        // get supported languages from server and init spinner
+        disableTranslateButton()
+        GlobalScope.launch {
+            fetchSupportedLanguages()
+
+            Handler(myContext.mainLooper).post {
+                if (supportedLanguages != null) {
+                    initLangSpinner()
+                    enableTranslateButton()
+                }
+            }
+        }
 
         return binding.root
     }
@@ -90,7 +102,7 @@ class QuickTranslationFragment : Fragment() {
 
                 binding.translatedText.text = translated
             } catch (e: Exception) {
-                e.printStackTrace()
+                Log.e("TRANSLATE", e.toString())
 
                 binding.translatedText.text = ""
                 displayToast(getString(R.string.toast_translation_error), Toast.LENGTH_LONG)
@@ -104,24 +116,33 @@ class QuickTranslationFragment : Fragment() {
         }
     }
 
+    private fun fetchSupportedLanguages() {
+        try {
+            supportedLanguages = API.fetchSupportedLanguages()
+        } catch (e: Exception) {
+            Log.e("TRANSLATE", e.toString())
+        }
+    }
+
     private fun initLangSpinner() {
-        //TODO getting it from the server
-        GlobalScope.launch {
-            try {
-                val data = API.fetchSupportedLanguages()
-                print(data)
-            } catch (e: Exception) {
-                e.printStackTrace()
+        if (supportedLanguages == null) {
+            return
+        }
+
+        // extract supported languages list from classes
+        val spinnerLanguages = mutableListOf<String>()
+        for (lang in supportedLanguages!!) {
+            // WE ONLY TRANSLATE FROM/TO polish language
+            if (lang.polishName != "polski") {
+                spinnerLanguages.add(lang.polishName)
             }
         }
 
-        supportedLanguages = mutableListOf("angielski", "polski", "hiszpański")
-        supportedLanguages.remove("polski")
-
+        // Setup spinner
         val myAdapter = ArrayAdapter(
             myContext,
             android.R.layout.simple_spinner_item,
-            supportedLanguages
+            spinnerLanguages
         )
         myAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
 

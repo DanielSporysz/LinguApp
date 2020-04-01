@@ -50,7 +50,7 @@ object API {
         val response = get(data, "languages/")
 
         // Scrap languages data from response
-        val regex = Regex("\\{(.*?)}")
+        val regex = Regex("\\{(.*?)\\}")
         val matches = regex.findAll(String(response.data))
         val jsonList = mutableListOf<String>()
         matches.forEach { f ->
