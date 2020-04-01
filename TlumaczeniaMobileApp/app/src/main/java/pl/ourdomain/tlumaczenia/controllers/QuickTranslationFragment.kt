@@ -27,6 +27,8 @@ class QuickTranslationFragment : Fragment() {
 
     private var supportedLanguages: List<Language>? = null
 
+    private var invertedTranslation = false
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -92,20 +94,30 @@ class QuickTranslationFragment : Fragment() {
             return
         }
 
+        val text = binding.originalText.text.toString()
+        var srcLang = binding.langSpinner.selectedItem.toString().let { getShortLangName(it) }
+        // WE ONLY TRANSLATE FROM/TO polish language
+        var dstLang = "pl"
+
+        // Swap if translation languages is inverted
+        if (invertedTranslation) {
+            srcLang = dstLang.also { dstLang = srcLang }
+        }
+
         GlobalScope.launch {
-            // Get translation and display it
             try {
-                val original = binding.originalText.text.toString()
-                val source_lang = binding.langSpinner.selectedItem.toString()
+                // Get translation
+                val translated = API.translate(text, srcLang, dstLang)
 
-                val translated = API.translate(original)
-
+                // Display translation
                 binding.translatedText.text = translated
             } catch (e: Exception) {
-                Log.e("TRANSLATE", e.toString())
+                Log.e("TRANSLATE", e.toString(), e)
 
                 binding.translatedText.text = ""
-                displayToast(getString(R.string.toast_translation_error), Toast.LENGTH_LONG)
+                Handler(myContext.mainLooper).post {
+                    displayToast(getString(R.string.toast_translation_error), Toast.LENGTH_LONG)
+                }
             }
 
             // Enable translation button with delay to prevent flooding of requests
@@ -116,11 +128,27 @@ class QuickTranslationFragment : Fragment() {
         }
     }
 
+    private fun getShortLangName(polishLangName: String): String{
+        if (supportedLanguages == null){
+            throw Exception("Supported languages list is not initialized!")
+        }
+
+        // Find the language class
+        for (lang in this.supportedLanguages!!){
+            if (lang.polishName == polishLangName){
+                return lang.shortName
+            }
+        }
+
+        // If not found
+        throw Exception("Short name was not found in the list!")
+    }
+
     private fun fetchSupportedLanguages() {
         try {
             supportedLanguages = API.fetchSupportedLanguages()
         } catch (e: Exception) {
-            Log.e("TRANSLATE", e.toString())
+            Log.e("TRANSLATE", e.toString(), e)
         }
     }
 

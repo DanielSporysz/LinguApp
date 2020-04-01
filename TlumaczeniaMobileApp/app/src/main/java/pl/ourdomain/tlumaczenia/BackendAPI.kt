@@ -20,7 +20,7 @@ object API {
         return response
     }
 
-    private fun get(data: JSONObject, path: String): Response{
+    private fun get(data: JSONObject, path: String): Response {
         val (_, response, _) = Fuel.get(SERVER_IP + path)
             .header("Content-Type" to "application/json")
             .body(data.toString())
@@ -28,9 +28,11 @@ object API {
         return response
     }
 
-    fun translate(text: String): String {
+    fun translate(text: String, srcLang: String, dstLang: String): String {
         val data = JSONObject()
         data.put("text", text)
+        data.put("src_lang", srcLang)
+        data.put("destination_lang", dstLang)
 
         val response = post(data, "translate/")
 
@@ -63,7 +65,7 @@ object API {
 
         // Map to Kotlin Objects
         val languages = mutableListOf<Language>()
-        for(json in jsonList){
+        for (json in jsonList) {
             val gson = GsonBuilder().create()
             val language = gson.fromJson(json, Language::class.java)
             languages.add(language)
