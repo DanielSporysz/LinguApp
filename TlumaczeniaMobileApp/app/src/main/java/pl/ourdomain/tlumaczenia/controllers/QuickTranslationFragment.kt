@@ -56,7 +56,31 @@ class QuickTranslationFragment : Fragment() {
             }
         }
 
+        // Restore fragment
+        if (savedInstanceState != null) {
+            Log.i("TRANSLATION", "Restoring fragment")
+            invertedTranslation = savedInstanceState.getBoolean("invertedTranslation")
+        }
+
         return binding.root
+    }
+
+    override fun onSaveInstanceState(outState: Bundle) {
+        super.onSaveInstanceState(outState)
+        outState.putBoolean("invertedTranslation", invertedTranslation)
+    }
+
+    override fun onResume() {
+        super.onResume()
+
+        Log.i("TRANSLATION", "Resuming..")
+        // TODO a better way of UI updating after rotation
+        GlobalScope.launch {
+            delay(250)
+            Handler(myContext.mainLooper).post {
+                synchronizePositions()
+            }
+        }
     }
 
     override fun onAttach(context: Context) {
@@ -70,24 +94,12 @@ class QuickTranslationFragment : Fragment() {
         isAttached = false
     }
 
-    override fun onResume() {
-        super.onResume()
-
-        // When the screen has been rotated
-        synchronizePositions()
-    }
-
-    private fun validateFields(): Pair<Boolean, String?> {
-        return if (binding.srcText.text.isBlank()
-        ) {
-            Pair(false, getString(R.string.toast_fill_all_fields))
-        } else {
-            Pair(true, null)
-        }
-    }
-
-    private fun synchronizePositions(){
-        if(invertedTranslation){
+    private fun synchronizePositions() {
+        // check if translation has been inverted
+        if (invertedTranslation) {
+            // negate swapTranslation function call
+            invertedTranslation = !invertedTranslation
+            // synchronize UI with the state
             swapTranslation(0)
         }
     }
@@ -131,6 +143,15 @@ class QuickTranslationFragment : Fragment() {
                 duration = receivedDuration
                 start()
             }
+    }
+
+    private fun validateFields(): Pair<Boolean, String?> {
+        return if (binding.srcText.text.isBlank()
+        ) {
+            Pair(false, getString(R.string.toast_fill_all_fields))
+        } else {
+            Pair(true, null)
+        }
     }
 
     private fun translate() {
