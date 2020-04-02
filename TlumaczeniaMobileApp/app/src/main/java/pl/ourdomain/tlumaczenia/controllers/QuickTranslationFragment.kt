@@ -1,5 +1,6 @@
 package pl.ourdomain.tlumaczenia.controllers
 
+import android.animation.ObjectAnimator
 import android.content.Context
 import android.os.Bundle
 import android.os.Handler
@@ -9,19 +10,15 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ArrayAdapter
 import android.widget.Toast
-import androidx.constraintlayout.widget.ConstraintSet
 import androidx.fragment.app.Fragment
-import androidx.transition.*
-import kotlinx.android.synthetic.main.fragment_learning_methods.*
-import kotlinx.android.synthetic.main.fragment_quick_translation.*
 import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.NonCancellable.start
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import pl.ourdomain.tlumaczenia.API
 import pl.ourdomain.tlumaczenia.R
 import pl.ourdomain.tlumaczenia.databinding.FragmentQuickTranslationBinding
 import pl.ourdomain.tlumaczenia.dataclasses.Language
-import java.lang.Exception
 
 class QuickTranslationFragment : Fragment() {
 
@@ -42,8 +39,8 @@ class QuickTranslationFragment : Fragment() {
         binding.translateButton.setOnClickListener {
             translate()
         }
-        binding.spinnersScene.swapArrows.setOnClickListener{
-            swapTranslation()
+        binding.spinnersScene.swapArrows.setOnClickListener {
+            swapTranslation(500L)
         }
 
         // get supported languages from server and init spinner
@@ -73,6 +70,13 @@ class QuickTranslationFragment : Fragment() {
         isAttached = false
     }
 
+    override fun onResume() {
+        super.onResume()
+
+        // When the screen has been rotated
+        synchronizePositions()
+    }
+
     private fun validateFields(): Pair<Boolean, String?> {
         return if (binding.srcText.text.isBlank()
         ) {
@@ -82,33 +86,51 @@ class QuickTranslationFragment : Fragment() {
         }
     }
 
-//    private val constraintSet1 = ConstraintSet()
-//    private val constraintSet2 = ConstraintSet()
+    private fun synchronizePositions(){
+        if(invertedTranslation){
+            swapTranslation(0)
+        }
+    }
 
-    private fun swapTranslation(){
+    private fun swapTranslation(duration: Long) {
         invertedTranslation = !invertedTranslation
 
-        val sceneRoot: ViewGroup = binding.translationLayout
-        val scene: Scene = Scene.getSceneForLayout(sceneRoot, R.layout.scene_translation_spinners, myContext)
-        val invertedScene: Scene = Scene.getSceneForLayout(sceneRoot, R.layout.scene_translation_spinners_inverted, myContext)
-
-//        var fadeTransition: Transition =
-//            TransitionInflater.from(myContext)
-//                .inflateTransition(R.transition.fade_transition)
-        var fadeTransition: Transition = Fade()
-
-        if (invertedTranslation){
-            TransitionManager.go(invertedScene, fadeTransition)
+        // Calculate translation
+        val spinnerLoc = binding.spinnersScene.langSpinner.left
+        val textLoc = binding.spinnersScene.langText.left
+        val deltaSpinner: Float
+        val deltaText: Float
+        if (invertedTranslation) {
+            deltaSpinner = (textLoc - spinnerLoc).toFloat()
+            deltaText = (spinnerLoc - textLoc).toFloat()
         } else {
-            TransitionManager.go(scene, fadeTransition)
+            deltaSpinner = 0f
+            deltaText = 0f
         }
 
-//        constraintSet1.clone(translationLayout)
-//        constraintSet2.clone(myContext, R.layout.fragment_quick_translation_keyframe1)
-//
-//        TransitionManager.beginDelayedTransition(constraintLayout)
-//        val constrain = if(invertedTranslation) constraintSet2 else constraintSet1
-//        constrain.applyTo(constraintLayout)
+        // Animate spinner
+        animate(
+            binding.spinnersScene.langSpinner,
+            "translationX",
+            deltaSpinner, duration
+        )
+
+        // Animate text
+        animate(
+            binding.spinnersScene.langText,
+            "translationX",
+            deltaText, duration
+        )
+    }
+
+    private fun animate(view: View, property: String, distance: Float, receivedDuration: Long) {
+        ObjectAnimator.ofFloat(
+            view, property, distance
+        )
+            .apply {
+                duration = receivedDuration
+                start()
+            }
     }
 
     private fun translate() {
@@ -131,7 +153,8 @@ class QuickTranslationFragment : Fragment() {
         }
 
         val text = binding.srcText.text.toString()
-        var srcLang = binding.spinnersScene.langSpinner.selectedItem.toString().let { getShortLangName(it) }
+        var srcLang =
+            binding.spinnersScene.langSpinner.selectedItem.toString().let { getShortLangName(it) }
         // WE ONLY TRANSLATE FROM/TO polish language
         var dstLang = "pl"
 
@@ -164,14 +187,14 @@ class QuickTranslationFragment : Fragment() {
         }
     }
 
-    private fun getShortLangName(polishLangName: String): String{
-        if (supportedLanguages == null){
+    private fun getShortLangName(polishLangName: String): String {
+        if (supportedLanguages == null) {
             throw Exception("Supported languages list is not initialized!")
         }
 
         // Find the language class
-        for (lang in this.supportedLanguages!!){
-            if (lang.polishName == polishLangName){
+        for (lang in this.supportedLanguages!!) {
+            if (lang.polishName == polishLangName) {
                 return lang.shortName
             }
         }
