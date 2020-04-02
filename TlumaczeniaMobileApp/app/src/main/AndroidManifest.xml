@@ -12,9 +12,9 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".Menu"></activity>
+        <activity android:name=".controllers.Menu"></activity>
         <activity
-            android:name=".MainActivity"
+            android:name=".controllers.MainActivity"
             android:screenOrientation="fullSensor"
             android:windowSoftInputMode="adjustResize">
             <intent-filter>

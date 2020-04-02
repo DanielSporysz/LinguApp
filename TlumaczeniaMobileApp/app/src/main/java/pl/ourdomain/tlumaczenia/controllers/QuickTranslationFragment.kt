@@ -39,7 +39,7 @@ class QuickTranslationFragment : Fragment() {
         binding.translateButton.setOnClickListener {
             translate()
         }
-        binding.spinnersScene.swapArrows.setOnClickListener {
+        binding.swapArrows.setOnClickListener {
             swapTranslation(500L)
         }
 
@@ -108,8 +108,8 @@ class QuickTranslationFragment : Fragment() {
         invertedTranslation = !invertedTranslation
 
         // Calculate translation
-        val spinnerLoc = binding.spinnersScene.langSpinner.left
-        val textLoc = binding.spinnersScene.langText.left
+        val spinnerLoc = binding.langSpinner.left
+        val textLoc = binding.langText.left
         val deltaSpinner: Float
         val deltaText: Float
         if (invertedTranslation) {
@@ -122,14 +122,14 @@ class QuickTranslationFragment : Fragment() {
 
         // Animate spinner
         animate(
-            binding.spinnersScene.langSpinner,
+            binding.langSpinner,
             "translationX",
             deltaSpinner, duration
         )
 
         // Animate text
         animate(
-            binding.spinnersScene.langText,
+            binding.langText,
             "translationX",
             deltaText, duration
         )
@@ -175,7 +175,7 @@ class QuickTranslationFragment : Fragment() {
 
         val text = binding.srcText.text.toString()
         var srcLang =
-            binding.spinnersScene.langSpinner.selectedItem.toString().let { getShortLangName(it) }
+            binding.langSpinner.selectedItem.toString().let { getShortLangName(it) }
         // WE ONLY TRANSLATE FROM/TO polish language
         var dstLang = "pl"
 
@@ -254,7 +254,7 @@ class QuickTranslationFragment : Fragment() {
         )
         myAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
 
-        binding.spinnersScene.langSpinner.adapter = myAdapter
+        binding.langSpinner.adapter = myAdapter
     }
 
     private fun disableTranslateButton() {

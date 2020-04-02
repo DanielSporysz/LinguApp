@@ -11,7 +11,6 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.databinding.DataBindingUtil
-import androidx.navigation.findNavController
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
@@ -19,7 +18,6 @@ import pl.ourdomain.tlumaczenia.R
 import pl.ourdomain.tlumaczenia.databinding.FragmentRegisterBinding
 import pl.ourdomain.tlumaczenia.dataclasses.RegisterInfo
 import pl.ourdomain.tlumaczenia.API.registerUser
-import pl.ourdomain.tlumaczenia.Menu
 import pl.ourdomain.tlumaczenia.SessionManager
 import pl.ourdomain.tlumaczenia.exceptions.TakenUsername
 import java.lang.Exception
@@ -46,8 +44,8 @@ class RegisterFragment : Fragment() {
 
         binding.registerInfo = registerInfo
 
-        binding.registerButton.setOnClickListener { view: View ->
-            register(view)
+        binding.registerButton.setOnClickListener {
+            register()
         }
 
         return binding.root
@@ -64,7 +62,7 @@ class RegisterFragment : Fragment() {
         isAttached = false
     }
 
-    private fun register(view: View) {
+    private fun register() {
         // Disable button for the duration of handling the action
         disableRegisterButton()
 

@@ -1,4 +1,4 @@
-package pl.ourdomain.tlumaczenia
+package pl.ourdomain.tlumaczenia.controllers
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
@@ -8,6 +8,8 @@ import android.view.MenuItem
 import androidx.appcompat.widget.Toolbar
 import androidx.navigation.findNavController
 import androidx.navigation.ui.NavigationUI
+import pl.ourdomain.tlumaczenia.R
+import pl.ourdomain.tlumaczenia.SessionManager
 
 class Menu : AppCompatActivity() {
 
@@ -41,7 +43,8 @@ class Menu : AppCompatActivity() {
         when (item.itemId) {
             R.id.action_logout -> {
                 // Logout
-                val sessionManager = SessionManager(this)
+                val sessionManager =
+                    SessionManager(this)
                 sessionManager.logout()
 
                 // Navigate to welcome screen

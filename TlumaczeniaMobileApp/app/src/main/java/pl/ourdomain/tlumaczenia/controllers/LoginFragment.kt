@@ -15,7 +15,6 @@ import androidx.fragment.app.Fragment
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
-import pl.ourdomain.tlumaczenia.Menu
 import pl.ourdomain.tlumaczenia.R
 import pl.ourdomain.tlumaczenia.SessionManager
 import pl.ourdomain.tlumaczenia.databinding.FragmentLoginBinding
@@ -38,8 +37,8 @@ class LoginFragment : Fragment() {
             R.layout.fragment_login, container, false
         )
 
-        binding.loginButton.setOnClickListener { view: View ->
-            login(view)
+        binding.loginButton.setOnClickListener { 
+            login()
         }
 
         return binding.root
@@ -66,7 +65,7 @@ class LoginFragment : Fragment() {
         }
     }
 
-    private fun login(view: View) {
+    private fun login() {
         // Disable button for the duration of handling the action
         disableLoginButton()
 

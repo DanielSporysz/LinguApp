@@ -1,4 +1,4 @@
-package pl.ourdomain.tlumaczenia
+package pl.ourdomain.tlumaczenia.controllers
 
 import android.os.Bundle
 import android.view.Menu
@@ -7,6 +7,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
 import androidx.navigation.findNavController
 import androidx.navigation.ui.NavigationUI
+import pl.ourdomain.tlumaczenia.R
 
 
 class MainActivity : AppCompatActivity() {
