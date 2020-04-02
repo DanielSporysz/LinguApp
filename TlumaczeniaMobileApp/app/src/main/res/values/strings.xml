@@ -23,10 +23,10 @@
     <string name="button_login">zaloguj</string>
     <string name="button_confirm">zatwierdź</string>
 
-    <string name="button_translate_words">tłumacz słowka</string>
-    <string name="button_learn_words">nauka języka</string>
-    <string name="button_tests">testy sprawdzające wiedzę</string>
-    <string name="button_open_site_to_translate">wgraj stronę do tłumaczeń</string>
+    <string name="button_translate_words">tłumacz</string>
+    <string name="button_saved_translations_section">zapisane słówka</string>
+    <string name="button_learn_section">nauka</string>
+    <string name="button_open_site_to_translate">otwórz w przeglądarce</string>
 
     <string name="text_original_lang">język oryginalny</string>
     <string name="text_target_lang">język docelowy</string>

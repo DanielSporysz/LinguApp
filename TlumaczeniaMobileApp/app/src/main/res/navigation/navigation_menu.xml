@@ -21,7 +21,7 @@
         android:id="@+id/quickTranslation"
         android:name="pl.ourdomain.tlumaczenia.controllers.QuickTranslationFragment"
         android:label="@string/label_fragment_translation"
-        tools:layout="@layout/fragment_quick_translation" />
+        tools:layout="@layout/fragment_translation" />
     <fragment
         android:id="@+id/choseLanguage"
         android:name="pl.ourdomain.tlumaczenia.controllers.ChoseLanguageFragment"

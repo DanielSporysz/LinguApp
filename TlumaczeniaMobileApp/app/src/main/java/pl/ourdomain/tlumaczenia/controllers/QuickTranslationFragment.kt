@@ -17,12 +17,12 @@ import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import pl.ourdomain.tlumaczenia.API
 import pl.ourdomain.tlumaczenia.R
-import pl.ourdomain.tlumaczenia.databinding.FragmentQuickTranslationBinding
+import pl.ourdomain.tlumaczenia.databinding.FragmentTranslationBinding
 import pl.ourdomain.tlumaczenia.dataclasses.Language
 
 class QuickTranslationFragment : Fragment() {
 
-    private lateinit var binding: FragmentQuickTranslationBinding
+    private lateinit var binding: FragmentTranslationBinding
     private lateinit var myContext: Context
     private var isAttached: Boolean = false
 
@@ -34,7 +34,7 @@ class QuickTranslationFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        binding = FragmentQuickTranslationBinding.inflate(inflater, container, false)
+        binding = FragmentTranslationBinding.inflate(inflater, container, false)
 
         binding.translateButton.setOnClickListener {
             translate()

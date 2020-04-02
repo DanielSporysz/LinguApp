@@ -46,7 +46,7 @@
                         android:id="@+id/translateWordsButton"
                         android:layout_width="250dp"
                         android:layout_height="50dp"
-                        android:background="@drawable/rounded_text_field"
+                        android:background="@drawable/rounded_button"
                         android:fontFamily="@font/lora"
                         android:text="@string/button_translate_words"
                         android:textColor="@color/colorText"
@@ -55,30 +55,30 @@
                         app:layout_constraintTop_toTopOf="parent" />
 
                     <Button
-                        android:id="@+id/learnButton"
+                        android:id="@+id/savedWordsButton"
                         android:layout_width="250dp"
                         android:layout_height="50dp"
                         android:layout_marginTop="15dp"
-                        android:background="@drawable/rounded_text_field"
+                        android:background="@drawable/rounded_button"
                         android:fontFamily="@font/lora"
-                        android:text="@string/button_learn_words"
+                        android:text="@string/button_saved_translations_section"
                         android:textColor="@color/colorText"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@+id/translateWordsButton" />
 
                     <Button
-                        android:id="@+id/testsButton"
+                        android:id="@+id/learnButton"
                         android:layout_width="250dp"
                         android:layout_height="50dp"
                         android:layout_marginTop="15dp"
-                        android:background="@drawable/rounded_text_field"
+                        android:background="@drawable/rounded_button"
                         android:fontFamily="@font/lora"
-                        android:text="@string/button_tests"
+                        android:text="@string/button_learn_section"
                         android:textColor="@color/colorText"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/learnButton" />
+                        app:layout_constraintTop_toBottomOf="@+id/savedWordsButton" />
 
                     <Button
                         android:id="@+id/siteButton"
@@ -91,7 +91,7 @@
                         android:textColor="@color/colorText"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/testsButton" />
+                        app:layout_constraintTop_toBottomOf="@+id/learnButton" />
 
                 </androidx.constraintlayout.widget.ConstraintLayout>
 

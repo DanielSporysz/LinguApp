@@ -46,7 +46,7 @@ class WelcomeFragment : Fragment() {
         super.onStart()
         if (checkIfAlreadyLoggedIn()) {
             // Navigate to Menu Activity if logged in
-            val intent = Intent(myContext, Menu::class.java)
+            val intent = Intent(myContext, MainMenuActivity::class.java)
             intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
             activity?.finish()
             myContext.startActivity(intent)

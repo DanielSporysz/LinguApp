@@ -11,11 +11,11 @@ import androidx.navigation.ui.NavigationUI
 import pl.ourdomain.tlumaczenia.R
 import pl.ourdomain.tlumaczenia.SessionManager
 
-class Menu : AppCompatActivity() {
+class MainMenuActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_menu)
+        setContentView(R.layout.activity_main_menu)
 
         // Setup Toolbar
         val toolbar: Toolbar = findViewById<Toolbar>(R.id.my_toolbar)

@@ -116,7 +116,7 @@ class RegisterFragment : Fragment() {
                     )
 
                     // Navigate to Menu Activity
-                    val intent = Intent(myContext, Menu::class.java)
+                    val intent = Intent(myContext, MainMenuActivity::class.java)
                     intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
                     activity?.finish()
                     myContext.startActivity(intent)

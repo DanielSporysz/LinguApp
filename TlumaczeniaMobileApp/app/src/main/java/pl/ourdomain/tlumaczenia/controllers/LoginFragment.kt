@@ -37,7 +37,7 @@ class LoginFragment : Fragment() {
             R.layout.fragment_login, container, false
         )
 
-        binding.loginButton.setOnClickListener { 
+        binding.loginButton.setOnClickListener {
             login()
         }
 
@@ -117,7 +117,7 @@ class LoginFragment : Fragment() {
                     )
 
                     // Navigate to Menu Activity
-                    val intent = Intent(myContext, Menu::class.java)
+                    val intent = Intent(myContext, MainMenuActivity::class.java)
                     activity?.finish()
                     myContext.startActivity(intent)
                 } else if (!errorOccurred) {
