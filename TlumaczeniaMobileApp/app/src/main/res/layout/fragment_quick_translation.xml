@@ -5,6 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <ScrollView
+        android:id="@+id/masterLayout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@drawable/col_main_app_theme"
@@ -19,27 +20,17 @@
             android:orientation="vertical">
 
             <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/translationLayout"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:background="@drawable/col_main_app_theme">
 
-
-                <Spinner
-                    android:id="@+id/lang_spinner"
-                    android:layout_width="0dp"
-                    android:layout_height="45dp"
-                    android:layout_marginStart="30dp"
-                    android:layout_marginTop="70dp"
-                    android:layout_marginEnd="30dp"
-                    android:background="@drawable/rounded_button"
-                    android:popupBackground="@drawable/rounded_button"
-                    android:textAlignment="center"
-                    app:layout_constraintEnd_toStartOf="@+id/swapArrows"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
+                <include
+                    android:id="@+id/spinnersScene"
+                    layout="@layout/scene_translation_spinners" />
 
                 <TextView
-                    android:id="@+id/originalLabel"
+                    android:id="@+id/srcLangLabel"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="30dp"
@@ -49,11 +40,11 @@
                     android:padding="5dp"
                     android:text="@string/text_original_lang"
                     android:textColor="@color/colorText"
-                    app:layout_constraintBottom_toTopOf="@+id/originalText"
-                    app:layout_constraintStart_toStartOf="@+id/originalText" />
+                    app:layout_constraintBottom_toTopOf="@+id/srcText"
+                    app:layout_constraintStart_toStartOf="@+id/srcText" />
 
                 <EditText
-                    android:id="@+id/originalText"
+                    android:id="@+id/srcText"
                     android:layout_width="0dp"
                     android:layout_height="130dp"
                     android:layout_marginStart="30dp"
@@ -71,10 +62,10 @@
                     android:textColorHint="@color/colorText"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/lang_spinner" />
+                    app:layout_constraintTop_toBottomOf="@+id/spinnersScene" />
 
                 <TextView
-                    android:id="@+id/translatedText"
+                    android:id="@+id/dstText"
                     android:layout_width="0dp"
                     android:layout_height="130dp"
                     android:layout_marginStart="30dp"
@@ -88,10 +79,10 @@
                     android:textSize="18sp"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/originalText" />
+                    app:layout_constraintTop_toBottomOf="@+id/srcText" />
 
                 <TextView
-                    android:id="@+id/translatedLabel"
+                    android:id="@+id/dstLangLabel"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="30dp"
@@ -101,19 +92,8 @@
                     android:padding="5dp"
                     android:text="@string/text_target_lang"
                     android:textColor="@color/colorText"
-                    app:layout_constraintBottom_toTopOf="@+id/translatedText"
-                    app:layout_constraintStart_toStartOf="@+id/translatedText" />
-
-                <ImageView
-                    android:id="@+id/swapArrows"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:contentDescription="@string/description_translation_arrows"
-                    app:layout_constraintBottom_toBottomOf="@+id/lang_spinner"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="@+id/lang_spinner"
-                    app:srcCompat="@drawable/ic_translation_arrows" />
+                    app:layout_constraintBottom_toTopOf="@+id/dstText"
+                    app:layout_constraintStart_toStartOf="@+id/dstText" />
 
                 <Button
                     android:id="@+id/translateButton"
@@ -127,7 +107,7 @@
                     android:textColor="@color/colorText"
                     app:layout_constraintBottom_toTopOf="@+id/saveTranslationButton"
                     app:layout_constraintEnd_toEndOf="@+id/saveTranslationButton"
-                    app:layout_constraintTop_toBottomOf="@+id/translatedText" />
+                    app:layout_constraintTop_toBottomOf="@+id/dstText" />
 
                 <Button
                     android:id="@+id/saveTranslationButton"
@@ -143,22 +123,6 @@
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent" />
-
-                <TextView
-                    android:id="@+id/lang"
-                    android:layout_width="0dp"
-                    android:layout_height="45dp"
-                    android:layout_marginStart="30dp"
-                    android:layout_marginTop="70dp"
-                    android:layout_marginEnd="30dp"
-                    android:background="@drawable/rounded_text_field"
-                    android:gravity="center"
-                    android:text="@string/text_polish"
-                    android:textAlignment="center"
-                    android:textColor="@android:color/black"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toEndOf="@+id/swapArrows"
-                    app:layout_constraintTop_toTopOf="parent" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
         </LinearLayout>
