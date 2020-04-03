@@ -61,7 +61,8 @@ class SavedWordsFragment : Fragment() {
 
     private fun fetchSavedWords() {
         try {
-            words = API.fetchSavedWords()
+            val api = API(myContext)
+            words = api.fetchSavedWords()
         } catch (e: Exception) {
             Log.e("SAVED_WORDS", e.toString(), e)
 

@@ -187,7 +187,8 @@ class TranslationFragment : Fragment() {
         GlobalScope.launch {
             try {
                 // Get translation
-                val translated = API.translate(text, srcLang, dstLang)
+                val api = API(myContext)
+                val translated = api.translate(text, srcLang, dstLang)
 
                 // Display translation
                 binding.dstText.text = translated
@@ -226,7 +227,8 @@ class TranslationFragment : Fragment() {
 
     private fun fetchSupportedLanguages() {
         try {
-            supportedLanguages = API.fetchSupportedLanguages()
+            val api = API(myContext)
+            supportedLanguages = api.fetchSupportedLanguages()
         } catch (e: Exception) {
             Log.e("TRANSLATE", e.toString(), e)
         }

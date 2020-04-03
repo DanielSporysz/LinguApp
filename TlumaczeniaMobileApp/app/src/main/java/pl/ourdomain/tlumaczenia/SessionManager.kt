@@ -4,7 +4,6 @@ import android.content.Context
 import android.util.Log
 import org.json.JSONException
 import org.json.JSONObject
-import pl.ourdomain.tlumaczenia.API.fetchAuthToken
 import java.io.File
 import java.io.FileNotFoundException
 import java.lang.Exception
@@ -103,7 +102,8 @@ class SessionManager(receivedContext: Context) {
         if (username == null || password == null) {
             throw Exception("Set credentials first before fetching a token!")
         } else {
-            return fetchAuthToken(username, password)
+            val api = API(context)
+            return api.fetchAuthToken(username, password)
         }
     }
 }

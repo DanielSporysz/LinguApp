@@ -1,40 +1,58 @@
 package pl.ourdomain.tlumaczenia
 
+import android.content.Context
+import android.content.SharedPreferences
 import com.github.kittinunf.fuel.Fuel
 import com.github.kittinunf.fuel.core.Response
 import com.google.gson.GsonBuilder
 import org.json.JSONObject
+import pl.ourdomain.tlumaczenia.controllers.SettingsFragment
 import pl.ourdomain.tlumaczenia.dataclasses.Language
 import pl.ourdomain.tlumaczenia.dataclasses.Translation
 import pl.ourdomain.tlumaczenia.exceptions.InvalidCredentials
 import pl.ourdomain.tlumaczenia.exceptions.TakenUsername
 
-object API {
 
-    private const val SERVER_IP = "http://192.168.1.15:5000/"
+class API(receivedContext: Context) {
+
+    private var context: Context = receivedContext
+
+    private var preferences: SharedPreferences
+
+    init {
+        preferences = context.getSharedPreferences(
+            context.getString(R.string.file_name_preferences),
+            Context.MODE_PRIVATE
+        )
+    }
 
     private fun post(data: JSONObject, path: String): Response {
-        val (_, response, _) = Fuel.post(SERVER_IP + path)
-            .header("Content-Type" to "form-data")
+        val ip = preferences.getString(
+            context.getString(R.string.settings_server_ip_key),
+            context.getString(R.string.settings_server_ip_default)
+        )
+
+        val (_, response, _) = Fuel.post(ip + path)
+            .header("Content-Type" to "application/json")
             .body(data.toString())
             .response()
         return response
     }
 
     private fun get(data: JSONObject, path: String): Response {
+        val ip = preferences.getString(
+            context.getString(R.string.settings_server_ip_key),
+            context.getString(R.string.settings_server_ip_default)
+        )
+
         val myParams = mutableListOf<Pair<String, Any?>>()
-        for (key in data.keys()){
+        for (key in data.keys()) {
             myParams.add(Pair(key, data.get(key)))
         }
 
-        //TODO remove body
-        val (sent, response, _) = Fuel.get(SERVER_IP + path, myParams)
-            .body(data.toString())
-            .header("Content-Type" to "multipart/form-data")
+        val (sent, response, _) = Fuel.get(ip + path, myParams)
             .response()
 
-        //TODO remove test
-        val test  = sent.toString()
         return response
     }
 

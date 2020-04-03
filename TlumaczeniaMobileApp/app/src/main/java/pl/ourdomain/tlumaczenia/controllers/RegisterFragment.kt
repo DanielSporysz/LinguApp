@@ -14,10 +14,10 @@ import androidx.databinding.DataBindingUtil
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
+import pl.ourdomain.tlumaczenia.API
 import pl.ourdomain.tlumaczenia.R
 import pl.ourdomain.tlumaczenia.databinding.FragmentRegisterBinding
 import pl.ourdomain.tlumaczenia.dataclasses.RegisterInfo
-import pl.ourdomain.tlumaczenia.API.registerUser
 import pl.ourdomain.tlumaczenia.SessionManager
 import pl.ourdomain.tlumaczenia.exceptions.TakenUsername
 import java.lang.Exception
@@ -87,7 +87,8 @@ class RegisterFragment : Fragment() {
             var isRegistered = false
             var errorMessage: String? = null
             try {
-                token = registerUser(registerInfo.username, registerInfo.password)
+                val api = API(myContext)
+                token = api.registerUser(registerInfo.username, registerInfo.password)
                 isRegistered = true
             } catch (e: TakenUsername) {
                 errorMessage = getString(R.string.toast_taken_username)
