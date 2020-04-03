@@ -17,6 +17,7 @@ import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import pl.ourdomain.tlumaczenia.API
 import pl.ourdomain.tlumaczenia.R
+import pl.ourdomain.tlumaczenia.SessionManager
 import pl.ourdomain.tlumaczenia.databinding.FragmentTranslationBinding
 import pl.ourdomain.tlumaczenia.dataclasses.Language
 
@@ -194,7 +195,7 @@ class TranslationFragment : Fragment() {
             try {
                 // Get translation
                 val api = API(myContext)
-                val translated = api.translate(text, srcLang, dstLang)
+                val translated = api.translate(text, srcLang, dstLang, SessionManager.authToken.toString())
 
                 // Display translation
                 binding.dstText.text = translated
@@ -245,7 +246,7 @@ class TranslationFragment : Fragment() {
     private fun fetchSupportedLanguages() {
         try {
             val api = API(myContext)
-            supportedLanguages = api.fetchSupportedLanguages()
+            supportedLanguages = api.fetchSupportedLanguages(SessionManager.authToken.toString())
         } catch (e: Exception) {
             Log.e("TRANSLATE", e.toString(), e)
         }

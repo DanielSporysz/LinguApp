@@ -14,6 +14,7 @@ import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
 import pl.ourdomain.tlumaczenia.API
 import pl.ourdomain.tlumaczenia.R
+import pl.ourdomain.tlumaczenia.SessionManager
 import pl.ourdomain.tlumaczenia.databinding.FragmentSavedWordsBinding
 import pl.ourdomain.tlumaczenia.dataclasses.Translation
 import java.lang.Exception
@@ -67,7 +68,7 @@ class SavedWordsFragment : Fragment() {
     private fun fetchSavedWords() {
         try {
             val api = API(myContext)
-            words = api.fetchSavedWords()
+            words = api.fetchSavedWords(SessionManager.authToken.toString())
         } catch (e: Exception) {
             Log.e("SAVED_WORDS", e.toString(), e)
 

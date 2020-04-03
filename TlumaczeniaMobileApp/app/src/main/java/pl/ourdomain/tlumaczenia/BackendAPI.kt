@@ -50,17 +50,18 @@ class API(receivedContext: Context) {
             myParams.add(Pair(key, data.get(key)))
         }
 
-        val (sent, response, _) = Fuel.get(ip + path, myParams)
+        val (_, response, _) = Fuel.get(ip + path, myParams)
             .response()
 
         return response
     }
 
-    fun translate(text: String, srcLang: String, dstLang: String): String {
+    fun translate(text: String, srcLang: String, dstLang: String, token: String): String {
         val data = JSONObject()
         data.put("text", text)
         data.put("src_lang", srcLang)
         data.put("destination_lang", dstLang)
+        data.put("token", token)
 
         val response = post(data, "translate/")
 
@@ -74,9 +75,10 @@ class API(receivedContext: Context) {
         }
     }
 
-    fun fetchSavedWords(): List<Translation> {
+    fun fetchSavedWords(token: String): List<Translation> {
         val data = JSONObject()
-        data.put("lang", "english")
+        //data.put("lang", "english")
+        data.put("token", token)
 
         val response = get(data, "vocabulary/")
 
@@ -109,8 +111,9 @@ class API(receivedContext: Context) {
         }
     }
 
-    fun fetchSupportedLanguages(): List<Language> {
+    fun fetchSupportedLanguages(token: String): List<Language> {
         val data = JSONObject()
+        data.put("token", token)
 
         val response = get(data, "languages/")
 
