@@ -60,9 +60,9 @@
     <string name="label_fragment_choose_language">Wybierz język</string>
     <string name="label_fragment_methods">Metody nauczania</string>
     <string name="text_polish">polski</string>
-
-    <string-array name="supported_languages">
-        <item>polski</item>
-        <item>angielski</item>
-    </string-array>
+    <string name="label_fragment_settings">Ustawienia</string>
+    <string name="settings_server_ip_text">IP serwera</string>
+    <string name="settings_server_ip_key">serverIp</string>
+    <string name="settings_server_ip_default">http://192.168.1.15:5000/</string>
+    <string name="file_name_preferences">LinguAppPreferencesFile</string>
 </resources>

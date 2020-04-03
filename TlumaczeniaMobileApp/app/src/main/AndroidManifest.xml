@@ -12,7 +12,13 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".controllers.MainMenuActivity"></activity>
+        <activity
+            android:name=".controllers.SettingsActivity"
+            android:theme="@style/Theme.AppCompat"
+            android:label="@string/label_fragment_settings">
+
+        </activity>
+        <activity android:name=".controllers.MainMenuActivity" />
         <activity
             android:name=".controllers.MainActivity"
             android:screenOrientation="fullSensor"

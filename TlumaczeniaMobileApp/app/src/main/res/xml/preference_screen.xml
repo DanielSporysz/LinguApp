@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@drawable/col_main_app_theme"
+    android:defaultValue="true"
+    app:defaultValue="true">
+
+    <EditTextPreference
+        android:defaultValue="false"
+        android:key="@string/settings_server_ip_key"
+        android:selectAllOnFocus="true"
+        android:singleLine="true"
+        android:title="@string/settings_server_ip_text"
+        app:defaultValue="@string/settings_server_ip_default" />
+
+</PreferenceScreen>

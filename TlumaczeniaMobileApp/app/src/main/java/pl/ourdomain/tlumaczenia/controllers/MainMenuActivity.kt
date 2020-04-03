@@ -56,6 +56,9 @@ class MainMenuActivity : AppCompatActivity() {
                 return true
             }
             R.id.action_settings -> {
+                val intent = Intent(this, SettingsActivity::class.java)
+                startActivity(intent)
+
                 return true
             }
         }

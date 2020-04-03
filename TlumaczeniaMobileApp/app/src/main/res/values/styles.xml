@@ -12,4 +12,8 @@
         <item name="android:background">#86DAB1</item>
         <item name="android:textColor">#FFFFFF</item>
     </style>
+
+    <style name="PreferencesTheme">
+        <item name="android:theme">@style/Theme.AppCompat</item>
+    </style>
 </resources>
