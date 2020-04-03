@@ -11,6 +11,7 @@ import android.view.ViewGroup
 import android.widget.ArrayAdapter
 import android.widget.Toast
 import androidx.fragment.app.Fragment
+import kotlinx.android.synthetic.main.fragment_translator.*
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.NonCancellable.start
 import kotlinx.coroutines.delay
@@ -42,6 +43,9 @@ class TranslatorFragment : Fragment() {
         }
         binding.swapArrows.setOnClickListener {
             swapTranslation(500L)
+        }
+        binding.saveTranslationButton.setOnClickListener {
+            saveTranslation()
         }
 
         // get supported languages from server and init spinner
@@ -93,6 +97,46 @@ class TranslatorFragment : Fragment() {
     override fun onDetach() {
         super.onDetach()
         isAttached = false
+    }
+
+    private fun saveTranslation() {
+        // Read the fields
+        val language = binding.langSpinner.selectedItem.toString().let { getShortLangName(it) }
+        var srcText = binding.srcText.text.toString()
+        var dstText = binding.dstText.text.toString()
+
+        if (invertedTranslation) {
+            srcText = dstText.also { dstText = srcText }
+        }
+
+        // Save on server
+        GlobalScope.launch {
+            var message: String? = null
+            
+            try {
+                val api = API(myContext)
+                SessionManager.authToken?.let {
+                    api.saveTranslation(
+                        it,
+                        srcText,
+                        dstText,
+                        language
+                    )
+                }
+
+                message = getString(R.string.toast_saved)
+            } catch (e: java.lang.Exception) {
+                Log.e("TRANSLATION", e.toString(), e)
+                message = getString(R.string.toast_internal_error)
+            }
+
+            // Feedback to user
+            if (isAttached) {
+                Handler(myContext.mainLooper).post {
+                    displayToast(message, Toast.LENGTH_SHORT)
+                }
+            }
+        }
     }
 
     private fun synchronizePositions() {
@@ -169,7 +213,7 @@ class TranslatorFragment : Fragment() {
                 delay(2000)
 
                 // User could leave the fragment by this time
-                if(!isAttached){
+                if (!isAttached) {
                     return@launch
                 }
 
@@ -195,7 +239,8 @@ class TranslatorFragment : Fragment() {
             try {
                 // Get translation
                 val api = API(myContext)
-                val translated = api.translate(text, srcLang, dstLang, SessionManager.authToken.toString())
+                val translated =
+                    api.translate(text, srcLang, dstLang, SessionManager.authToken.toString())
 
                 // Display translation
                 binding.dstText.text = translated
@@ -203,7 +248,7 @@ class TranslatorFragment : Fragment() {
                 Log.e("TRANSLATE", e.toString(), e)
 
                 // User could leave the fragment by this time
-                if(!isAttached){
+                if (!isAttached) {
                     return@launch
                 }
 
@@ -217,7 +262,7 @@ class TranslatorFragment : Fragment() {
             delay(250)
 
             // User could leave the fragment by this time
-            if(!isAttached){
+            if (!isAttached) {
                 return@launch
             }
 

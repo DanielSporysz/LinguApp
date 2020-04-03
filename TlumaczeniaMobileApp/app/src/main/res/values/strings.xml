@@ -69,4 +69,5 @@
     <string name="placeholder_saved_translation_src">Tekst źródłowy</string>
     <string name="placeholder_saved_translation_dst">Tekst przetłumaczony</string>
     <string name="label_fragment_saved_translations">Zapisane tłumaczenia</string>
+    <string name="toast_saved">Zapisano!</string>
 </resources>
