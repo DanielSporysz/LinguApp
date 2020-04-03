@@ -111,8 +111,8 @@ class TranslatorFragment : Fragment() {
 
         // Save on server
         GlobalScope.launch {
-            var message: String? = null
-            
+            var message: String?
+
             try {
                 val api = API(myContext)
                 SessionManager.authToken?.let {

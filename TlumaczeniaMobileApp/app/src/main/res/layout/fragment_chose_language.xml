@@ -70,32 +70,6 @@
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@+id/choseLanguage" />
 
-                    <Button
-                        android:id="@+id/spainButton"
-                        android:layout_width="250dp"
-                        android:layout_height="50dp"
-                        android:layout_marginTop="15dp"
-                        android:background="@drawable/rounded_button"
-                        android:fontFamily="@font/lora"
-                        android:text="@string/text_spanish"
-                        android:textColor="@color/colorText"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/englishButton" />
-
-                    <Button
-                        android:id="@+id/russianButton"
-                        android:layout_width="250dp"
-                        android:layout_height="50dp"
-                        android:layout_marginTop="15dp"
-                        android:background="@drawable/rounded_button"
-                        android:fontFamily="@font/lora"
-                        android:text="@string/text_russian"
-                        android:textColor="@color/colorText"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/spainButton" />
-
                 </androidx.constraintlayout.widget.ConstraintLayout>
 
                 <ImageView

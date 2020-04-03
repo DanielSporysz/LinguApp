@@ -31,7 +31,7 @@
     <string name="text_original_lang">język oryginalny</string>
     <string name="text_target_lang">język docelowy</string>
     <string name="button_translate">tłumacz</string>
-    <string name="button_save_translation">dodaj tłumaczenie do sekcji nauka</string>
+    <string name="button_save_translation">zapisz tłumaczenie</string>
     <string name="prompt_input_text_to_translation">tekst do tłumaczenia…</string>
     <string name="prompt_translated_text">tłumaczenie</string>
     <string name="description_translation_arrows">strzałki wskazujące kierunek tłumaczenia</string>
@@ -42,9 +42,9 @@
     <string name="text_spanish">hiszpański</string>
 
     <string name="text_pick_learning_method">Wybierz czego chcesz się uczyć</string>
-    <string name="text_words">słówka</string>
-    <string name="text_grammar">gramatyka</string>
-    <string name="text_articles">artykuły</string>
+    <string name="button_quiz">kartkówka</string>
+    <string name="button_abc">ABC</string>
+    <string name="button_lessons">lekcje</string>
     <string name="hint_translation">tłumaczenie…</string>
 
     <string name="toast_message_incorrect_credentials">Podane dane są nieprawidłowe</string>
@@ -57,7 +57,7 @@
     <string name="text_logout">wyloguj</string>
     <string name="label_fragment_translation">Tłumaczenie</string>
     <string name="label_fragment_main_menu">Menu główne</string>
-    <string name="label_fragment_choose_language">Wybierz język</string>
+    <string name="label_fragment_choose_language">Języki</string>
     <string name="label_fragment_methods">Metody nauczania</string>
     <string name="text_polish">polski</string>
     <string name="label_fragment_settings">Ustawienia</string>
@@ -68,6 +68,9 @@
     <string name="placeholder_saved_translation_lang">język</string>
     <string name="placeholder_saved_translation_src">Tekst źródłowy</string>
     <string name="placeholder_saved_translation_dst">Tekst przetłumaczony</string>
-    <string name="label_fragment_saved_translations">Zapisane tłumaczenia</string>
+    <string name="label_fragment_saved_translations">Zapisane słówka</string>
     <string name="toast_saved">Zapisano!</string>
+    <string name="text_translate_it">Przetłumacz:</string>
+    <string name="button_finish">zakończ</string>
+    <string name="hint_translate_it">tłumaczene…</string>
 </resources>

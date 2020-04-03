@@ -38,9 +38,18 @@
         android:id="@+id/learningMethods"
         android:name="pl.ourdomain.tlumaczenia.controllers.LearningMethodsFragment"
         android:label="@string/label_fragment_methods"
-        tools:layout="@layout/fragment_menu_main" />
+        tools:layout="@layout/fragment_menu_main" >
+        <action
+            android:id="@+id/action_learningMethods_to_quizFragment"
+            app:destination="@id/quizFragment" />
+    </fragment>
     <fragment
         android:id="@+id/savedTranslationFragment"
         android:name="pl.ourdomain.tlumaczenia.controllers.SavedTranslationsFragment"
         android:label="@string/label_fragment_saved_translations" />
+    <fragment
+        android:id="@+id/quizFragment"
+        android:name="pl.ourdomain.tlumaczenia.QuizFragment"
+        android:label="QuizFragment"
+        tools:layout="+@layout/quizFragment"/>
 </navigation>

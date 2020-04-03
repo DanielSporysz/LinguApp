@@ -26,12 +26,6 @@ class ChoseLanguageFragment : Fragment() {
         binding.englishButton.setOnClickListener { view: View ->
             view.findNavController().navigate(R.id.action_choseLanguage_to_learningMethods)
         }
-        binding.spainButton.setOnClickListener { view: View ->
-            view.findNavController().navigate(R.id.action_choseLanguage_to_learningMethods)
-        }
-        binding.russianButton.setOnClickListener { view: View ->
-            view.findNavController().navigate(R.id.action_choseLanguage_to_learningMethods)
-        }
 
         return binding.root
     }

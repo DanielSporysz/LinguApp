@@ -29,15 +29,7 @@ class MainMenuFragment : Fragment() {
             R.layout.fragment_menu_main, container, false
         )
 
-        binding.translateWordsButton.setOnClickListener { view: View ->
-            view.findNavController().navigate(R.id.action_menuMain_to_quickTranslation)
-        }
-        binding.savedWordsButton.setOnClickListener { view: View ->
-            view.findNavController().navigate(R.id.action_menuMain_to_savedWordsFragment)
-        }
-        binding.learnButton.setOnClickListener { view: View ->
-            view.findNavController().navigate(R.id.action_menuMain_to_choseLanguage)
-        }
+        initView()
 
         return binding.root
     }
@@ -51,6 +43,18 @@ class MainMenuFragment : Fragment() {
     override fun onDetach() {
         super.onDetach()
         isAttached = false
+    }
+
+    private fun initView(){
+        binding.translateWordsButton.setOnClickListener { view: View ->
+            view.findNavController().navigate(R.id.action_menuMain_to_quickTranslation)
+        }
+        binding.savedWordsButton.setOnClickListener { view: View ->
+            view.findNavController().navigate(R.id.action_menuMain_to_savedWordsFragment)
+        }
+        binding.learnButton.setOnClickListener { view: View ->
+            view.findNavController().navigate(R.id.action_menuMain_to_choseLanguage)
+        }
     }
 
     private fun logout() {

@@ -1,4 +1,4 @@
-package pl.ourdomain.tlumaczenia.controllers
+package pl.ourdomain.tlumaczenia
 
 import android.content.Context
 import android.os.Bundle
@@ -13,29 +13,28 @@ import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.LinearLayoutManager
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
-import pl.ourdomain.tlumaczenia.API
-import pl.ourdomain.tlumaczenia.R
-import pl.ourdomain.tlumaczenia.SessionManager
+import pl.ourdomain.tlumaczenia.adapters.QuizAdapter
 import pl.ourdomain.tlumaczenia.adapters.TranslationsAdapter
-import pl.ourdomain.tlumaczenia.databinding.FragmentSavedTranslationsBinding
+import pl.ourdomain.tlumaczenia.databinding.FragmentQuizBinding
 import pl.ourdomain.tlumaczenia.dataclasses.Translation
 import java.lang.Exception
 
-class SavedTranslationsFragment : Fragment() {
+class QuizFragment : Fragment() {
 
-    private lateinit var binding: FragmentSavedTranslationsBinding
+    private lateinit var binding: FragmentQuizBinding
 
     private lateinit var myContext: Context
     private var isAttached: Boolean = false
 
-    private var words: List<Translation>? = null
+    private var translations: List<Translation>? = null
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         binding = DataBindingUtil.inflate(
-            inflater, R.layout.fragment_saved_translations, container, false
+            inflater,
+            R.layout.fragment_quiz, container, false
         )
 
         initView()
@@ -54,45 +53,42 @@ class SavedTranslationsFragment : Fragment() {
         isAttached = false
     }
 
-    private fun initView(){
-        // Fetch saved translations
+    private fun initView() {
         GlobalScope.launch {
-            fetchSavedTranslations()
+            fetchQuiz()
 
-            // User could leave the fragment by this time
-            if(!isAttached){
+            // User could leave this fragment by this time
+            if (!isAttached) {
                 return@launch
             }
 
-            Handler(myContext.mainLooper).post {
-                initializeRecyclerView()
+            if (translations != null) {
+                Handler(myContext.mainLooper).post {
+                    initializeRecyclerView()
+                }
+            }
+        }
+    }
+
+    private fun fetchQuiz() {
+        try {
+            val api = API(myContext)
+            //TODO REMOVE HARDCODED LANG
+            translations = SessionManager.authToken?.let { api.fetchQuiz(it, "en") }
+        } catch (e: Exception) {
+            Log.e("QUIZ", e.toString(), e)
+
+            if (isAttached) {
+                Handler(myContext.mainLooper).post {
+                    displayToast(getString(R.string.toast_internal_error), Toast.LENGTH_LONG)
+                }
             }
         }
     }
 
     private fun initializeRecyclerView() {
-        binding.translations.layoutManager = LinearLayoutManager(activity)
-        if (words!=null){
-            binding.translations.adapter = TranslationsAdapter(words!!)
-        }
-    }
-
-    private fun fetchSavedTranslations() {
-        try {
-            val api = API(myContext)
-            words = api.fetchSavedTranslations(SessionManager.authToken.toString())
-        } catch (e: Exception) {
-            Log.e("SAVED_WORDS", e.toString(), e)
-
-            // User could leave the fragment by this time
-            if(!isAttached){
-                return
-            }
-
-            Handler(myContext.mainLooper).post {
-                displayToast(getString(R.string.toast_internal_error), Toast.LENGTH_LONG)
-            }
-        }
+        binding.recyclerViewQuiz.layoutManager = LinearLayoutManager(activity)
+        binding.recyclerViewQuiz.adapter = QuizAdapter(translations!!)
     }
 
     private fun displayToast(msg: String?, duration: Int) {
