@@ -38,6 +38,11 @@ class SavedWordsFragment : Fragment() {
         GlobalScope.launch {
             fetchSavedWords()
 
+            // User could leave the fragment by this time
+            if(!isAttached){
+                return@launch
+            }
+
             Handler(myContext.mainLooper).post {
                 if (words != null) {
                     binding.list.text = words.toString()
@@ -65,6 +70,11 @@ class SavedWordsFragment : Fragment() {
             words = api.fetchSavedWords()
         } catch (e: Exception) {
             Log.e("SAVED_WORDS", e.toString(), e)
+
+            // User could leave the fragment by this time
+            if(!isAttached){
+                return
+            }
 
             Handler(myContext.mainLooper).post {
                 displayToast(getString(R.string.toast_internal_error), Toast.LENGTH_LONG)

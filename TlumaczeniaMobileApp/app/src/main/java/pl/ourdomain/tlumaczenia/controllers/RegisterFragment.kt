@@ -74,6 +74,12 @@ class RegisterFragment : Fragment() {
             // delay enabling the button
             GlobalScope.launch {
                 delay(2000)
+
+                // User could leave the fragment by this time
+                if(!isAttached){
+                    return@launch
+                }
+
                 Handler(myContext.mainLooper).post {
                     enableRegisterButton()
                 }
@@ -94,6 +100,11 @@ class RegisterFragment : Fragment() {
                 errorMessage = getString(R.string.toast_taken_username)
             } catch (e: Exception) {
                 errorMessage = getString(R.string.toast_internal_error)
+            }
+
+            // User could leave the fragment by this time
+            if(!isAttached){
+                return@launch
             }
 
             Handler(myContext.mainLooper).post {

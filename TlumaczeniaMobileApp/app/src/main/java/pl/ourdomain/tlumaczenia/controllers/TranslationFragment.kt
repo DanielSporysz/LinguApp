@@ -166,6 +166,12 @@ class TranslationFragment : Fragment() {
             // delay enabling the button
             GlobalScope.launch {
                 delay(2000)
+
+                // User could leave the fragment by this time
+                if(!isAttached){
+                    return@launch
+                }
+
                 Handler(myContext.mainLooper).post {
                     enableTranslateButton()
                 }
@@ -195,6 +201,11 @@ class TranslationFragment : Fragment() {
             } catch (e: Exception) {
                 Log.e("TRANSLATE", e.toString(), e)
 
+                // User could leave the fragment by this time
+                if(!isAttached){
+                    return@launch
+                }
+
                 binding.dstText.text = ""
                 Handler(myContext.mainLooper).post {
                     displayToast(getString(R.string.toast_translation_error), Toast.LENGTH_LONG)
@@ -203,6 +214,12 @@ class TranslationFragment : Fragment() {
 
             // Enable translation button with delay to prevent flooding of requests
             delay(250)
+
+            // User could leave the fragment by this time
+            if(!isAttached){
+                return@launch
+            }
+
             Handler(myContext.mainLooper).post {
                 enableTranslateButton()
             }

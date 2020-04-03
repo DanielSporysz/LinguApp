@@ -77,6 +77,12 @@ class LoginFragment : Fragment() {
             // delay enabling the button
             GlobalScope.launch {
                 delay(2000)
+
+                // User could leave the fragment by this time
+                if(!isAttached){
+                    return@launch
+                }
+
                 Handler(myContext.mainLooper).post {
                     enableLoginButton()
                 }
@@ -100,6 +106,11 @@ class LoginFragment : Fragment() {
                 Log.e("LOGIN", e.toString())
                 validCredentials = false
                 errorOccurred = true
+            }
+
+            // User could leave the fragment by this time
+            if(!isAttached){
+                return@launch
             }
 
             // Feedback to user & navigation
