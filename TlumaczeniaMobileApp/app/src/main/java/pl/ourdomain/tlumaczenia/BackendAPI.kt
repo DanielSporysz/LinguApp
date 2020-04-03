@@ -6,7 +6,6 @@ import com.github.kittinunf.fuel.Fuel
 import com.github.kittinunf.fuel.core.Response
 import com.google.gson.GsonBuilder
 import org.json.JSONObject
-import pl.ourdomain.tlumaczenia.controllers.SettingsFragment
 import pl.ourdomain.tlumaczenia.dataclasses.Language
 import pl.ourdomain.tlumaczenia.dataclasses.Translation
 import pl.ourdomain.tlumaczenia.exceptions.InvalidCredentials

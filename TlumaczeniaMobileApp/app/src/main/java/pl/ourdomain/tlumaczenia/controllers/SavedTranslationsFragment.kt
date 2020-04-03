@@ -10,18 +10,20 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.databinding.DataBindingUtil
+import androidx.recyclerview.widget.LinearLayoutManager
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
 import pl.ourdomain.tlumaczenia.API
 import pl.ourdomain.tlumaczenia.R
 import pl.ourdomain.tlumaczenia.SessionManager
-import pl.ourdomain.tlumaczenia.databinding.FragmentSavedWordsBinding
+import pl.ourdomain.tlumaczenia.adapters.TranslationsAdapter
+import pl.ourdomain.tlumaczenia.databinding.FragmentSavedTranslationsBinding
 import pl.ourdomain.tlumaczenia.dataclasses.Translation
 import java.lang.Exception
 
-class SavedWordsFragment : Fragment() {
+class SavedTranslationsFragment : Fragment() {
 
-    private lateinit var binding: FragmentSavedWordsBinding
+    private lateinit var binding: FragmentSavedTranslationsBinding
 
     private lateinit var myContext: Context
     private var isAttached: Boolean = false
@@ -32,24 +34,11 @@ class SavedWordsFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        binding = DataBindingUtil.inflate<FragmentSavedWordsBinding>(
-            inflater, R.layout.fragment_saved_words, container, false
+        binding = DataBindingUtil.inflate(
+            inflater, R.layout.fragment_saved_translations, container, false
         )
 
-        GlobalScope.launch {
-            fetchSavedWords()
-
-            // User could leave the fragment by this time
-            if(!isAttached){
-                return@launch
-            }
-
-            Handler(myContext.mainLooper).post {
-                if (words != null) {
-                    binding.list.text = words.toString()
-                }
-            }
-        }
+        initView()
 
         return binding.root
     }
@@ -65,7 +54,30 @@ class SavedWordsFragment : Fragment() {
         isAttached = false
     }
 
-    private fun fetchSavedWords() {
+    private fun initView(){
+        // Fetch saved translations
+        GlobalScope.launch {
+            fetchSavedTranslations()
+
+            // User could leave the fragment by this time
+            if(!isAttached){
+                return@launch
+            }
+
+            Handler(myContext.mainLooper).post {
+                initializeRecyclerView()
+            }
+        }
+    }
+
+    private fun initializeRecyclerView() {
+        binding.translations.layoutManager = LinearLayoutManager(activity)
+        if (words!=null){
+            binding.translations.adapter = TranslationsAdapter(words!!)
+        }
+    }
+
+    private fun fetchSavedTranslations() {
         try {
             val api = API(myContext)
             words = api.fetchSavedWords(SessionManager.authToken.toString())

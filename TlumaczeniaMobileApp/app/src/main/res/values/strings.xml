@@ -65,4 +65,8 @@
     <string name="settings_server_ip_key">serverIp</string>
     <string name="settings_server_ip_default">http://192.168.1.15:5000/</string>
     <string name="file_name_preferences">LinguAppPreferencesFile</string>
+    <string name="placeholder_saved_translation_lang">język</string>
+    <string name="placeholder_saved_translation_src">Tekst źródłowy</string>
+    <string name="placeholder_saved_translation_dst">Tekst przetłumaczony</string>
+    <string name="label_fragment_saved_translations">Zapisane tłumaczenia</string>
 </resources>

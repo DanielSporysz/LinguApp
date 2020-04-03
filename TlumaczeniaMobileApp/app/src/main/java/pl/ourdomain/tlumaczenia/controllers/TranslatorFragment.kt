@@ -18,12 +18,12 @@ import kotlinx.coroutines.launch
 import pl.ourdomain.tlumaczenia.API
 import pl.ourdomain.tlumaczenia.R
 import pl.ourdomain.tlumaczenia.SessionManager
-import pl.ourdomain.tlumaczenia.databinding.FragmentTranslationBinding
+import pl.ourdomain.tlumaczenia.databinding.FragmentTranslatorBinding
 import pl.ourdomain.tlumaczenia.dataclasses.Language
 
-class TranslationFragment : Fragment() {
+class TranslatorFragment : Fragment() {
 
-    private lateinit var binding: FragmentTranslationBinding
+    private lateinit var binding: FragmentTranslatorBinding
     private lateinit var myContext: Context
     private var isAttached: Boolean = false
 
@@ -35,7 +35,7 @@ class TranslationFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        binding = FragmentTranslationBinding.inflate(inflater, container, false)
+        binding = FragmentTranslatorBinding.inflate(inflater, container, false)
 
         binding.translateButton.setOnClickListener {
             translate()

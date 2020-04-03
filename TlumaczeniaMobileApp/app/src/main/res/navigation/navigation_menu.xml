@@ -12,19 +12,19 @@
         tools:layout="@layout/fragment_menu_main">
         <action
             android:id="@+id/action_menuMain_to_quickTranslation"
-            app:destination="@id/quickTranslation" />
+            app:destination="@id/translation" />
         <action
             android:id="@+id/action_menuMain_to_choseLanguage"
             app:destination="@id/choseLanguage" />
         <action
             android:id="@+id/action_menuMain_to_savedWordsFragment"
-            app:destination="@id/savedWordsFragment" />
+            app:destination="@id/savedTranslationFragment" />
     </fragment>
     <fragment
-        android:id="@+id/quickTranslation"
-        android:name="pl.ourdomain.tlumaczenia.controllers.TranslationFragment"
+        android:id="@+id/translation"
+        android:name="pl.ourdomain.tlumaczenia.controllers.TranslatorFragment"
         android:label="@string/label_fragment_translation"
-        tools:layout="@layout/fragment_translation" />
+        tools:layout="@layout/fragment_translator" />
     <fragment
         android:id="@+id/choseLanguage"
         android:name="pl.ourdomain.tlumaczenia.controllers.ChoseLanguageFragment"
@@ -40,7 +40,7 @@
         android:label="@string/label_fragment_methods"
         tools:layout="@layout/fragment_menu_main" />
     <fragment
-        android:id="@+id/savedWordsFragment"
-        android:name="pl.ourdomain.tlumaczenia.controllers.SavedWordsFragment"
-        android:label="SavedWordsFragment" />
+        android:id="@+id/savedTranslationFragment"
+        android:name="pl.ourdomain.tlumaczenia.controllers.SavedTranslationsFragment"
+        android:label="@string/label_fragment_saved_translations" />
 </navigation>
