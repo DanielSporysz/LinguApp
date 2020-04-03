@@ -55,6 +55,25 @@ class API(receivedContext: Context) {
         return response
     }
 
+    fun saveTranslation(token:String, src_text: String, dst_text: String, src_lang: String): Boolean{
+        val data = JSONObject()
+        data.put("token", token)
+        data.put("src_lang", src_lang)
+        data.put("src_text", src_text)
+        data.put("dst_text", dst_text)
+
+        val response = post(data, "vocabulary/save/")
+
+        when (response.statusCode) {
+            200 -> {
+                return true
+            }
+            else -> {
+                throw java.lang.Exception("Error saving translation!")
+            }
+        }
+    }
+
     fun translate(text: String, srcLang: String, dstLang: String, token: String): String {
         val data = JSONObject()
         data.put("text", text)
