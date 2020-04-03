@@ -20,7 +20,7 @@ import pl.ourdomain.tlumaczenia.R
 import pl.ourdomain.tlumaczenia.databinding.FragmentTranslationBinding
 import pl.ourdomain.tlumaczenia.dataclasses.Language
 
-class QuickTranslationFragment : Fragment() {
+class TranslationFragment : Fragment() {
 
     private lateinit var binding: FragmentTranslationBinding
     private lateinit var myContext: Context

@@ -1,3 +1,3 @@
 package pl.ourdomain.tlumaczenia.dataclasses
 
-class Language(val id: Int, val name: String, val polishName: String, val shortName: String)
+data class Language(val id: Int, val name: String, val polishName: String, val shortName: String)

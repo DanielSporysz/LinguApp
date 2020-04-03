@@ -16,10 +16,13 @@
         <action
             android:id="@+id/action_menuMain_to_choseLanguage"
             app:destination="@id/choseLanguage" />
+        <action
+            android:id="@+id/action_menuMain_to_savedWordsFragment"
+            app:destination="@id/savedWordsFragment" />
     </fragment>
     <fragment
         android:id="@+id/quickTranslation"
-        android:name="pl.ourdomain.tlumaczenia.controllers.QuickTranslationFragment"
+        android:name="pl.ourdomain.tlumaczenia.controllers.TranslationFragment"
         android:label="@string/label_fragment_translation"
         tools:layout="@layout/fragment_translation" />
     <fragment
@@ -36,4 +39,8 @@
         android:name="pl.ourdomain.tlumaczenia.controllers.LearningMethodsFragment"
         android:label="@string/label_fragment_methods"
         tools:layout="@layout/fragment_menu_main" />
+    <fragment
+        android:id="@+id/savedWordsFragment"
+        android:name="pl.ourdomain.tlumaczenia.controllers.SavedWordsFragment"
+        android:label="SavedWordsFragment" />
 </navigation>

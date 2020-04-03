@@ -5,6 +5,7 @@ import com.github.kittinunf.fuel.core.Response
 import com.google.gson.GsonBuilder
 import org.json.JSONObject
 import pl.ourdomain.tlumaczenia.dataclasses.Language
+import pl.ourdomain.tlumaczenia.dataclasses.Translation
 import pl.ourdomain.tlumaczenia.exceptions.InvalidCredentials
 import pl.ourdomain.tlumaczenia.exceptions.TakenUsername
 
@@ -14,17 +15,26 @@ object API {
 
     private fun post(data: JSONObject, path: String): Response {
         val (_, response, _) = Fuel.post(SERVER_IP + path)
-            .header("Content-Type" to "application/json")
+            .header("Content-Type" to "form-data")
             .body(data.toString())
             .response()
         return response
     }
 
     private fun get(data: JSONObject, path: String): Response {
-        val (_, response, _) = Fuel.get(SERVER_IP + path)
-            .header("Content-Type" to "application/json")
+        val myParams = mutableListOf<Pair<String, Any?>>()
+        for (key in data.keys()){
+            myParams.add(Pair(key, data.get(key)))
+        }
+
+        //TODO remove body
+        val (sent, response, _) = Fuel.get(SERVER_IP + path, myParams)
             .body(data.toString())
+            .header("Content-Type" to "multipart/form-data")
             .response()
+
+        //TODO remove test
+        val test  = sent.toString()
         return response
     }
 
@@ -42,6 +52,41 @@ object API {
             }
             else -> {
                 throw java.lang.Exception("Error translating a text!")
+            }
+        }
+    }
+
+    fun fetchSavedWords(): List<Translation> {
+        val data = JSONObject()
+        data.put("lang", "english")
+
+        val response = get(data, "vocabulary/")
+
+        // Scrap languages data from response
+        val regex = Regex("\\{(.*?)\\}")
+        val matches = regex.findAll(String(response.data))
+        val jsonList = mutableListOf<String>()
+        matches.forEach { f ->
+            // rename fields to match Translation.kt
+            val m = f.value
+                .replace("translation", "translated")
+            jsonList.add(m)
+        }
+
+        // Map to Kotlin Objects
+        val translations = mutableListOf<Translation>()
+        for (json in jsonList) {
+            val gson = GsonBuilder().create()
+            val translation = gson.fromJson(json, Translation::class.java)
+            translations.add(translation)
+        }
+
+        when (response.statusCode) {
+            200 -> {
+                return translations
+            }
+            else -> {
+                throw java.lang.Exception("Error getting saved translations list!")
             }
         }
     }

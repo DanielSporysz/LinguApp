@@ -1,3 +1,3 @@
 package pl.ourdomain.tlumaczenia.dataclasses
 
-class Translation (id: Int, lang: String, word: String, translated: String)
+data class Translation(val id: Int, val lang: String, val word: String, val translated: String)

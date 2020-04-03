@@ -32,6 +32,9 @@ class MainMenuFragment : Fragment() {
         binding.translateWordsButton.setOnClickListener { view: View ->
             view.findNavController().navigate(R.id.action_menuMain_to_quickTranslation)
         }
+        binding.savedWordsButton.setOnClickListener { view: View ->
+            view.findNavController().navigate(R.id.action_menuMain_to_savedWordsFragment)
+        }
         binding.learnButton.setOnClickListener { view: View ->
             view.findNavController().navigate(R.id.action_menuMain_to_choseLanguage)
         }
