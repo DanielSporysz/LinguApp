@@ -50,6 +50,19 @@
     <fragment
         android:id="@+id/quizFragment"
         android:name="pl.ourdomain.tlumaczenia.QuizFragment"
-        android:label="QuizFragment"
-        tools:layout="+@layout/quizFragment"/>
+        android:label="@string/label_quiz"
+        tools:layout="+@layout/quizFragment">
+        <action
+            android:id="@+id/action_quizFragment_to_quizResultFragment"
+            app:destination="@id/quizResultFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/quizResultFragment"
+        android:name="pl.ourdomain.tlumaczenia.QuizResultFragment"
+        android:label="QuizResultFragment" >
+        <argument
+            android:name="score"
+            app:argType="integer"
+            android:defaultValue="98" />
+    </fragment>
 </navigation>

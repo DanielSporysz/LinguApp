@@ -8,8 +8,11 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.core.os.bundleOf
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
+import androidx.navigation.findNavController
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import kotlinx.android.synthetic.main.quiz_row.view.*
 import kotlinx.coroutines.GlobalScope
@@ -56,8 +59,8 @@ class QuizFragment : Fragment() {
     }
 
     private fun initView() {
-        binding.finishButton.setOnClickListener {
-            finishQuiz()
+        binding.finishButton.setOnClickListener { view: View ->
+            finishQuiz(view)
         }
 
         // disable button until the quiz list appears
@@ -86,24 +89,25 @@ class QuizFragment : Fragment() {
         binding.recyclerViewQuiz.adapter = quizAdapter
     }
 
-    private fun finishQuiz() {
+    private fun finishQuiz(view: View) {
         if (translations == null) {
             Log.e("QUIZ", "Illegal state! Translations list is null.")
             return
         }
 
+        // Check answers
         var goodAnswers = 0
-
         for ((index, dstText) in quizAdapter.holderList.withIndex()) {
             val correctAnswer = translations?.get(index)?.translated
             if (dstText.toLowerCase(Locale.getDefault()) == correctAnswer?.toLowerCase(Locale.getDefault())) {
                 goodAnswers++
             }
         }
+        val score = goodAnswers * 100 / translations!!.size
 
-        val percentage = goodAnswers * 100 / translations!!.size
-        displayToast("Your score is $percentage%!", Toast.LENGTH_SHORT)
-        //TODO open results page
+        // Pass results
+        val action = QuizFragmentDirections.actionQuizFragmentToQuizResultFragment(score)
+        view.findNavController().navigate(action)
     }
 
     private fun fetchQuiz() {

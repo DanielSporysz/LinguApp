@@ -78,4 +78,5 @@
     <string name="button_return">powrót</string>
     <string name="placeholder_percentage">99 %</string>
     <string name="placeholder_quiz_end_message">Świetny wynik!</string>
+    <string name="label_quiz">Quiz</string>
 </resources>

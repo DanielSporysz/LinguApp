@@ -7,6 +7,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
+import androidx.navigation.fragment.navArgs
 import pl.ourdomain.tlumaczenia.databinding.FragmentQuizResultBinding
 
 class QuizResultFragment : Fragment() {
@@ -16,6 +17,10 @@ class QuizResultFragment : Fragment() {
     private lateinit var myContext: Context
     private var isAttached: Boolean = false
 
+    val args: QuizResultFragmentArgs by navArgs()
+
+    private var score: Int? = null
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -24,6 +29,10 @@ class QuizResultFragment : Fragment() {
             inflater,
             R.layout.fragment_quiz_result, container, false
         )
+
+        if (savedInstanceState != null){
+            score = savedInstanceState.getInt("score")
+        }
 
         initView()
 
@@ -42,7 +51,7 @@ class QuizResultFragment : Fragment() {
     }
 
     private fun initView(){
-
+        binding.resultTest.text = args.score.toString()
     }
 
 }
