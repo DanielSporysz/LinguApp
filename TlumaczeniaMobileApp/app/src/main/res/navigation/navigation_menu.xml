@@ -69,7 +69,7 @@
         android:label="@string/label_fragment_saved_translations" />
     <fragment
         android:id="@+id/quizFragment"
-        android:name="pl.ourdomain.tlumaczenia.QuizFragment"
+        android:name="pl.ourdomain.tlumaczenia.controllers.QuizFragment"
         android:label="@string/label_quiz"
         tools:layout="+@layout/quizFragment">
         <action
@@ -83,7 +83,7 @@
     </fragment>
     <fragment
         android:id="@+id/quizResultFragment"
-        android:name="pl.ourdomain.tlumaczenia.QuizResultFragment"
+        android:name="pl.ourdomain.tlumaczenia.controllers.QuizResultFragment"
         android:label="@string/label_quiz_result" >
         <argument
             android:name="score"

@@ -1,4 +1,4 @@
-package pl.ourdomain.tlumaczenia
+package pl.ourdomain.tlumaczenia.controllers
 
 import android.content.Context
 import android.os.Bundle
@@ -9,6 +9,7 @@ import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.navigation.findNavController
 import androidx.navigation.fragment.navArgs
+import pl.ourdomain.tlumaczenia.R
 import pl.ourdomain.tlumaczenia.databinding.FragmentQuizResultBinding
 
 class QuizResultFragment : Fragment() {
@@ -18,7 +19,7 @@ class QuizResultFragment : Fragment() {
     private lateinit var myContext: Context
     private var isAttached: Boolean = false
 
-    val args: QuizResultFragmentArgs by navArgs()
+    private val args: QuizResultFragmentArgs by navArgs()
 
     private var score: Int? = null
 

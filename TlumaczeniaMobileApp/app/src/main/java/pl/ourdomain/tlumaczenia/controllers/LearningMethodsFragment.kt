@@ -1,11 +1,13 @@
 package pl.ourdomain.tlumaczenia.controllers
 
 
+import android.content.Context
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import androidx.navigation.findNavController
 import pl.ourdomain.tlumaczenia.R
@@ -14,6 +16,9 @@ import pl.ourdomain.tlumaczenia.databinding.FragmentLearningMethodsBinding
 class LearningMethodsFragment : Fragment() {
 
     private lateinit var binding: FragmentLearningMethodsBinding
+
+    private lateinit var myContext: Context
+    private var isAttached: Boolean = false
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -29,9 +34,31 @@ class LearningMethodsFragment : Fragment() {
         return binding.root
     }
 
+    override fun onAttach(context: Context) {
+        super.onAttach(context)
+        myContext = context
+        isAttached = true
+    }
+
+    override fun onDetach() {
+        super.onDetach()
+        isAttached = false
+    }
+
     private fun initView() {
         binding.quizButton.setOnClickListener { view: View ->
             view.findNavController().navigate(R.id.action_learningMethods_to_quizFragment)
         }
+        binding.abcButton.setOnClickListener {
+            displayToast(getString(R.string.not_implemented), Toast.LENGTH_LONG)
+        }
+        binding.lessonsButton.setOnClickListener {
+            displayToast(getString(R.string.not_implemented), Toast.LENGTH_LONG)
+        }
+    }
+
+    private fun displayToast(msg: String?, duration: Int) {
+        val toast = Toast.makeText(myContext, msg, duration)
+        toast.show()
     }
 }

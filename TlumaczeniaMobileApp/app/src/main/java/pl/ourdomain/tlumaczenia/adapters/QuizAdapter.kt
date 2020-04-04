@@ -34,8 +34,13 @@ class QuizAdapter(receivedTranslations: List<Translation>) :
         // in case the view was recycled
         holder.view.dstText.text = holderList[position]
 
-        holder.view.dstText.doOnTextChanged { text, start, count, after ->
+        holder.view.dstText.doOnTextChanged { text, _, _, _ ->
             holderList[position] = text.toString()
+        }
+
+        // Remove the clutter of hints
+        if (position != 0) {
+            holder.view.dstText.hint = ""
         }
     }
 }

@@ -1,4 +1,4 @@
-package pl.ourdomain.tlumaczenia
+package pl.ourdomain.tlumaczenia.controllers
 
 import android.content.Context
 import android.os.Bundle
@@ -8,15 +8,15 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
-import androidx.core.os.bundleOf
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.navigation.findNavController
-import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
-import kotlinx.android.synthetic.main.quiz_row.view.*
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
+import pl.ourdomain.tlumaczenia.API
+import pl.ourdomain.tlumaczenia.R
+import pl.ourdomain.tlumaczenia.SessionManager
 import pl.ourdomain.tlumaczenia.adapters.QuizAdapter
 import pl.ourdomain.tlumaczenia.databinding.FragmentQuizBinding
 import pl.ourdomain.tlumaczenia.dataclasses.Translation
@@ -106,7 +106,10 @@ class QuizFragment : Fragment() {
         val score = goodAnswers * 100 / translations!!.size
 
         // Pass results
-        val action = QuizFragmentDirections.actionQuizFragmentToQuizResultFragment(score)
+        val action =
+            QuizFragmentDirections.actionQuizFragmentToQuizResultFragment(
+                score
+            )
         view.findNavController().navigate(action)
     }
 

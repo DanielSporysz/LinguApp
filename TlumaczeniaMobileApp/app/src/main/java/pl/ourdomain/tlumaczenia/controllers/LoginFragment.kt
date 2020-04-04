@@ -79,7 +79,7 @@ class LoginFragment : Fragment() {
                 delay(2000)
 
                 // User could leave the fragment by this time
-                if(!isAttached){
+                if (!isAttached) {
                     return@launch
                 }
 
@@ -109,7 +109,7 @@ class LoginFragment : Fragment() {
             }
 
             // User could leave the fragment by this time
-            if(!isAttached){
+            if (!isAttached) {
                 return@launch
             }
 

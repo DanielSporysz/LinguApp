@@ -7,6 +7,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import androidx.navigation.findNavController
 import pl.ourdomain.tlumaczenia.R
@@ -45,7 +46,7 @@ class MainMenuFragment : Fragment() {
         isAttached = false
     }
 
-    private fun initView(){
+    private fun initView() {
         binding.translateWordsButton.setOnClickListener { view: View ->
             view.findNavController().navigate(R.id.action_menuMain_to_quickTranslation)
         }
@@ -55,10 +56,18 @@ class MainMenuFragment : Fragment() {
         binding.learnButton.setOnClickListener { view: View ->
             view.findNavController().navigate(R.id.action_menuMain_to_choseLanguage)
         }
+        binding.siteButton.setOnClickListener {
+            displayToast(getString(R.string.not_implemented), Toast.LENGTH_LONG)
+        }
     }
 
     private fun logout() {
         val sessionManager = SessionManager(myContext)
         sessionManager.logout()
+    }
+
+    private fun displayToast(msg: String?, duration: Int) {
+        val toast = Toast.makeText(myContext, msg, duration)
+        toast.show()
     }
 }
