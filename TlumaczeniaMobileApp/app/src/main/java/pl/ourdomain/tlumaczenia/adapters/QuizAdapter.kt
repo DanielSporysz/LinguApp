@@ -3,6 +3,8 @@ package pl.ourdomain.tlumaczenia.adapters
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.EditText
+import androidx.core.widget.doOnTextChanged
 import androidx.recyclerview.widget.RecyclerView
 import kotlinx.android.synthetic.main.translation_row.view.*
 import pl.ourdomain.tlumaczenia.R
@@ -10,6 +12,8 @@ import pl.ourdomain.tlumaczenia.dataclasses.Translation
 
 class QuizAdapter(receivedTranslations: List<Translation>) :
     RecyclerView.Adapter<QuizViewHolder>() {
+
+    val holderList = receivedTranslations.map { String() }.toTypedArray()
 
     private val translations = receivedTranslations
 
@@ -26,6 +30,13 @@ class QuizAdapter(receivedTranslations: List<Translation>) :
 
     override fun onBindViewHolder(holder: QuizViewHolder, position: Int) {
         holder.view.srcText.text = translations[position].word
+
+        // in case the view was recycled
+        holder.view.dstText.text = holderList[position]
+
+        holder.view.dstText.doOnTextChanged { text, start, count, after ->
+            holderList[position] = text.toString()
+        }
     }
 }
 

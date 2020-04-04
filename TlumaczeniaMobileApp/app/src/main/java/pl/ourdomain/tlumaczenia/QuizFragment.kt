@@ -4,20 +4,20 @@ import android.content.Context
 import android.os.Bundle
 import android.os.Handler
 import android.util.Log
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.databinding.DataBindingUtil
+import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
+import kotlinx.android.synthetic.main.quiz_row.view.*
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
 import pl.ourdomain.tlumaczenia.adapters.QuizAdapter
-import pl.ourdomain.tlumaczenia.adapters.TranslationsAdapter
 import pl.ourdomain.tlumaczenia.databinding.FragmentQuizBinding
 import pl.ourdomain.tlumaczenia.dataclasses.Translation
-import java.lang.Exception
+import java.util.*
 
 class QuizFragment : Fragment() {
 
@@ -27,6 +27,8 @@ class QuizFragment : Fragment() {
     private var isAttached: Boolean = false
 
     private var translations: List<Translation>? = null
+
+    private lateinit var quizAdapter: QuizAdapter
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -54,6 +56,13 @@ class QuizFragment : Fragment() {
     }
 
     private fun initView() {
+        binding.finishButton.setOnClickListener {
+            finishQuiz()
+        }
+
+        // disable button until the quiz list appears
+        disableFinishButton()
+
         GlobalScope.launch {
             fetchQuiz()
 
@@ -65,9 +74,36 @@ class QuizFragment : Fragment() {
             if (translations != null) {
                 Handler(myContext.mainLooper).post {
                     initializeRecyclerView()
+                    enableFinishButton()
                 }
             }
         }
+    }
+
+    private fun initializeRecyclerView() {
+        binding.recyclerViewQuiz.layoutManager = LinearLayoutManager(activity)
+        quizAdapter = QuizAdapter(translations!!)
+        binding.recyclerViewQuiz.adapter = quizAdapter
+    }
+
+    private fun finishQuiz() {
+        if (translations == null) {
+            Log.e("QUIZ", "Illegal state! Translations list is null.")
+            return
+        }
+
+        var goodAnswers = 0
+
+        for ((index, dstText) in quizAdapter.holderList.withIndex()) {
+            val correctAnswer = translations?.get(index)?.translated
+            if (dstText.toLowerCase(Locale.getDefault()) == correctAnswer?.toLowerCase(Locale.getDefault())) {
+                goodAnswers++
+            }
+        }
+
+        val percentage = goodAnswers * 100 / translations!!.size
+        displayToast("Your score is $percentage%!", Toast.LENGTH_SHORT)
+        //TODO open results page
     }
 
     private fun fetchQuiz() {
@@ -86,9 +122,14 @@ class QuizFragment : Fragment() {
         }
     }
 
-    private fun initializeRecyclerView() {
-        binding.recyclerViewQuiz.layoutManager = LinearLayoutManager(activity)
-        binding.recyclerViewQuiz.adapter = QuizAdapter(translations!!)
+    private fun disableFinishButton() {
+        binding.finishButton.isEnabled = false
+        binding.finishButton.setBackgroundResource(R.drawable.rounded_disabled_button)
+    }
+
+    private fun enableFinishButton() {
+        binding.finishButton.isEnabled = true
+        binding.finishButton.setBackgroundResource(R.drawable.rounded_button)
     }
 
     private fun displayToast(msg: String?, duration: Int) {
