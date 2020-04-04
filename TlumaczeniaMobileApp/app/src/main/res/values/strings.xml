@@ -73,4 +73,9 @@
     <string name="text_translate_it">Przetłumacz:</string>
     <string name="button_finish">zakończ</string>
     <string name="hint_translate_it">tłumaczene…</string>
+    <string name="text_your_score">Twój wynik to:</string>
+    <string name="description_face">ikona twarzy</string>
+    <string name="button_return">powrót</string>
+    <string name="placeholder_percentage">99 %</string>
+    <string name="placeholder_quiz_end_message">Świetny wynik!</string>
 </resources>
