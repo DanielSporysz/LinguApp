@@ -51,10 +51,12 @@
                         android:id="@+id/finishButton"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:layout_marginBottom="15dp"
                         android:background="@drawable/rounded_button"
                         android:fontFamily="@font/lora"
                         android:text="@string/button_finish"
                         android:textColor="@color/colorText"
+                        app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent" />

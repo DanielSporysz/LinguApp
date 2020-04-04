@@ -7,6 +7,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
+import androidx.navigation.findNavController
 import androidx.navigation.fragment.navArgs
 import pl.ourdomain.tlumaczenia.databinding.FragmentQuizResultBinding
 
@@ -51,7 +52,30 @@ class QuizResultFragment : Fragment() {
     }
 
     private fun initView(){
-        binding.resultTest.text = args.score.toString()
+        binding.returnButton.setOnClickListener { view: View ->
+            view.findNavController().popBackStack()
+        }
+
+        // Setup result
+        val resultTest = """${args.score}%"""
+        binding.resultTest.text = resultTest
+
+        when (args.score) {
+            in 0..20 -> {
+                binding.faceImage.setImageResource(R.drawable.ic_face_sad)
+                binding.messageText.text = getString(R.string.text_quiz_result_bad)
+                binding.messageText.setBackgroundResource(R.drawable.rounded_text_field_negative)
+            }
+            in 21..60 -> {
+                binding.faceImage.setImageResource(R.drawable.ic_face_average)
+                binding.messageText.text = getString(R.string.text_quiz_result_average)
+                binding.messageText.setBackgroundResource(R.drawable.rounded_text_field_neutral)
+            }
+            else -> {
+                binding.messageText.text = getString(R.string.text_quiz_result_good)
+                binding.messageText.setBackgroundResource(R.drawable.rounded_text_field_positive)
+            }
+        }
     }
 
 }

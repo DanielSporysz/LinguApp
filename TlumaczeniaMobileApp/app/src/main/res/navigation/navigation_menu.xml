@@ -12,13 +12,25 @@
         tools:layout="@layout/fragment_menu_main">
         <action
             android:id="@+id/action_menuMain_to_quickTranslation"
-            app:destination="@id/translation" />
+            app:destination="@id/translation"
+            app:enterAnim="@anim/enter_from_right"
+            app:exitAnim="@anim/exit_to_left"
+            app:popEnterAnim="@anim/enter_from_left"
+            app:popExitAnim="@anim/exit_to_right" />
         <action
             android:id="@+id/action_menuMain_to_choseLanguage"
-            app:destination="@id/choseLanguage" />
+            app:destination="@id/choseLanguage"
+            app:enterAnim="@anim/enter_from_right"
+            app:exitAnim="@anim/exit_to_left"
+            app:popEnterAnim="@anim/enter_from_left"
+            app:popExitAnim="@anim/exit_to_right"/>
         <action
             android:id="@+id/action_menuMain_to_savedWordsFragment"
-            app:destination="@id/savedTranslationFragment" />
+            app:destination="@id/savedTranslationFragment"
+            app:enterAnim="@anim/enter_from_right"
+            app:exitAnim="@anim/exit_to_left"
+            app:popEnterAnim="@anim/enter_from_left"
+            app:popExitAnim="@anim/exit_to_right"/>
     </fragment>
     <fragment
         android:id="@+id/translation"
@@ -32,7 +44,11 @@
         tools:layout="@layout/fragment_menu_main">
         <action
             android:id="@+id/action_choseLanguage_to_learningMethods"
-            app:destination="@id/learningMethods" />
+            app:destination="@id/learningMethods"
+            app:enterAnim="@anim/enter_from_right"
+            app:exitAnim="@anim/exit_to_left"
+            app:popEnterAnim="@anim/enter_from_left"
+            app:popExitAnim="@anim/exit_to_right"/>
     </fragment>
     <fragment
         android:id="@+id/learningMethods"
@@ -41,7 +57,11 @@
         tools:layout="@layout/fragment_menu_main" >
         <action
             android:id="@+id/action_learningMethods_to_quizFragment"
-            app:destination="@id/quizFragment" />
+            app:destination="@id/quizFragment"
+            app:enterAnim="@anim/enter_from_right"
+            app:exitAnim="@anim/exit_to_left"
+            app:popEnterAnim="@anim/enter_from_left"
+            app:popExitAnim="@anim/exit_to_right"/>
     </fragment>
     <fragment
         android:id="@+id/savedTranslationFragment"
@@ -54,15 +74,24 @@
         tools:layout="+@layout/quizFragment">
         <action
             android:id="@+id/action_quizFragment_to_quizResultFragment"
-            app:destination="@id/quizResultFragment" />
+            app:destination="@id/quizResultFragment"
+            app:popUpTo="@id/learningMethods"
+            app:enterAnim="@anim/enter_from_right"
+            app:exitAnim="@anim/exit_to_left"
+            app:popEnterAnim="@anim/enter_from_left"
+            app:popExitAnim="@anim/exit_to_right"/>
     </fragment>
     <fragment
         android:id="@+id/quizResultFragment"
         android:name="pl.ourdomain.tlumaczenia.QuizResultFragment"
-        android:label="QuizResultFragment" >
+        android:label="@string/label_quiz_result" >
         <argument
             android:name="score"
             app:argType="integer"
-            android:defaultValue="98" />
+            android:defaultValue="98"
+            app:enterAnim="@anim/enter_from_right"
+            app:exitAnim="@anim/exit_to_left"
+            app:popEnterAnim="@anim/enter_from_left"
+            app:popExitAnim="@anim/exit_to_right"/>
     </fragment>
 </navigation>

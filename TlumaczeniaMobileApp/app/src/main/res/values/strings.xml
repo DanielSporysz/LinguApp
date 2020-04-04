@@ -79,4 +79,8 @@
     <string name="placeholder_percentage">99 %</string>
     <string name="placeholder_quiz_end_message">Świetny wynik!</string>
     <string name="label_quiz">Quiz</string>
+    <string name="text_quiz_result_average">Jest dobrze, ale musisz jeszcze poćwiczyć</string>
+    <string name="text_quiz_result_bad">Przed Tobą jeszcze dużo pracy...</string>
+    <string name="text_quiz_result_good">Wspaniale! Tak trzymaj!</string>
+    <string name="label_quiz_result">Wyniki</string>
 </resources>
