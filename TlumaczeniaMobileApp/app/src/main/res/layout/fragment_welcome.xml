@@ -31,7 +31,7 @@
                     android:layout_height="match_parent">
 
                     <ImageView
-                        android:id="@+id/flagsTop"
+                        android:id="@+id/flags"
                         android:layout_width="match_parent"
                         android:layout_height="150dp"
                         android:contentDescription="@string/flagsTop"
@@ -48,7 +48,7 @@
                         app:layout_constraintBottom_toTopOf="@+id/flagsBottom"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/flagsTop">
+                        app:layout_constraintTop_toBottomOf="@+id/flags">
 
                         <TextView
                             android:id="@+id/registerIncetiveQue"

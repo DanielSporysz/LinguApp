@@ -1,6 +1,7 @@
 package pl.ourdomain.tlumaczenia.controllers
 
 
+import android.animation.ObjectAnimator
 import android.content.Context
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -8,8 +9,12 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.core.view.ViewCompat.animate
 import androidx.databinding.DataBindingUtil
 import androidx.navigation.findNavController
+import androidx.navigation.fragment.FragmentNavigatorExtras
+import kotlinx.android.synthetic.main.fragment_quiz_result.*
+import kotlinx.coroutines.NonCancellable.start
 import pl.ourdomain.tlumaczenia.R
 import pl.ourdomain.tlumaczenia.SessionManager
 import pl.ourdomain.tlumaczenia.databinding.FragmentMenuMainBinding
