@@ -7,6 +7,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
+import androidx.navigation.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import pl.ourdomain.tlumaczenia.QuizState
 import pl.ourdomain.tlumaczenia.R
@@ -47,6 +48,10 @@ class QuizAnswersFragment : Fragment() {
     }
 
     private fun initView() {
+        binding.returnButton.setOnClickListener { view: View ->
+            view.findNavController().popBackStack()
+        }
+
         if (QuizState.translations != null && QuizState.answers != null && QuizState.isCorrect != null) {
             binding.answersView.layoutManager = LinearLayoutManager(activity)
             val adapter =
