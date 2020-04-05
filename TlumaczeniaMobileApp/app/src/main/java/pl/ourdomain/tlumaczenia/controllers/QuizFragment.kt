@@ -15,6 +15,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
 import pl.ourdomain.tlumaczenia.API
+import pl.ourdomain.tlumaczenia.QuizState
 import pl.ourdomain.tlumaczenia.R
 import pl.ourdomain.tlumaczenia.SessionManager
 import pl.ourdomain.tlumaczenia.adapters.QuizAdapter
@@ -97,12 +98,19 @@ class QuizFragment : Fragment() {
 
         // Check answers
         var goodAnswers = 0
+        val answers = mutableListOf<String>()
         for ((index, dstText) in quizAdapter.holderList.withIndex()) {
+            answers.add(dstText)
+
             val correctAnswer = translations?.get(index)?.translated
             if (dstText.toLowerCase(Locale.getDefault()) == correctAnswer?.toLowerCase(Locale.getDefault())) {
                 goodAnswers++
             }
         }
+
+        QuizState.answers = answers
+        QuizState.translations = translations
+
         val score = goodAnswers * 100 / translations!!.size
 
         // Pass results
