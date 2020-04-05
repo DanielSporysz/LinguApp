@@ -85,4 +85,8 @@
     <string name="label_quiz_result">Wyniki</string>
     <string name="not_implemented">Ta funkcja nie została jeszcze zaimplementowana</string>
     <string name="button_quiz_answers">Zobacz odpowiedzi</string>
+    <string name="text_your_answer">Twoja odpowiedź:</string>
+    <string name="text_correct_answer">Poprawna odpowiedź:</string>
+    <string name="placeholder_answear">odpowiedź</string>
+    <string name="label_quiz_answers">Odpowiedzi</string>
 </resources>

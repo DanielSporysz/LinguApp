@@ -12,7 +12,7 @@
         tools:layout="@layout/fragment_menu_main">
         <action
             android:id="@+id/action_menuMain_to_quickTranslation"
-            app:destination="@id/translation"
+            app:destination="@id/translationText"
             app:enterAnim="@anim/enter_from_right"
             app:exitAnim="@anim/exit_to_left"
             app:popEnterAnim="@anim/enter_from_left"
@@ -33,7 +33,7 @@
             app:popExitAnim="@anim/exit_to_right"/>
     </fragment>
     <fragment
-        android:id="@+id/translation"
+        android:id="@+id/translationText"
         android:name="pl.ourdomain.tlumaczenia.controllers.TranslatorFragment"
         android:label="@string/label_fragment_translation"
         tools:layout="@layout/fragment_translator" />
@@ -101,7 +101,8 @@
     </fragment>
     <fragment
         android:id="@+id/quizAnswersFragment"
-        android:name="pl.ourdomain.tlumaczenia.QuizAnswersFragment"
-        android:label="fragment_quiz_answers"
-        tools:layout="@layout/fragment_quiz_answers" />
+        android:name="pl.ourdomain.tlumaczenia.controllers.QuizAnswersFragment"
+        android:label="@string/label_quiz_answers"
+        tools:layout="@layout/fragment_quiz_answers"
+        />
 </navigation>

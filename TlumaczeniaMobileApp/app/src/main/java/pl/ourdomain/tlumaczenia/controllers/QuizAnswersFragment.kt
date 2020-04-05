@@ -1,4 +1,4 @@
-package pl.ourdomain.tlumaczenia
+package pl.ourdomain.tlumaczenia.controllers
 
 import android.content.Context
 import android.os.Bundle
@@ -7,6 +7,11 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
+import androidx.recyclerview.widget.LinearLayoutManager
+import pl.ourdomain.tlumaczenia.QuizState
+import pl.ourdomain.tlumaczenia.R
+import pl.ourdomain.tlumaczenia.adapters.QuizAdapter
+import pl.ourdomain.tlumaczenia.adapters.QuizResultAdapter
 import pl.ourdomain.tlumaczenia.databinding.FragmentQuizAnswersBinding
 
 class QuizAnswersFragment : Fragment() {
@@ -41,7 +46,15 @@ class QuizAnswersFragment : Fragment() {
         isAttached = false
     }
 
-    private fun initView(){
-
+    private fun initView() {
+        if (QuizState.translations != null && QuizState.answers != null && QuizState.isCorrect != null) {
+            binding.answersView.layoutManager = LinearLayoutManager(activity)
+            val adapter =
+                QuizResultAdapter(
+                    QuizState.translations!!, QuizState.answers!!,
+                    QuizState.isCorrect!!
+                )
+            binding.answersView.adapter = adapter
+        }
     }
 }
