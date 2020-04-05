@@ -3,6 +3,7 @@ package pl.ourdomain.tlumaczenia.controllers
 import android.content.Context
 import android.os.Bundle
 import android.os.Handler
+import android.text.TextUtils.replace
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
@@ -99,21 +100,33 @@ class QuizFragment : Fragment() {
         // Check answers
         var goodAnswers = 0
         val answers = mutableListOf<String>()
+        val isCorrect = mutableListOf<Boolean>()
         for ((index, dstText) in quizAdapter.holderList.withIndex()) {
             answers.add(dstText)
 
-            val correctAnswer = translations?.get(index)?.translated
-            if (dstText.toLowerCase(Locale.getDefault()) == correctAnswer?.toLowerCase(Locale.getDefault())) {
+            // Case insensitive, white-space characters removed
+            var processedAnswer = dstText.replace("\\s".toRegex(), "")
+            processedAnswer = processedAnswer.toLowerCase(Locale.getDefault())
+
+            var correctAnswer = translations?.get(index)?.translated
+            correctAnswer?.replace("\\s".toRegex(), "")
+            correctAnswer = correctAnswer?.toLowerCase(java.util.Locale.getDefault())
+
+            if (processedAnswer == correctAnswer) {
                 goodAnswers++
+                isCorrect.add(true)
+            } else {
+                isCorrect.add(false)
             }
         }
 
+        // Save in state manager
         QuizState.answers = answers
         QuizState.translations = translations
-
-        val score = goodAnswers * 100 / translations!!.size
+        QuizState.isCorrect = isCorrect
 
         // Pass results
+        val score = goodAnswers * 100 / translations!!.size
         val action =
             QuizFragmentDirections.actionQuizFragmentToQuizResultFragment(
                 score

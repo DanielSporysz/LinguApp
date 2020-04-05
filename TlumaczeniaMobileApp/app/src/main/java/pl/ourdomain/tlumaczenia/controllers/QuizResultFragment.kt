@@ -56,6 +56,9 @@ class QuizResultFragment : Fragment() {
         binding.returnButton.setOnClickListener { view: View ->
             view.findNavController().popBackStack()
         }
+        binding.answersButton.setOnClickListener { view: View ->
+            view.findNavController().navigate(R.id.action_quizResultFragment_to_quizAnswersFragment)
+        }
 
         // Setup result
         val resultTest = """${args.score}%"""

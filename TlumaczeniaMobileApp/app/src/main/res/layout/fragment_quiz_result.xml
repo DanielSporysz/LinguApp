@@ -39,7 +39,7 @@
 
                     <TextView
                         android:id="@+id/messageText"
-                        android:layout_width="wrap_content"
+                        android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="30dp"
                         android:layout_marginTop="30dp"
@@ -47,8 +47,10 @@
                         android:layout_marginBottom="30dp"
                         android:background="@drawable/rounded_text_field"
                         android:fontFamily="@font/lora_bold"
+                        android:gravity="center"
                         android:padding="20dp"
                         android:text="@string/placeholder_quiz_end_message"
+                        android:textAlignment="center"
                         android:textColor="@color/colorText"
                         android:textSize="18sp"
                         app:layout_constraintBottom_toBottomOf="parent"
@@ -89,8 +91,10 @@
                             android:layout_marginEnd="30dp"
                             android:background="@drawable/rounded_text_field"
                             android:fontFamily="@font/lora_bold"
+                            android:gravity="center"
                             android:padding="15dp"
                             android:text="@string/placeholder_percentage"
+                            android:textAlignment="center"
                             android:textColor="@color/colorText"
                             android:textSize="24sp"
                             app:layout_constraintBottom_toBottomOf="@+id/faceImage"
@@ -115,18 +119,21 @@
 
                 <Button
                     android:id="@+id/returnButton"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
+                    android:layout_width="wrap_content"
+                    android:layout_height="0dp"
                     android:layout_marginStart="30dp"
-                    android:layout_marginEnd="30dp"
+                    android:layout_marginEnd="15dp"
                     android:background="@drawable/rounded_button"
                     android:fontFamily="@font/lora_bold"
+                    android:padding="5dp"
                     android:text="@string/button_return"
                     android:textColor="@color/colorText"
                     android:textSize="18sp"
-                    app:layout_constraintBottom_toTopOf="@+id/imageView3"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent" />
+                    app:layout_constraintBottom_toBottomOf="@+id/answersButton"
+                    app:layout_constraintEnd_toStartOf="@+id/answersButton"
+                    app:layout_constraintHorizontal_bias="0.5"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="@+id/answersButton" />
 
                 <ImageView
                     android:id="@+id/imageView3"
@@ -138,6 +145,22 @@
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent" />
+
+                <Button
+                    android:id="@+id/answersButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="15dp"
+                    android:layout_marginEnd="30dp"
+                    android:background="@drawable/rounded_button"
+                    android:fontFamily="@font/lora_bold"
+                    android:padding="5dp"
+                    android:text="@string/button_quiz_answers"
+                    android:textColor="@color/colorText"
+                    app:layout_constraintBottom_toTopOf="@+id/imageView3"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.5"
+                    app:layout_constraintStart_toEndOf="@+id/returnButton" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 

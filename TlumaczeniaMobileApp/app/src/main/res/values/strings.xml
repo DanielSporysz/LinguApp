@@ -84,4 +84,5 @@
     <string name="text_quiz_result_good">Wspaniale! Tak trzymaj!</string>
     <string name="label_quiz_result">Wyniki</string>
     <string name="not_implemented">Ta funkcja nie została jeszcze zaimplementowana</string>
+    <string name="button_quiz_answers">Zobacz odpowiedzi</string>
 </resources>

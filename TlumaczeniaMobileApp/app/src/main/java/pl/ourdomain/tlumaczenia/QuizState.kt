@@ -6,5 +6,6 @@ class QuizState {
     companion object{
         var translations: List<Translation>? = null
         var answers: List<String>? = null
+        var isCorrect: List<Boolean>? = null
     }
 }
