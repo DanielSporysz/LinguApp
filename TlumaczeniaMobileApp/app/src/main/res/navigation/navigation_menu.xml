@@ -97,7 +97,11 @@
             app:popExitAnim="@anim/exit_to_right"/>
         <action
             android:id="@+id/action_quizResultFragment_to_quizAnswersFragment"
-            app:destination="@id/quizAnswersFragment" />
+            app:destination="@id/quizAnswersFragment"
+            app:enterAnim="@anim/enter_from_right"
+            app:exitAnim="@anim/exit_to_left"
+            app:popEnterAnim="@anim/enter_from_left"
+            app:popExitAnim="@anim/exit_to_right" />
     </fragment>
     <fragment
         android:id="@+id/quizAnswersFragment"
