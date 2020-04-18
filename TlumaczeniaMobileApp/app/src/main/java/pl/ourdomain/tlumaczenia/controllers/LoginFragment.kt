@@ -101,6 +101,7 @@ class LoginFragment : Fragment() {
                     binding.passwordField.text.toString()
                 )
             } catch (e: InvalidCredentials) {
+                Log.e("LOGIN", e.toString())
                 validCredentials = false
             } catch (e: Exception) {
                 Log.e("LOGIN", e.toString())

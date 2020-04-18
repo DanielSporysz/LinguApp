@@ -99,11 +99,11 @@ class SessionManager(receivedContext: Context) {
     private fun fetchToken(): String {
         val username = username
         val password = password
-        if (username == null || password == null) {
+        return if (username == null || password == null) {
             throw Exception("Set credentials first before fetching a token!")
         } else {
             val api = API(context)
-            return api.fetchAuthToken(username, password)
+            api.fetchAuthToken(username, password)
         }
     }
 }
