@@ -49,11 +49,11 @@ class LearningMethodsFragment : Fragment() {
         binding.quizButton.setOnClickListener { view: View ->
             view.findNavController().navigate(R.id.action_learningMethods_to_quizFragment)
         }
-        binding.abcButton.setOnClickListener {
-            displayToast(getString(R.string.not_implemented), Toast.LENGTH_LONG)
+        binding.abcButton.setOnClickListener { view: View ->
+            view.findNavController().navigate(R.id.action_learningMethods_to_abcQuizFragment)
         }
-        binding.lessonsButton.setOnClickListener {
-            displayToast(getString(R.string.not_implemented), Toast.LENGTH_LONG)
+        binding.lessonsButton.setOnClickListener { view: View ->
+            view.findNavController().navigate(R.id.action_learningMethods_to_lessonsFragment)
         }
     }
 

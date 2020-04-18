@@ -23,14 +23,14 @@
             app:enterAnim="@anim/enter_from_right"
             app:exitAnim="@anim/exit_to_left"
             app:popEnterAnim="@anim/enter_from_left"
-            app:popExitAnim="@anim/exit_to_right"/>
+            app:popExitAnim="@anim/exit_to_right" />
         <action
             android:id="@+id/action_menuMain_to_savedWordsFragment"
             app:destination="@id/savedTranslationFragment"
             app:enterAnim="@anim/enter_from_right"
             app:exitAnim="@anim/exit_to_left"
             app:popEnterAnim="@anim/enter_from_left"
-            app:popExitAnim="@anim/exit_to_right"/>
+            app:popExitAnim="@anim/exit_to_right" />
     </fragment>
     <fragment
         android:id="@+id/translationText"
@@ -48,26 +48,40 @@
             app:enterAnim="@anim/enter_from_right"
             app:exitAnim="@anim/exit_to_left"
             app:popEnterAnim="@anim/enter_from_left"
-            app:popExitAnim="@anim/exit_to_right"/>
+            app:popExitAnim="@anim/exit_to_right" />
     </fragment>
     <fragment
         android:id="@+id/learningMethods"
         android:name="pl.ourdomain.tlumaczenia.controllers.LearningMethodsFragment"
         android:label="@string/label_fragment_methods"
-        tools:layout="@layout/fragment_learning_methods" >
+        tools:layout="@layout/fragment_learning_methods">
         <action
             android:id="@+id/action_learningMethods_to_quizFragment"
             app:destination="@id/quizFragment"
             app:enterAnim="@anim/enter_from_right"
             app:exitAnim="@anim/exit_to_left"
             app:popEnterAnim="@anim/enter_from_left"
-            app:popExitAnim="@anim/exit_to_right"/>
+            app:popExitAnim="@anim/exit_to_right" />
+        <action
+            android:id="@+id/action_learningMethods_to_abcQuizFragment"
+            app:destination="@id/abcQuizFragment"
+            app:enterAnim="@anim/enter_from_right"
+            app:exitAnim="@anim/exit_to_left"
+            app:popEnterAnim="@anim/enter_from_left"
+            app:popExitAnim="@anim/exit_to_right" />
+        <action
+            android:id="@+id/action_learningMethods_to_lessonsFragment"
+            app:destination="@id/lessonsFragment"
+            app:enterAnim="@anim/enter_from_right"
+            app:exitAnim="@anim/exit_to_left"
+            app:popEnterAnim="@anim/enter_from_left"
+            app:popExitAnim="@anim/exit_to_right" />
     </fragment>
     <fragment
         android:id="@+id/savedTranslationFragment"
         android:name="pl.ourdomain.tlumaczenia.controllers.SavedTranslationsFragment"
         android:label="@string/label_fragment_saved_translations"
-        tools:layout="@layout/fragment_saved_translations"/>
+        tools:layout="@layout/fragment_saved_translations" />
     <fragment
         android:id="@+id/quizFragment"
         android:name="pl.ourdomain.tlumaczenia.controllers.QuizFragment"
@@ -76,11 +90,11 @@
         <action
             android:id="@+id/action_quizFragment_to_quizResultFragment"
             app:destination="@id/quizResultFragment"
-            app:popUpTo="@id/learningMethods"
             app:enterAnim="@anim/enter_from_right"
             app:exitAnim="@anim/exit_to_left"
             app:popEnterAnim="@anim/enter_from_left"
-            app:popExitAnim="@anim/exit_to_right"/>
+            app:popExitAnim="@anim/exit_to_right"
+            app:popUpTo="@id/learningMethods" />
     </fragment>
     <fragment
         android:id="@+id/quizResultFragment"
@@ -89,12 +103,12 @@
         tools:layout="@layout/fragment_quiz_result">
         <argument
             android:name="score"
-            app:argType="integer"
             android:defaultValue="98"
+            app:argType="integer"
             app:enterAnim="@anim/enter_from_right"
             app:exitAnim="@anim/exit_to_left"
             app:popEnterAnim="@anim/enter_from_left"
-            app:popExitAnim="@anim/exit_to_right"/>
+            app:popExitAnim="@anim/exit_to_right" />
         <action
             android:id="@+id/action_quizResultFragment_to_quizAnswersFragment"
             app:destination="@id/quizAnswersFragment"
@@ -107,6 +121,15 @@
         android:id="@+id/quizAnswersFragment"
         android:name="pl.ourdomain.tlumaczenia.controllers.QuizAnswersFragment"
         android:label="@string/label_quiz_answers"
-        tools:layout="@layout/fragment_quiz_answers"
-        />
+        tools:layout="@layout/fragment_quiz_answers" />
+    <fragment
+        android:id="@+id/abcQuizFragment"
+        android:name="pl.ourdomain.tlumaczenia.controllers.AbcQuizFragment"
+        android:label="@string/label_abc_quiz"
+        tools:layout="@layout/fragment_abc_quiz"/>
+    <fragment
+        android:id="@+id/lessonsFragment"
+        android:name="pl.ourdomain.tlumaczenia.LessonsFragment"
+        android:label="@string/label_lessons"
+        tools:layout="@layout/fragment_lessons"/>
 </navigation>

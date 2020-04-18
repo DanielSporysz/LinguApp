@@ -89,4 +89,6 @@
     <string name="text_correct_answer">Poprawna odpowiedź:</string>
     <string name="placeholder_answear">odpowiedź</string>
     <string name="label_quiz_answers">Odpowiedzi</string>
+    <string name="label_abc_quiz">Quiz ABC</string>
+    <string name="label_lessons">Lekcje</string>
 </resources>
