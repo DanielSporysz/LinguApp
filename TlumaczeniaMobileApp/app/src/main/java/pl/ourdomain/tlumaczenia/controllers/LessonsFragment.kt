@@ -11,11 +11,13 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import androidx.navigation.findNavController
+import androidx.recyclerview.widget.LinearLayoutManager
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
 import pl.ourdomain.tlumaczenia.API
 import pl.ourdomain.tlumaczenia.R
 import pl.ourdomain.tlumaczenia.SessionManager
+import pl.ourdomain.tlumaczenia.adapters.LessonAdapter
 import pl.ourdomain.tlumaczenia.databinding.FragmentLessonsBinding
 import pl.ourdomain.tlumaczenia.dataclasses.Lesson
 
@@ -27,6 +29,8 @@ class LessonsFragment : Fragment() {
     private var isAttached: Boolean = false
 
     private var lessons: List<Lesson>? = null
+
+    private lateinit var lessonsAdapter: LessonAdapter
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -58,26 +62,12 @@ class LessonsFragment : Fragment() {
             view.findNavController().popBackStack()
         }
 
-//        //TODO remove this
-//        binding.hello.text = System.getProperty("line.separator")?.let {
-//            "Czas Present Continuous składa się z:\\r\\n\\r\\n**podmiot + to be (am/is/are) + czasownik z końcówką -ing**\\r\\n\\r\\nCzasu Present Continuous używamy w następujących sytuacjach:\\r\\n1. Opisując czynności, które dzieją się w momencie mówienia o nich. Możemy dodatkowo użyć słów mówiących, że czynność jest wykonywana w tej chwili np. now lub at the moment.\\r\\n2. Wykorzystując  do opisu czynności, które nie muszą trwać dokładnie w chwili mówienia o nich, ale trwają dłuższy czas (włączając w to chwilę obecną).\\r\\n3. Wszelkie plany.\\r\\n4. Jeśli opisujemy czynność powtarzającą się lecz nie jest to \\\"stała\\\" cecha człowieka czy rzeczy."
-//                .replace("\\n", it)
-//                .replace("\\r", it)
-//        }
-
         GlobalScope.launch {
             fetchLessons()
 
-            // User could leave this fragment by this time
-            if (!isAttached) {
-                return@launch
-            }
-
-            if (lessons != null) {
+            if (isAttached && lessons != null) {
                 Handler(myContext.mainLooper).post {
-                    //TODO init recycler viewer
-                    //initializeRecyclerView()
-                    displayToast(lessons.toString(), Toast.LENGTH_LONG)
+                    initializeRecyclerView()
                 }
             }
         }
@@ -97,6 +87,12 @@ class LessonsFragment : Fragment() {
                 }
             }
         }
+    }
+
+    private fun initializeRecyclerView() {
+        binding.lessonsView.layoutManager = LinearLayoutManager(activity)
+        lessonsAdapter = LessonAdapter(lessons!!)
+        binding.lessonsView.adapter = lessonsAdapter
     }
 
     private fun displayToast(msg: String?, duration: Int) {

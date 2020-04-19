@@ -3,7 +3,6 @@ package pl.ourdomain.tlumaczenia.controllers
 import android.content.Context
 import android.os.Bundle
 import android.os.Handler
-import android.text.TextUtils.replace
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
@@ -110,7 +109,7 @@ class QuizFragment : Fragment() {
 
             var correctAnswer = translations?.get(index)?.translated
             correctAnswer?.replace("\\s".toRegex(), "")
-            correctAnswer = correctAnswer?.toLowerCase(java.util.Locale.getDefault())
+            correctAnswer = correctAnswer?.toLowerCase(Locale.getDefault())
 
             if (processedAnswer == correctAnswer) {
                 goodAnswers++

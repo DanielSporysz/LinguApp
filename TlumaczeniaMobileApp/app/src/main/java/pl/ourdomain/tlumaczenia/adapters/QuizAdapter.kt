@@ -3,7 +3,6 @@ package pl.ourdomain.tlumaczenia.adapters
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.EditText
 import androidx.core.widget.doOnTextChanged
 import androidx.recyclerview.widget.RecyclerView
 import kotlinx.android.synthetic.main.translation_row.view.*
