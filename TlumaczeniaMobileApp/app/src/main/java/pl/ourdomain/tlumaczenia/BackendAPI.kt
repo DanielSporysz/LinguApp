@@ -7,6 +7,7 @@ import com.github.kittinunf.fuel.core.Response
 import com.google.gson.GsonBuilder
 import org.json.JSONObject
 import pl.ourdomain.tlumaczenia.dataclasses.Language
+import pl.ourdomain.tlumaczenia.dataclasses.Lesson
 import pl.ourdomain.tlumaczenia.dataclasses.Translation
 import pl.ourdomain.tlumaczenia.exceptions.InvalidCredentials
 import pl.ourdomain.tlumaczenia.exceptions.TakenUsername
@@ -141,6 +142,39 @@ class API(receivedContext: Context) {
             }
             else -> {
                 throw java.lang.Exception("Error getting saved translations list!")
+            }
+        }
+    }
+
+    fun fetchLessons(token: String, lang: String): List<Lesson>{
+        val data = JSONObject()
+        data.put("token", token)
+        data.put("lang", lang)
+
+        val response = get(data, "lessons/")
+
+        // Scrap languages data from response
+        val regex = Regex("\\{(.*?)\\}")
+        val matches = regex.findAll(String(response.data))
+        val jsonList = mutableListOf<String>()
+        matches.forEach { f ->
+            jsonList.add(f.value)
+        }
+
+        // Map to Kotlin Objects
+        val lessons = mutableListOf<Lesson>()
+        for (json in jsonList) {
+            val gson = GsonBuilder().create()
+            val language = gson.fromJson(json, Lesson::class.java)
+            lessons.add(language)
+        }
+
+        when (response.statusCode) {
+            200 -> {
+                return lessons
+            }
+            else -> {
+                throw java.lang.Exception("Error getting supported languages list!")
             }
         }
     }

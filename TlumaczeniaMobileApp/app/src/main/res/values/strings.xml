@@ -91,4 +91,6 @@
     <string name="label_quiz_answers">Odpowiedzi</string>
     <string name="label_abc_quiz">Quiz ABC</string>
     <string name="label_lessons">Lekcje</string>
+    <string name="placeholder_title">Tytuł</string>
+    <string name="placeholder_lesson_content">"Tekst lekcji…"</string>
 </resources>

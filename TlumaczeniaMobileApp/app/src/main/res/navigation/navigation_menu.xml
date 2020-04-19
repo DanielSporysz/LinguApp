@@ -129,7 +129,7 @@
         tools:layout="@layout/fragment_abc_quiz"/>
     <fragment
         android:id="@+id/lessonsFragment"
-        android:name="pl.ourdomain.tlumaczenia.LessonsFragment"
+        android:name="pl.ourdomain.tlumaczenia.controllers.LessonsFragment"
         android:label="@string/label_lessons"
         tools:layout="@layout/fragment_lessons"/>
 </navigation>
