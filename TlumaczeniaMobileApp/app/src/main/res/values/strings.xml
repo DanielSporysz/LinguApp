@@ -72,7 +72,7 @@
     <string name="toast_saved">Zapisano!</string>
     <string name="text_translate_it">Przetłumacz:</string>
     <string name="button_finish">zakończ</string>
-    <string name="hint_translate_it">tłumaczene…</string>
+    <string name="hint_translate_it">tłumaczenie…</string>
     <string name="text_your_score">Twój wynik to:</string>
     <string name="description_face">ikona twarzy</string>
     <string name="button_return">powrót</string>
