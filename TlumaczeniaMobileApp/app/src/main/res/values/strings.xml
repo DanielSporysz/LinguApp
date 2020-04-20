@@ -63,7 +63,7 @@
     <string name="label_fragment_settings">Ustawienia</string>
     <string name="settings_server_ip_text">IP serwera</string>
     <string name="settings_server_ip_key">serverIp</string>
-    <string name="settings_server_ip_default">http://192.168.1.15:5000/</string>
+    <string name="settings_server_ip_default">http://35.228.203.189:5001/</string>
     <string name="file_name_preferences">LinguAppPreferencesFile</string>
     <string name="placeholder_saved_translation_lang">język</string>
     <string name="placeholder_saved_translation_src">Tekst źródłowy</string>
@@ -93,6 +93,7 @@
     <string name="label_lessons">Lekcje</string>
     <string name="placeholder_title">Tytuł</string>
     <string name="placeholder_lesson_content">"Tekst lekcji…"</string>
-    <string name="placeholder_question">Pytanie...</string>
-    <string name="placeholder_abcd_answer">odpowiedz typu wybierz jedno...</string>
+    <string name="placeholder_question">Pytanie…</string>
+    <string name="placeholder_abcd_answer">odpowiedz typu wybierz jedno…</string>
+    <string name="toast_wait_for_translation">Poczekaj na tłumaczenie!</string>
 </resources>

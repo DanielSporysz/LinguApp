@@ -10,6 +10,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ArrayAdapter
 import android.widget.Toast
+import androidx.core.widget.addTextChangedListener
 import androidx.fragment.app.Fragment
 import kotlinx.android.synthetic.main.fragment_translator.*
 import kotlinx.coroutines.GlobalScope
@@ -32,6 +33,8 @@ class TranslatorFragment : Fragment() {
 
     private var invertedTranslation = false
 
+    private var translationIsReady = false
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -46,6 +49,9 @@ class TranslatorFragment : Fragment() {
         }
         binding.saveTranslationButton.setOnClickListener {
             saveTranslation()
+        }
+        binding.srcText.addTextChangedListener{
+            translationIsReady = false
         }
 
         // get supported languages from server and init spinner
@@ -107,6 +113,16 @@ class TranslatorFragment : Fragment() {
 
         if (invertedTranslation) {
             srcText = dstText.also { dstText = srcText }
+        }
+
+        // Validate fields
+        if(srcText.isBlank()){
+            displayToast(getString(R.string.toast_fill_all_fields), Toast.LENGTH_SHORT)
+            return
+        }
+        if(dstText == getString(R.string.hint_translation) || !translationIsReady){
+            displayToast(getString(R.string.toast_wait_for_translation), Toast.LENGTH_SHORT)
+            return
         }
 
         // Save on server
@@ -202,6 +218,7 @@ class TranslatorFragment : Fragment() {
     private fun translate() {
         // Disable translate button for the time of handling the request
         disableTranslateButton()
+        translationIsReady = false
 
         // Validate fields
         val (areFieldsValid, errorMessage) = validateFields()
@@ -244,6 +261,7 @@ class TranslatorFragment : Fragment() {
 
                 // Display translation
                 binding.dstText.text = translated
+                translationIsReady = true
             } catch (e: Exception) {
                 Log.e("TRANSLATE", e.toString(), e)
 
