@@ -100,6 +100,10 @@ class API(receivedContext: Context) {
         }
     }
 
+    fun fetchABCDQuiz(token: String, lang: String): List<Translation>{
+        return fetchTranslations(token, "quiz-abcd/", lang)
+    }
+
     fun fetchQuiz(token: String, lang: String): List<Translation> {
         return fetchTranslations(token, "quiz/", lang)
     }
