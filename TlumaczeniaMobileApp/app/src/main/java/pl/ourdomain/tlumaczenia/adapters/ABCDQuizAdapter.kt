@@ -18,13 +18,15 @@ class ABCDQuizAdapter(private val translations: List<Translation>): RecyclerView
 
     override fun getItemCount(): Int {
         // There is 4 times translations as questions
-        return translations.size % 4
+        val test = translations.size / 4
+        return test
     }
 
     override fun onBindViewHolder(holder: ABCDQuizViewHolder, position: Int) {
         val indexInList = position * 4
 
-        val question = translations[indexInList].translated + " to:"
+        val question = (position + 1).toString() + ". " + translations[indexInList].translated + " to:"
+        holder.view.question.text = question
 
         // Fill radio buttons with answers
         holder.view.radio_button_1.text = translations[indexInList].word
