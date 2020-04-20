@@ -93,4 +93,6 @@
     <string name="label_lessons">Lekcje</string>
     <string name="placeholder_title">Tytuł</string>
     <string name="placeholder_lesson_content">"Tekst lekcji…"</string>
+    <string name="placeholder_question">Pytanie...</string>
+    <string name="placeholder_abcd_answer">odpowiedz typu wybierz jedno...</string>
 </resources>
