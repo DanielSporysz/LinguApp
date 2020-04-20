@@ -8,7 +8,29 @@ import kotlinx.android.synthetic.main.abcd_quiz_row.view.*
 import pl.ourdomain.tlumaczenia.R
 import pl.ourdomain.tlumaczenia.dataclasses.Translation
 
-class ABCDQuizAdapter(private val translations: List<Translation>): RecyclerView.Adapter<ABCDQuizViewHolder>(){
+class ABCDQuizAdapter(private val translations: List<Translation>) :
+    RecyclerView.Adapter<ABCDQuizViewHolder>() {
+
+    private val shuffled: MutableList<Translation> = mutableListOf()
+    private var displayResults: Boolean = false
+
+    init {
+        // shuffle received list in groups of 4
+        var shufflingList: MutableList<Translation> = mutableListOf()
+        for (i in translations.indices) {
+            shufflingList.add(translations[i])
+
+            if (i % 4 == 3) {
+                // Shuffle before adding to the list of all answers
+                shufflingList.shuffle()
+                shuffled.addAll(shufflingList)
+
+                // Clear temporary list
+                shufflingList = mutableListOf()
+            }
+        }
+    }
+
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ABCDQuizViewHolder {
         val inflater = LayoutInflater.from(parent.context)
         val cellForRow = inflater.inflate(R.layout.abcd_quiz_row, parent, false)
@@ -18,23 +40,23 @@ class ABCDQuizAdapter(private val translations: List<Translation>): RecyclerView
 
     override fun getItemCount(): Int {
         // There is 4 times translations as questions
-        val test = translations.size / 4
-        return test
+        return translations.size / 4
     }
 
     override fun onBindViewHolder(holder: ABCDQuizViewHolder, position: Int) {
         val indexInList = position * 4
 
-        val question = (position + 1).toString() + ". " + translations[indexInList].translated + " to:"
+        val question =
+            (position + 1).toString() + ". " + translations[indexInList].translated + " to:"
         holder.view.question.text = question
 
         // Fill radio buttons with answers
-        holder.view.radio_button_1.text = translations[indexInList].word
-        holder.view.radio_button_2.text = translations[indexInList + 1].word
-        holder.view.radio_button_3.text = translations[indexInList + 2].word
-        holder.view.radio_button_4.text = translations[indexInList + 3].word
+        holder.view.radio_button_1.text = shuffled[indexInList].word
+        holder.view.radio_button_2.text = shuffled[indexInList + 1].word
+        holder.view.radio_button_3.text = shuffled[indexInList + 2].word
+        holder.view.radio_button_4.text = shuffled[indexInList + 3].word
     }
 
 }
 
-class ABCDQuizViewHolder(val view: View): RecyclerView.ViewHolder(view)
+class ABCDQuizViewHolder(val view: View) : RecyclerView.ViewHolder(view)
