@@ -1,8 +1,11 @@
 package pl.ourdomain.tlumaczenia.adapters
 
+import android.graphics.Color
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.RadioButton
 import androidx.recyclerview.widget.RecyclerView
 import kotlinx.android.synthetic.main.abcd_quiz_row.view.*
 import pl.ourdomain.tlumaczenia.R
@@ -55,6 +58,44 @@ class ABCDQuizAdapter(private val translations: List<Translation>) :
         holder.view.radio_button_2.text = shuffled[indexInList + 1].word
         holder.view.radio_button_3.text = shuffled[indexInList + 2].word
         holder.view.radio_button_4.text = shuffled[indexInList + 3].word
+
+        if (displayResults) {
+            holder.view.radio_button_1.isEnabled = false
+            holder.view.radio_button_2.isEnabled = false
+            holder.view.radio_button_3.isEnabled = false
+            holder.view.radio_button_4.isEnabled = false
+
+            // Give feedback with colors
+            val selectedRadioId = holder.view.radio_group_answers.checkedRadioButtonId
+            val selectedRadio: RadioButton? = holder.view.findViewById<RadioButton>(selectedRadioId)
+            if(selectedRadio?.text == translations[indexInList].word){
+                holder.view.quiz_row_holder.setBackgroundResource(R.drawable.rounded_text_field_positive)
+            } else {
+                holder.view.quiz_row_holder.setBackgroundResource(R.drawable.rounded_text_field_negative)
+
+                // Highlight the correct answer
+                val color = holder.view.resources.getColor(R.color.colorTextCorrect)
+                when {
+                    holder.view.radio_button_1.text == translations[indexInList].word -> {
+                        holder.view.radio_button_1.setTextColor(color)
+                    }
+                    holder.view.radio_button_2.text == translations[indexInList].word -> {
+                        holder.view.radio_button_2.setTextColor(color)
+                    }
+                    holder.view.radio_button_3.text == translations[indexInList].word -> {
+                        holder.view.radio_button_3.setTextColor(color)
+                    }
+                    holder.view.radio_button_4.text == translations[indexInList].word -> {
+                        holder.view.radio_button_4.setTextColor(color)
+                    }
+                }
+            }
+        }
+    }
+
+    fun finishQuiz() {
+        displayResults = true
+        notifyDataSetChanged()
     }
 
 }

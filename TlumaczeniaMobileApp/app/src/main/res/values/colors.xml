@@ -5,4 +5,5 @@
     <color name="colorAccent">#00574B</color>
     <color name="colorText">#FFFFFF</color>
     <color name="colorTextDim">#CACACA</color>
+    <color name="colorTextCorrect">#00FF0D</color>
 </resources>

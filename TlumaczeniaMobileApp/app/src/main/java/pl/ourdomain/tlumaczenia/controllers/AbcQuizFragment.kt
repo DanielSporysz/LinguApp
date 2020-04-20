@@ -60,8 +60,8 @@ class AbcQuizFragment : Fragment() {
     }
 
     private fun initView() {
-        binding.returnButton.setOnClickListener { view: View ->
-            view.findNavController().popBackStack()
+        binding.buttonFinish.setOnClickListener {
+            abcdQuizAdapter.finishQuiz()
         }
 
         GlobalScope.launch {
