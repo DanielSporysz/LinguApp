@@ -20,7 +20,6 @@ import pl.ourdomain.tlumaczenia.databinding.FragmentAbcQuizBinding
 import pl.ourdomain.tlumaczenia.dataclasses.Translation
 import pl.ourdomain.tlumaczenia.API
 import pl.ourdomain.tlumaczenia.SessionManager
-import pl.ourdomain.tlumaczenia.adapters.LessonAdapter
 
 
 class AbcQuizFragment : Fragment() {
@@ -60,12 +59,18 @@ class AbcQuizFragment : Fragment() {
     }
 
     private fun initView() {
-        binding.buttonFinish.setOnClickListener {
+        binding.buttonFinish.setOnClickListener {view ->
             abcdQuizAdapter.finishQuiz()
+
+            //Chane the button to return button
+            binding.buttonFinish.text = getString(R.string.button_return)
+            binding.buttonFinish.setOnClickListener {
+                view.findNavController().popBackStack()
+            }
         }
 
         GlobalScope.launch {
-            fetchTranslations()
+            fetchABCDQuiz()
 
             if (isAttached && translations != null) {
                 Handler(myContext.mainLooper).post {
@@ -75,7 +80,7 @@ class AbcQuizFragment : Fragment() {
         }
     }
 
-    private fun fetchTranslations() {
+    private fun fetchABCDQuiz() {
         try {
             val api = API(myContext)
             //TODO REMOVE HARDCODED LANG
