@@ -41,31 +41,7 @@ class TranslatorFragment : Fragment() {
     ): View? {
         binding = FragmentTranslatorBinding.inflate(inflater, container, false)
 
-        binding.translateButton.setOnClickListener {
-            translate()
-        }
-        binding.swapArrows.setOnClickListener {
-            swapTranslation(500L)
-        }
-        binding.saveTranslationButton.setOnClickListener {
-            saveTranslation()
-        }
-        binding.srcText.addTextChangedListener{
-            translationIsReady = false
-        }
-
-        // get supported languages from server and init spinner
-        disableTranslateButton()
-        GlobalScope.launch {
-            fetchSupportedLanguages()
-
-            Handler(myContext.mainLooper).post {
-                if (supportedLanguages != null) {
-                    initLangSpinner()
-                    enableTranslateButton()
-                }
-            }
-        }
+        initView()
 
         // Restore fragment
         if (savedInstanceState != null) {
@@ -103,6 +79,39 @@ class TranslatorFragment : Fragment() {
     override fun onDetach() {
         super.onDetach()
         isAttached = false
+    }
+
+    private fun initView(){
+        binding.translateButton.setOnClickListener {
+            translate()
+        }
+
+        binding.swapArrows.setOnClickListener {
+            swapTranslation(500L)
+        }
+
+        disableSaveButton()
+        binding.saveTranslationButton.setOnClickListener {
+            saveTranslation()
+        }
+
+        binding.srcText.addTextChangedListener{
+            translationIsReady = false
+            disableSaveButton()
+        }
+
+        // get supported languages from server and init spinner
+        disableTranslateButton()
+        GlobalScope.launch {
+            fetchSupportedLanguages()
+
+            Handler(myContext.mainLooper).post {
+                if (supportedLanguages != null) {
+                    initLangSpinner()
+                    enableTranslateButton()
+                }
+            }
+        }
     }
 
     private fun saveTranslation() {
@@ -262,6 +271,7 @@ class TranslatorFragment : Fragment() {
                 // Display translation
                 binding.dstText.text = translated
                 translationIsReady = true
+
             } catch (e: Exception) {
                 Log.e("TRANSLATE", e.toString(), e)
 
@@ -286,6 +296,7 @@ class TranslatorFragment : Fragment() {
 
             Handler(myContext.mainLooper).post {
                 enableTranslateButton()
+                enableSaveButton()
             }
         }
     }
@@ -348,6 +359,16 @@ class TranslatorFragment : Fragment() {
     private fun enableTranslateButton() {
         binding.translateButton.isEnabled = true
         binding.translateButton.setBackgroundResource(R.drawable.rounded_button)
+    }
+
+    private fun disableSaveButton(){
+        binding.saveTranslationButton.isEnabled = false
+        binding.saveTranslationButton.setBackgroundResource(R.drawable.rounded_disabled_button)
+    }
+
+    private fun enableSaveButton() {
+        binding.saveTranslationButton.isEnabled = true
+        binding.saveTranslationButton.setBackgroundResource(R.drawable.rounded_button)
     }
 
     private fun displayToast(msg: String?, duration: Int) {
