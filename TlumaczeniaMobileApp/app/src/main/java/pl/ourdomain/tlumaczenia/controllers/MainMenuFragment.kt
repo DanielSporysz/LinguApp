@@ -61,9 +61,6 @@ class MainMenuFragment : Fragment() {
         binding.learnButton.setOnClickListener { view: View ->
             view.findNavController().navigate(R.id.action_menuMain_to_choseLanguage)
         }
-        binding.siteButton.setOnClickListener {
-            displayToast(getString(R.string.not_implemented), Toast.LENGTH_LONG)
-        }
     }
 
     private fun logout() {

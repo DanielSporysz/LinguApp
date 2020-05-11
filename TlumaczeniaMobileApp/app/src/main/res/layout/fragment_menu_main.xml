@@ -82,19 +82,6 @@
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@+id/savedWordsButton" />
 
-                    <Button
-                        android:id="@+id/siteButton"
-                        android:layout_width="270dp"
-                        android:layout_height="80dp"
-                        android:layout_marginTop="50dp"
-                        android:background="@drawable/rounded_button"
-                        android:fontFamily="@font/lora"
-                        android:text="@string/button_open_site_to_translate"
-                        android:textColor="@color/colorText"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/learnButton" />
-
                 </androidx.constraintlayout.widget.ConstraintLayout>
 
                 <ImageView
