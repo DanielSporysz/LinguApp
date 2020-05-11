@@ -26,8 +26,7 @@ class LessonAdapter(private val lessons: List<Lesson>):
     }
 
     override fun onBindViewHolder(holder: LessonViewHolder, position: Int) {
-        //TODO wait for backend to implement titles
-        holder.view.title.text = "Title " + position.toString()
+        holder.view.title.text = lessons[position].name
         holder.view.lesson.text = lessons[position].text
 
         // Handle expand

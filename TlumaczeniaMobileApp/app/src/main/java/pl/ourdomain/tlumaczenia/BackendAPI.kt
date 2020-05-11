@@ -178,7 +178,7 @@ class API(receivedContext: Context) {
                 return lessons
             }
             else -> {
-                throw java.lang.Exception("Error getting supported languages list!")
+                throw java.lang.Exception("Error getting lessons list!")
             }
         }
     }
