@@ -8,6 +8,7 @@ import androidx.recyclerview.widget.RecyclerView
 import kotlinx.android.synthetic.main.translation_row.view.*
 import pl.ourdomain.tlumaczenia.R
 import pl.ourdomain.tlumaczenia.dataclasses.Translation
+import java.util.*
 
 class QuizAdapter(receivedTranslations: List<Translation>) :
     RecyclerView.Adapter<QuizViewHolder>() {
@@ -28,7 +29,7 @@ class QuizAdapter(receivedTranslations: List<Translation>) :
     }
 
     override fun onBindViewHolder(holder: QuizViewHolder, position: Int) {
-        holder.view.srcText.text = translations[position].word
+        holder.view.srcText.text = translations[position].word.toLowerCase(Locale.getDefault())
 
         // in case the view was recycled
         holder.view.dstText.text = holderList[position]

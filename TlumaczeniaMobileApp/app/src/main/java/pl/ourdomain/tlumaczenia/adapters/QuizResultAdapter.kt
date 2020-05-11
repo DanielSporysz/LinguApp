@@ -10,6 +10,7 @@ import kotlinx.android.synthetic.main.quiz_answer_row.view.srcText
 import kotlinx.android.synthetic.main.translation_row.view.*
 import pl.ourdomain.tlumaczenia.R
 import pl.ourdomain.tlumaczenia.dataclasses.Translation
+import java.util.*
 
 class QuizResultAdapter(
     private val translations: List<Translation>,
@@ -30,9 +31,9 @@ class QuizResultAdapter(
     }
 
     override fun onBindViewHolder(holder: QuizAnswerViewHolder, position: Int) {
-        holder.view.srcText.text = translations[position].word
-        holder.view.translationText.text = translations[position].translated
-        holder.view.answerText.text = answers[position]
+        holder.view.srcText.text = translations[position].word.toLowerCase(Locale.getDefault())
+        holder.view.translationText.text = translations[position].translated.toLowerCase(Locale.getDefault())
+        holder.view.answerText.text = answers[position].toLowerCase(Locale.getDefault())
 
         if (isCorrect[position]) {
             holder.view.contents.setBackgroundResource(R.drawable.rounded_text_field_positive)

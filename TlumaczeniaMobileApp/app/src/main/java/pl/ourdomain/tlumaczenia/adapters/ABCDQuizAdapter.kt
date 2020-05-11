@@ -10,6 +10,7 @@ import androidx.recyclerview.widget.RecyclerView
 import kotlinx.android.synthetic.main.abcd_quiz_row.view.*
 import pl.ourdomain.tlumaczenia.R
 import pl.ourdomain.tlumaczenia.dataclasses.Translation
+import java.util.*
 
 class ABCDQuizAdapter(private val translations: List<Translation>) :
     RecyclerView.Adapter<ABCDQuizViewHolder>() {
@@ -50,14 +51,15 @@ class ABCDQuizAdapter(private val translations: List<Translation>) :
         val indexInList = position * 4
 
         val question =
-            (position + 1).toString() + ". " + translations[indexInList].translated + " to:"
+            (position + 1).toString() + ". " + translations[indexInList].translated.toLowerCase(
+                Locale.getDefault()) + " to:"
         holder.view.question.text = question
 
         // Fill radio buttons with answers
-        holder.view.radio_button_1.text = shuffled[indexInList].word
-        holder.view.radio_button_2.text = shuffled[indexInList + 1].word
-        holder.view.radio_button_3.text = shuffled[indexInList + 2].word
-        holder.view.radio_button_4.text = shuffled[indexInList + 3].word
+        holder.view.radio_button_1.text = shuffled[indexInList].word.toLowerCase(Locale.getDefault())
+        holder.view.radio_button_2.text = shuffled[indexInList + 1].word.toLowerCase(Locale.getDefault())
+        holder.view.radio_button_3.text = shuffled[indexInList + 2].word.toLowerCase(Locale.getDefault())
+        holder.view.radio_button_4.text = shuffled[indexInList + 3].word.toLowerCase(Locale.getDefault())
 
         if (displayResults) {
             holder.view.radio_button_1.isEnabled = false
