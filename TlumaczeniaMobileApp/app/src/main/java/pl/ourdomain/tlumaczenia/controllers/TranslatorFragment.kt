@@ -88,6 +88,7 @@ class TranslatorFragment : Fragment() {
 
         binding.swapArrowsField.setOnClickListener {
             swapTranslation(500L)
+            disableSaveButton()
         }
 
         disableSaveButton()
