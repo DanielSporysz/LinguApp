@@ -6,11 +6,13 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.RadioButton
+import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
 import kotlinx.android.synthetic.main.abcd_quiz_row.view.*
 import pl.ourdomain.tlumaczenia.R
 import pl.ourdomain.tlumaczenia.dataclasses.Translation
 import java.util.*
+import kotlin.coroutines.coroutineContext
 
 class ABCDQuizAdapter(private val translations: List<Translation>) :
     RecyclerView.Adapter<ABCDQuizViewHolder>() {
@@ -48,18 +50,25 @@ class ABCDQuizAdapter(private val translations: List<Translation>) :
     }
 
     override fun onBindViewHolder(holder: ABCDQuizViewHolder, position: Int) {
+        // TODO remove this many .toLowerCase()
+
         val indexInList = position * 4
 
         val question =
             (position + 1).toString() + ". " + translations[indexInList].translated.toLowerCase(
-                Locale.getDefault()) + " to:"
+                Locale.getDefault()
+            ) + " to:"
         holder.view.question.text = question
 
         // Fill radio buttons with answers
-        holder.view.radio_button_1.text = shuffled[indexInList].word.toLowerCase(Locale.getDefault())
-        holder.view.radio_button_2.text = shuffled[indexInList + 1].word.toLowerCase(Locale.getDefault())
-        holder.view.radio_button_3.text = shuffled[indexInList + 2].word.toLowerCase(Locale.getDefault())
-        holder.view.radio_button_4.text = shuffled[indexInList + 3].word.toLowerCase(Locale.getDefault())
+        holder.view.radio_button_1.text =
+            shuffled[indexInList].word.toLowerCase(Locale.getDefault())
+        holder.view.radio_button_2.text =
+            shuffled[indexInList + 1].word.toLowerCase(Locale.getDefault())
+        holder.view.radio_button_3.text =
+            shuffled[indexInList + 2].word.toLowerCase(Locale.getDefault())
+        holder.view.radio_button_4.text =
+            shuffled[indexInList + 3].word.toLowerCase(Locale.getDefault())
 
         if (displayResults) {
             holder.view.radio_button_1.isEnabled = false
@@ -70,24 +79,37 @@ class ABCDQuizAdapter(private val translations: List<Translation>) :
             // Give feedback with colors
             val selectedRadioId = holder.view.radio_group_answers.checkedRadioButtonId
             val selectedRadio: RadioButton? = holder.view.findViewById<RadioButton>(selectedRadioId)
-            if(selectedRadio?.text == translations[indexInList].word){
+            if (selectedRadio?.text == translations[indexInList].word) {
                 holder.view.quiz_row_holder.setBackgroundResource(R.drawable.rounded_text_field_positive)
             } else {
                 holder.view.quiz_row_holder.setBackgroundResource(R.drawable.rounded_text_field_negative)
 
                 // Highlight the correct answer
-                val color = holder.view.resources.getColor(R.color.colorTextCorrect)
+
+                val color = ContextCompat.getColor(holder.view.context, R.color.colorTextCorrect)
                 when {
-                    holder.view.radio_button_1.text == translations[indexInList].word -> {
+                    holder.view.radio_button_1.text.toString()
+                        .toLowerCase(Locale.getDefault()) == translations[indexInList].word.toLowerCase(
+                        Locale.getDefault()
+                    ) -> {
                         holder.view.radio_button_1.setTextColor(color)
                     }
-                    holder.view.radio_button_2.text == translations[indexInList].word -> {
+                    holder.view.radio_button_2.text.toString()
+                        .toLowerCase(Locale.getDefault()) == translations[indexInList].word.toLowerCase(
+                        Locale.getDefault()
+                    ) -> {
                         holder.view.radio_button_2.setTextColor(color)
                     }
-                    holder.view.radio_button_3.text == translations[indexInList].word -> {
+                    holder.view.radio_button_3.text.toString()
+                        .toLowerCase(Locale.getDefault()) == translations[indexInList].word.toLowerCase(
+                        Locale.getDefault()
+                    ) -> {
                         holder.view.radio_button_3.setTextColor(color)
                     }
-                    holder.view.radio_button_4.text == translations[indexInList].word -> {
+                    holder.view.radio_button_4.text.toString()
+                        .toLowerCase(Locale.getDefault()) == translations[indexInList].word.toLowerCase(
+                        Locale.getDefault()
+                    ) -> {
                         holder.view.radio_button_4.setTextColor(color)
                     }
                 }
