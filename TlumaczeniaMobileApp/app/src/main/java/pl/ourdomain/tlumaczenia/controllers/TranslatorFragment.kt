@@ -86,7 +86,7 @@ class TranslatorFragment : Fragment() {
             translate()
         }
 
-        binding.swapArrows.setOnClickListener {
+        binding.swapArrowsField.setOnClickListener {
             swapTranslation(500L)
         }
 

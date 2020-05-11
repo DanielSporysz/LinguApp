@@ -37,35 +37,47 @@
                         android:id="@+id/langSpinner"
                         android:layout_width="0dp"
                         android:layout_height="45dp"
-                        android:layout_marginStart="30dp"
+                        android:layout_marginStart="24dp"
                         android:layout_marginTop="70dp"
-                        android:layout_marginEnd="30dp"
+                        android:layout_marginEnd="14dp"
                         android:background="@drawable/rounded_button"
                         android:popupBackground="@drawable/rounded_button"
                         android:textAlignment="center"
-                        app:layout_constraintEnd_toStartOf="@+id/swapArrows"
+                        app:layout_constraintEnd_toStartOf="@+id/swapArrowsField"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent" />
 
-                    <ImageView
-                        android:id="@+id/swapArrows"
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:id="@+id/swapArrowsField"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginStart="193dp"
-                        android:layout_marginEnd="192dp"
-                        android:contentDescription="@string/description_translation_arrows"
                         app:layout_constraintBottom_toBottomOf="@+id/langSpinner"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="@+id/langSpinner"
-                        app:srcCompat="@drawable/ic_translation_arrows" />
+                        app:layout_constraintTop_toTopOf="@+id/langSpinner">
+
+                        <ImageView
+                            android:id="@+id/swapArrows"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="16dp"
+                            android:layout_marginTop="32dp"
+                            android:layout_marginEnd="16dp"
+                            android:layout_marginBottom="32dp"
+                            android:contentDescription="@string/description_translation_arrows"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent"
+                            app:srcCompat="@drawable/ic_translation_arrows" />
+                    </androidx.constraintlayout.widget.ConstraintLayout>
 
                     <TextView
                         android:id="@+id/langText"
                         android:layout_width="0dp"
                         android:layout_height="45dp"
-                        android:layout_marginStart="30dp"
-                        android:layout_marginEnd="30dp"
+                        android:layout_marginStart="14dp"
+                        android:layout_marginEnd="24dp"
                         android:background="@drawable/rounded_text_field"
                         android:gravity="center"
                         android:text="@string/text_polish"
@@ -73,8 +85,7 @@
                         android:textColor="@android:color/black"
                         app:layout_constraintBottom_toBottomOf="@+id/langSpinner"
                         app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintHorizontal_bias="1.0"
-                        app:layout_constraintStart_toEndOf="@+id/swapArrows"
+                        app:layout_constraintStart_toEndOf="@+id/swapArrowsField"
                         app:layout_constraintTop_toTopOf="@+id/langSpinner"
                         app:layout_constraintVertical_bias="0.0" />
                 </androidx.constraintlayout.widget.ConstraintLayout>
@@ -107,7 +118,7 @@
                     android:hint="@string/prompt_input_text_to_translation"
                     android:importantForAutofill="no"
                     android:inputType="textMultiLine"
-                    android:padding="5dp"
+                    android:padding="10dp"
                     android:textColor="@color/colorText"
                     android:textColorHint="@color/colorText"
                     app:layout_constraintEnd_toEndOf="parent"
@@ -123,7 +134,7 @@
                     android:layout_marginEnd="30dp"
                     android:background="@drawable/rounded_input_field"
                     android:fontFamily="@font/lora"
-                    android:padding="5dp"
+                    android:padding="10dp"
                     android:text="@string/hint_translation"
                     android:textColor="@color/colorText"
                     android:textSize="18sp"
