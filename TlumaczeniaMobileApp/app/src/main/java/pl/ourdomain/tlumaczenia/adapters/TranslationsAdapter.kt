@@ -7,6 +7,7 @@ import androidx.recyclerview.widget.RecyclerView
 import kotlinx.android.synthetic.main.translation_row.view.*
 import pl.ourdomain.tlumaczenia.R
 import pl.ourdomain.tlumaczenia.dataclasses.Translation
+import java.util.*
 
 class TranslationsAdapter(receiveWords: List<Translation>) :
     RecyclerView.Adapter<TranslationViewHolder>() {
@@ -25,9 +26,9 @@ class TranslationsAdapter(receiveWords: List<Translation>) :
     }
 
     override fun onBindViewHolder(holder: TranslationViewHolder, position: Int) {
-        holder.view.lang.text = words[position].lang
-        holder.view.srcText.text = words[position].word
-        holder.view.dstText.text = words[position].translated
+        holder.view.lang.text = words[position].lang.toLowerCase(Locale.getDefault())
+        holder.view.srcText.text = words[position].word.toLowerCase(Locale.getDefault())
+        holder.view.dstText.text = words[position].translated.toLowerCase(Locale.getDefault())
     }
 }
 

@@ -79,7 +79,7 @@ class ABCDQuizAdapter(private val translations: List<Translation>) :
             // Give feedback with colors
             val selectedRadioId = holder.view.radio_group_answers.checkedRadioButtonId
             val selectedRadio: RadioButton? = holder.view.findViewById<RadioButton>(selectedRadioId)
-            if (selectedRadio?.text == translations[indexInList].word) {
+            if (selectedRadio?.text == translations[indexInList].word.toLowerCase(Locale.getDefault())) {
                 holder.view.quiz_row_holder.setBackgroundResource(R.drawable.rounded_text_field_positive)
             } else {
                 holder.view.quiz_row_holder.setBackgroundResource(R.drawable.rounded_text_field_negative)
