@@ -120,14 +120,6 @@ class LoginFragment : Fragment() {
                 enableLoginButton()
 
                 if (validCredentials) {
-                    //TODO remove this toast
-                    displayToast(
-                        "Token: " + SessionManager.authToken
-                                + " " + SessionManager.username
-                                + " " + SessionManager.password,
-                        Toast.LENGTH_LONG
-                    )
-
                     // Navigate to Menu Activity
                     val intent = Intent(myContext, MainMenuActivity::class.java)
                     activity?.finish()
