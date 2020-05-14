@@ -14,9 +14,18 @@ The repository contains the source code and resources of the frontend of Lingu p
 * navigation, passing arguments between Acitvities and Fragments,
 * RecycleView with nested interactive fields.
 
-# Quick peek on the LinguApp:
+# Quick peek on how does LinguApp look like
 
-TODO screenshots
+<p float="left">
+  <img src="GitHubImages/welcome.jpg" width="270">
+  <img src="GitHubImages/abc.jpg" width="270">
+  <img src="GitHubImages/abc_result.jpg" width="270">
+</p>
+<p float="left">
+<img src="GitHubImages/quiz.jpg" width="270">
+<img src="GitHubImages/quiz_result.jpg" width="270">
+<img src="GitHubImages/translate.jpg" width="270">
+</p>
 
 # Authors 
 * **Ewa Sławińska** [Ewa2707](github.com/Ewa2707) — UX, design and the logo
