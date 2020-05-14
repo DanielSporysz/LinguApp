@@ -1,3 +1,24 @@
-# tlumaczenia-mobilne
-Aplikacja mobilna z tłumaczeniami
+# LinguApp
 
+The repository contains the source code and resources of the frontend of Lingu project. It's an Android App writen in Kotlin that enables users to quickly study new languages via various learning methods.
+
+# What have I learned
+* making asynchronous HTTP requests via Fuel library and Kotlin coroutines,
+* writing scalable FXML layouts,
+* write/read operations into local memory,
+* Android Activity and Fragment life cycles,
+* animations and transitions,
+* saving and restoring Activity/Fragment instances,
+* the use of SharedPreferences,
+* event listeners of Views,
+* navigation, passing arguments between Acitvities and Fragments,
+* RecycleView with nested interactive fields.
+
+# Quick peek on the LinguApp:
+
+TODO screenshots
+
+# Authors 
+* **Ewa Sławińska** [Ewa2707](github.com/Ewa2707) — UX, design and the logo
+* **Kamil Kwapisz** [KamilKwapisz](github.com/KamilKwapisz) — backend
+* **Daniel Sporysz** [DanielSporysz](github.com/DanielSporysz) — frontend
