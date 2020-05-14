@@ -4,15 +4,15 @@ The repository contains the source code and resources of the frontend of Lingu p
 
 # What have I learned
 * making asynchronous HTTP requests via Fuel library and Kotlin coroutines,
-* writing scalable FXML layouts,
-* write/read operations into local memory,
+* RecycleView with nested interactive fields,
 * Android Activity and Fragment life cycles,
-* animations and transitions,
 * saving and restoring Activity/Fragment instances,
+* write/read operations into local memory,
+* animations and transitions,
+* writing scalable FXML layouts,
 * the use of SharedPreferences,
 * event listeners of Views,
-* navigation, passing arguments between Acitvities and Fragments,
-* RecycleView with nested interactive fields.
+* navigation, passing arguments between Acitvities and Fragments.
 
 # Quick peek on how does LinguApp look like
 
