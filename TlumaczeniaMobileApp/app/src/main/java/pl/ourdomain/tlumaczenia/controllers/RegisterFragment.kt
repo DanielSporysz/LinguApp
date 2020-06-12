@@ -119,14 +119,6 @@ class RegisterFragment : Fragment() {
                         token
                     )
 
-                    //TODO remove this toast
-                    displayToast(
-                        "Token: " + SessionManager.authToken
-                                + " " + SessionManager.username
-                                + " " + SessionManager.password,
-                        Toast.LENGTH_LONG
-                    )
-
                     // Navigate to Menu Activity
                     val intent = Intent(myContext, MainMenuActivity::class.java)
                     intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
